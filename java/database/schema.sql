@@ -54,7 +54,7 @@ CREATE TABLE tags_issue(
 	issue_id integer NOT NULL,
 	CONSTRAINT PK_tags_issue PRIMARY KEY (tag_id, issue_id),
 	CONSTRAINT FK_tag_id FOREIGN KEY (tag_id) REFERENCES tags (tag_id),
-	CONSTRAINT FK_issue_id FOREIGN KEY (issue_id) REFERENCES issue (issue_id)
+	CONSTRAINT FK_issue_id FOREIGN KEY (issue_id) REFERENCES issues (issue_id)
 
 );
 COMMIT TRANSACTION;

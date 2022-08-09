@@ -7,6 +7,24 @@ public class Issue {
     private int issueId;
     private String name;
     private Date expiration;
+    private boolean isExpired;
+
+    public Date getExpiration() {
+        return expiration;
+    }
+
+    public void setExpiration(Date expiration) {
+        this.expiration = expiration;
+    }
+
+    public boolean isExpired() {
+        return isExpired;
+    }
+
+    public void setExpired(boolean expired) {
+        isExpired = expired;
+    }
+//open vs. closed
 
 
     public Issue(String name) {
