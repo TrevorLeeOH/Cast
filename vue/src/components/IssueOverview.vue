@@ -1,6 +1,10 @@
 <template>
     <div id="issue-box">
-        <h2 id="title">{{issue.name}}</h2>
+        <div id="title">
+            <h2>{{issue.name}}</h2>
+            <router-link :to="{name: 'issue-editor', params: {id: issue.issue_id}}" v-if="$store.state.user.user_id === issue.author.user_id">Edit</router-link>
+            <h3>{{'by ' + issue.author.username}}</h3>
+        </div>
         <button id="voted" v-if="active && issue.userVote != null" disabled>Voted!</button>
         <button id="voted" v-else-if="active">Cast Vote</button>
         <p id="desc">{{issue.description}}</p>

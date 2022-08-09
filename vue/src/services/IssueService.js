@@ -30,7 +30,11 @@ const issues = [
           votes: 1
         }
       ],
-      userVote: 1
+      userVote: 1,
+      author: {
+        user_id: 1,
+        username: 'Trevor'
+      }
     },
     {
       issue_id: 2,
@@ -57,7 +61,11 @@ const issues = [
           votes: 0
         }
       ],
-      userVote: null
+      userVote: null,
+      author: {
+        user_id: 1,
+        username: 'Trevor'
+      }
     },
     {
       issue_id: 3,
@@ -84,7 +92,11 @@ const issues = [
           votes: 0
         }
       ],
-      userVote: null
+      userVote: null,
+      author: {
+        user_id: 2,
+        username: 'Matt'
+      }
     },
     {
       issue_id: 4,
@@ -111,7 +123,11 @@ const issues = [
           votes: 0
         }
       ],
-      userVote: null
+      userVote: null,
+      author: {
+        user_id: 3,
+        username: 'Zac'
+      }
     },
     {
       issue_id: 5,
@@ -138,7 +154,11 @@ const issues = [
           votes: 0
         }
       ],
-      userVote: 0
+      userVote: 0,
+      author: {
+        user_id: 4,
+        username: 'Carrie'
+      }
     }
   ];
 
@@ -167,11 +187,24 @@ export default {
     },
 
     updateIssue(issue) {
-      return issue;
+      for (let i = 0; i < issues.length; i++) {
+        if (issues[i].issue_id === issue.issue_id) {
+          issues[i] = issue;
+          return true;
+        }
+      }
+
+      return false;
     },
 
     deleteIssue(issueId) {
-      return issueId;
+      for (let i = 0; i < issues.length; i++) {
+        if (issues[i].issue_id === issueId) {
+          issues.splice(i, 1);
+          return true;
+        }
+      }
+      return false;
     }
 
 }

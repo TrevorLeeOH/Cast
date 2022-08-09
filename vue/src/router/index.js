@@ -7,6 +7,7 @@ import Logout from '../views/Logout.vue'
 import store from '../store/index'
 import ClosedIssues from '@/views/ClosedIssues.vue';
 import ActiveIssues from '@/views/ActiveIssues.vue';
+import IssueEditor from '@/views/IssueEditor.vue';
 
 Vue.use(Router)
 
@@ -59,6 +60,14 @@ const router = new Router({
       path: "/active-issues",
       name: "active-issues",
       component: ActiveIssues,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/edit-issue/:id",
+      name: "issue-editor",
+      component: IssueEditor,
       meta: {
         requiresAuth: true
       }
