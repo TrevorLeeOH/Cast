@@ -2,32 +2,30 @@
   <div>
       <form @submit.prevent="">
             <label for="tag">Search By Tag: </label>
-            <select id="tag" v-model="tagFilter" multiple>
-                <option v-for="tag in tags" :key="tag.id" :value="tag.id">{{tag.name}}</option>
-            </select>
+            <div id="tag-box">
+                <button @click="tagFilter = []">Clear All Tags</button>
+                <label class="tag" v-for="tag in tags" :key="tag.id" :for="tag.name">{{tag.name + " (" + getNumberOfIssuesForTag(tag.id) + ")"}} 
+                    <input type="checkbox" :id="tag.name" :value="tag.id" v-model="tagFilter">
+                </label>
+            </div>
+            
             <label for="name">Search By Name: </label>
             <input type="text" id="name" v-model="nameFilter">
             <label for="desc">Search By Description: </label>
             <input type="text" id="desc" v-model="descFilter">
       </form>
-      <div class="closed-issue" v-for="issue in filteredIssuesList" :key="issue.issue_id">
-          <h2>{{issue.name}}</h2>
-          <p>{{issue.description}}</p>
-          <ul>
-              <li v-for="result in issue.results" :key="result.answer">
-                  <p>{{result.answer}}</p>
-                  <p>{{'Votes: ' + result.votes}}</p>
-              </li>
-          </ul>
-          <span>Tags: </span>
-          <span v-for="tagId in issue.tags" :key="tagId">{{tags.find(t => t.id === tagId).name}}</span>
-      </div>
+      <issue-overview class="issue" :issue="issue" :active="active" v-for="issue in filteredIssuesList" :key="issue.issue_id"></issue-overview>
   </div>
 </template>
 
 <script>
+import IssueOverview from '@/components/IssueOverview.vue';
+
 export default {
-    props: ['issues', 'tags'],
+    components: {
+        IssueOverview
+    },
+    props: ['issues', 'tags', 'active'],
     data() {
         return {
             nameFilter: '',
@@ -40,8 +38,8 @@ export default {
             let filteredIssues = this.issues
             if (this.tagFilter.length > 0) {
                 filteredIssues = filteredIssues.filter(issue => {                
-                    return issue.tags.some(tagId => {
-                        return this.tagFilter.includes(tagId);
+                    return issue.tags.some(tag => {
+                        return this.tagFilter.includes(tag.id);
                     });
                 });
             }
@@ -58,14 +56,38 @@ export default {
             return filteredIssues
         }
     },
+    methods: {
+        getNumberOfIssuesForTag(tagId) {
+            return this.issues.reduce((sum, curr) => {
+                if (curr.tags.some(t => t.id === tagId)) {
+                    sum += 1;
+                }
+                return sum;
+            }, 0);
+        }
+    }
 }
 </script>
 
 <style>
-    .closed-issue {
+    .issue {
         font-size: 1.0rem;
         border-style: solid;
         border-width: 1px;
         border-color: black;
+    }
+
+    #tag-box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    
+
+    #tag {
+        flex-grow: 1;
+        border-style: solid;
+        border-width: 1px;
     }
 </style>

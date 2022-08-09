@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 // import Register from '../views/Register.vue'
 import store from '../store/index'
 import ClosedIssues from '@/views/ClosedIssues.vue';
+import ActiveIssues from '@/views/ActiveIssues.vue';
 
 Vue.use(Router)
 
@@ -52,6 +53,14 @@ const router = new Router({
       component: ClosedIssues,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/active-issues",
+      name: "active-issues",
+      component: ActiveIssues,
+      meta: {
+        requiresAuth: true
       }
     }
   ]
