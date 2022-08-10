@@ -17,6 +17,7 @@ public class Issue {
         return tagList;
     }
 
+
     public void setTagList(List<Tag> tagList) {
         this.tagList = tagList;
     }
