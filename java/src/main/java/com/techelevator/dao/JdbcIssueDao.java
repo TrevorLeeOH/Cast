@@ -21,10 +21,11 @@ public class JdbcIssueDao implements IssueDao {
 
 
 
+
     @Override
     public List<Issue> getAllIssues() {
         List<Issue> allIssues = new ArrayList<>();
-        SqlRowSet results = jdbcTemplate.queryForRowSet("SELECT * FROM issues;");
+        SqlRowSet results = jdbcTemplate.queryForRowSet("SELECT * FROM issues JOIN tag_issue ON issue_id, JOIN tags ON tag_id;");
         while (results.next()) {
             allIssues.add(mapRowToIssue(results));
         }
@@ -117,7 +118,7 @@ public class JdbcIssueDao implements IssueDao {
         issue.setIssueId(results.getInt("issue_id"));
         issue.setName(results.getString("name"));
         issue.setDescription(results.getString("description"));
-        issue.setExpiration(results.getDate("expiration_date"));
+        issue.setExpiration(results.getDate("expiration_date").toLocalDate());
         issue.setOptionA(results.getString("option_a"));
         issue.setOptionB(results.getString("option_b"));
         issue.setOptionC(results.getString("option_c"));

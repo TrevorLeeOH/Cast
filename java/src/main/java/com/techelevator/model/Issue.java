@@ -1,13 +1,25 @@
 package com.techelevator.model;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Issue {
 
     private int issueId;
     private String name;
-    private Date expiration;
+    private LocalDate expiration;
     private boolean isExpired;
+    private List<Tag> tagList= new ArrayList<>();
+
+    public List<Tag> getTagList() {
+        return tagList;
+    }
+
+    public void setTagList(List<Tag> tagList) {
+        this.tagList = tagList;
+    }
 
     public String getDescription() {
         return description;
@@ -116,11 +128,11 @@ public class Issue {
 
     }
 
-    public Date getExpiration() {
+    public LocalDate getExpiration() {
         return expiration;
     }
 
-    public void setExpiration(Date expiration) {
+    public void setExpiration(LocalDate expiration) {
         this.expiration = expiration;
     }
 
