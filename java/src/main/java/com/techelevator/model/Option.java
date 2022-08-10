@@ -1,7 +1,5 @@
 package com.techelevator.model;
 
-import java.util.List;
-
 public class Option {
     private String optionA;
     private String optionB;
@@ -12,7 +10,7 @@ public class Option {
     private String optionG;
     private String optionH;
 
-    public String getOptionA() {
+    public String getOptionA(String option_a) {
         return optionA;
     }
 
@@ -20,7 +18,7 @@ public class Option {
         this.optionA = optionA;
     }
 
-    public String getOptionB() {
+    public String getOptionB(String option_b) {
         return optionB;
     }
 
@@ -28,7 +26,7 @@ public class Option {
         this.optionB = optionB;
     }
 
-    public String getOptionC() {
+    public String getOptionC(String option_c) {
         return optionC;
     }
 
@@ -36,7 +34,7 @@ public class Option {
         this.optionC = optionC;
     }
 
-    public String getOptionD() {
+    public String getOptionD(String option_d) {
         return optionD;
     }
 
@@ -44,7 +42,7 @@ public class Option {
         this.optionD = optionD;
     }
 
-    public String getOptionE() {
+    public String getOptionE(String option_e) {
         return optionE;
     }
 
@@ -52,7 +50,7 @@ public class Option {
         this.optionE = optionE;
     }
 
-    public String getOptionF() {
+    public String getOptionF(String option_f) {
         return optionF;
     }
 
@@ -60,7 +58,7 @@ public class Option {
         this.optionF = optionF;
     }
 
-    public String getOptionG() {
+    public String getOptionG(String option_g) {
         return optionG;
     }
 
@@ -68,7 +66,7 @@ public class Option {
         this.optionG = optionG;
     }
 
-    public String getOptionH() {
+    public String getOptionH(String option_h) {
         return optionH;
     }
 
