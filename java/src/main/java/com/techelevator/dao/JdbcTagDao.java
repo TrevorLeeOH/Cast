@@ -36,7 +36,7 @@ public class JdbcTagDao implements TagDao {
         while (results.next()){
             tag.add(mapRowToTag(results));
         }
-        return null;
+        return tag;
     }
 
     private Tag mapRowToTag(SqlRowSet results) {

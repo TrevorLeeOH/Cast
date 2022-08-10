@@ -55,7 +55,7 @@ public class JdbcIssueDao implements IssueDao {
             Issue issue = mapRowToIssue(results);
             issuesByTag.add(issue);
         }
-        return null;
+        return issuesByTag;
     }
 
     @Override
