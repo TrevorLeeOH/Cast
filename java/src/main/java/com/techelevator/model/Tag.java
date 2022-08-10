@@ -4,11 +4,14 @@ public class Tag {
     String tagName;
     int tagId;
 
+    public Tag() {
+    }
+
     public Tag(String tagName) {
         this.tagName = tagName;
     }
 
-    public String getTagName() {
+    public String getTagName(String tag_name) {
         return tagName;
     }
 
@@ -16,11 +19,13 @@ public class Tag {
         this.tagName = tagName;
     }
 
-    public int getTagId() {
+    public int getTagId(int tag_id) {
         return tagId;
     }
 
     public void setTagId(int tagId) {
         this.tagId = tagId;
     }
+
+
 }
