@@ -15,14 +15,10 @@ public class JdbcIssueDao implements IssueDao {
     private final JdbcTemplate jdbcTemplate;
     private final TagDao tagDao;
 
-    public JdbcIssueDao(JdbcTemplate jdbcTemplate, TagDao tagDao) {
+    public JdbcIssueDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-        this.tagDao = tagDao;
+        tagDao = new JdbcTagDao(jdbcTemplate);
     }
-
-
-
-
 
     @Override
     public List<Issue> getAllIssues() {
@@ -118,9 +114,14 @@ public class JdbcIssueDao implements IssueDao {
     private Issue mapRowToIssue(SqlRowSet results) {
         Issue issue = new Issue();
         issue.setIssueId(results.getInt("issue_id"));
-        issue.setName(results.getString("name"));
+        issue.setName(results.getString("issue_name"));
         issue.setDescription(results.getString("description"));
-        issue.setExpiration(results.getDate("expiration_date").toLocalDate());
+        if (results.getDate("expiration_date") != null) {
+            issue.setExpiration(results.getDate("expiration_date").toLocalDate());
+        } else {
+            issue.setExpiration(null);
+        }
+
         issue.setTagList(tagDao.getTagsForIssue(issue.getIssueId()));
         issue.setOptionA(results.getString("option_a"));
         issue.setOptionB(results.getString("option_b"));

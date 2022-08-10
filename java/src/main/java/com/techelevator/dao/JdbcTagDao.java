@@ -11,8 +11,8 @@ import java.util.List;
 public class JdbcTagDao implements TagDao {
     private final JdbcTemplate jdbcTemplate;
 
-    public JdbcTagDao(DataSource datasource) {
-        this.jdbcTemplate = new JdbcTemplate(datasource);
+    public JdbcTagDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
     @Override
     public Tag createTag(String tagName) {
@@ -32,7 +32,7 @@ public class JdbcTagDao implements TagDao {
     @Override
     public List<Tag> getTagsForIssue(int issueId) {
         List<Tag> tag = new ArrayList<>();
-        SqlRowSet results = jdbcTemplate.queryForRowSet("SELECT * FROM tags JOIN tags_issue WHERE issue_id = ?");
+        SqlRowSet results = jdbcTemplate.queryForRowSet("SELECT * FROM tags JOIN tags_issue USING(tag_id) WHERE issue_id = ?;", issueId);
         while (results.next()){
             tag.add(mapRowToTag(results));
         }
