@@ -13,6 +13,7 @@ CREATE TABLE users (
 CREATE TABLE issues (
 	issue_id SERIAL,
 	issue_name varchar(100) NOT NULL UNIQUE,
+	description varchar(500),
 	user_id integer NOT NULL,
 	option_a char(100) NOT NULL,
 	option_b char(100) NOT NULL,

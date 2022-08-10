@@ -71,10 +71,10 @@ public class JdbcIssueDao implements IssueDao {
     @Override
     public Issue createIssue(Issue issue) {
 
-        String sql = "INSERT INTO issues (issue_name, expiration_date, option_a, option_b, option_c, option_d, option_e, option_f, " +
+        String sql = "INSERT INTO issues (issue_name, description, expiration_date, option_a, option_b, option_c, option_d, option_e, option_f, " +
                 "option_g, option_h)" +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING issue_id;";
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, issue.getName(), issue.getExpiration(), issue.getOptionA(), issue.getOptionB(),
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING issue_id;";
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, issue.getName(), issue.getDescription(), issue.getExpiration(), issue.getOptionA(), issue.getOptionB(),
                 issue.getOptionC(), issue.getOptionD(), issue.getOptionE(), issue.getOptionF(), issue.getOptionG(), issue.getOptionH());
 
         return getIssueByIssueId(newId);
@@ -97,18 +97,18 @@ public class JdbcIssueDao implements IssueDao {
 
     @Override
     public void updateIssueByName(Issue updatedIssue) {
-        String sql = "UPDATE issues SET expiration_date = ?, option_a = ?, option_b = ?, option_c = ?, option_d = ?, option_e = ?, " +
+        String sql = "UPDATE issues SET expiration_date = ?, description = ?, option_a = ?, option_b = ?, option_c = ?, option_d = ?, option_e = ?, " +
                 "option_f = ?, option_g = ?, option_h = ? WHERE name = ?;";
-        jdbcTemplate.update(sql, updatedIssue.getExpiration(), updatedIssue.getOptionA(), updatedIssue.getOptionB(), updatedIssue.getOptionC(), updatedIssue.getOptionD(),
+        jdbcTemplate.update(sql, updatedIssue.getExpiration(), updatedIssue.getDescription(), updatedIssue.getOptionA(), updatedIssue.getOptionB(), updatedIssue.getOptionC(), updatedIssue.getOptionD(),
                 updatedIssue.getOptionE(), updatedIssue.getOptionF(), updatedIssue.getOptionG(), updatedIssue.getOptionH());
 
     }
 
     @Override
     public void updateIssueById(Issue updatedIssue) {
-        String sql = "UPDATE issues SET name = ?, expiration_date = ?, option_a = ?, option_b = ?, option_c = ?, option_d = ?, option_e = ?, " +
+        String sql = "UPDATE issues SET name = ?, description = ?, expiration_date = ?, option_a = ?, option_b = ?, option_c = ?, option_d = ?, option_e = ?, " +
                 "option_f = ?, option_g = ?, option_h = ? WHERE issue_id = ?;";
-        jdbcTemplate.update(sql, updatedIssue.getName(), updatedIssue.getExpiration(), updatedIssue.getOptionA(), updatedIssue.getOptionB(), updatedIssue.getOptionC(), updatedIssue.getOptionD(),
+        jdbcTemplate.update(sql, updatedIssue.getName(), updatedIssue.getDescription(),updatedIssue.getExpiration(), updatedIssue.getOptionA(), updatedIssue.getOptionB(), updatedIssue.getOptionC(), updatedIssue.getOptionD(),
                 updatedIssue.getOptionE(), updatedIssue.getOptionF(), updatedIssue.getOptionG(), updatedIssue.getOptionH());
     }
 
@@ -116,6 +116,7 @@ public class JdbcIssueDao implements IssueDao {
         Issue issue = new Issue();
         issue.setIssueId(results.getInt("issue_id"));
         issue.setName(results.getString("name"));
+        issue.setDescription(results.getString("description"));
         issue.setExpiration(results.getDate("expiration_date"));
         issue.setOptionA(results.getString("option_a"));
         issue.setOptionB(results.getString("option_b"));

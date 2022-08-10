@@ -9,6 +9,16 @@ public class Issue {
     private Date expiration;
     private boolean isExpired;
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    private String description;
+
     public void setExpired() {
         isExpired = false;
     }
