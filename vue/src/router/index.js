@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
+import Splash from '../views/SplashPage.vue'
+import Register from '../views/Register.vue'
 // import Register from '../views/Register.vue'
 import store from '../store/index'
 import ClosedIssues from '@/views/ClosedIssues.vue';
@@ -26,6 +28,14 @@ const router = new Router({
   routes: [
     {
       path: '/',
+      name: 'splash',
+      component: Splash,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/home',
       name: 'home',
       component: Home,
       meta: {
@@ -71,7 +81,15 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+    path: '/register',
+    name: 'register',
+    component: Register,
+    meta: {
+      requiresAuth: false
     }
+  }
   ]
 })
 
