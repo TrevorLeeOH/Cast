@@ -11,7 +11,7 @@ public interface IssueDao {
 
     Issue getIssueByIssueId(int issueId);
 
-    Issue createIssue(String name);
+    Issue createIssue(Issue issue);
 
     Issue deleteIssueByName(String name);
     Issue deleteIssueById(int issueId);
