@@ -53,17 +53,17 @@ public class IssueController {
         issueDao.updateIssueByName(updatedIssue);
     };
 
-    @PutMapping(path = "/issues/{issue_name}")
+    @PutMapping(path = "/issues/{issue_id}")
     public void updateIssueById(Issue updatedIssue) { //should this be a string or int? may need to change model/jdbcdao
         issueDao.updateIssueById(updatedIssue);
     };
 
-    @RequestMapping(path = "/issues", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/issues/{issue_name}", method = RequestMethod.DELETE)
     public void deleteIssueByName(String name) {
         issueDao.deleteIssueByName(name);
     };
 
-    @RequestMapping(path = "/issues", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/issues/{issue_id}", method = RequestMethod.DELETE)
     public void deleteIssueById(int issueId) {
         issueDao.deleteIssueById(issueId);
     };
