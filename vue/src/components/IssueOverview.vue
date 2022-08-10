@@ -1,22 +1,11 @@
 <template>
     <div id="issue-box">
         <div id="title">
-            <h2>{{issue.name}}</h2>
-            <router-link :to="{name: 'issue-editor', params: {id: issue.issue_id}}" v-if="$store.state.user.user_id === issue.author.user_id">Edit</router-link>
-            <h3>{{'by ' + issue.author.username}}</h3>
+            <h2 id="issue-title">{{issue.issue_name}}</h2>
+            <p id="issue-author" :class="{'user-author': $store.state.user.user_id === issue.author.user_id}">{{'by ' + issue.author.username}}</p>
         </div>
-        <button id="voted" v-if="active && issue.userVote != null" disabled>Voted!</button>
-        <button id="voted" v-else-if="active">Cast Vote</button>
+        <router-link id="detail-link" :to="{name: 'issue'}" tag="button">View Issue</router-link>
         <p id="desc">{{issue.description}}</p>
-        <ul id="results">
-            <li v-for="(result, index) in issue.results" :key="result.answer">
-                <p :class="{ 'user-vote': index === issue.userVote}">{{result.answer}}</p>
-                <p v-if="!active || issue.userVote != null">{{'Votes: ' + result.votes}}</p>
-                <!--
-                <div class="vote-bar" :width="200">{{result.answer + getVotePercentage(result.votes)}}</div>
-                -->
-            </li>
-        </ul>
         <div id="tags">
             Tags: 
             <span v-for="tag in issue.tags" :key="tag.id">{{tag.name + ' '}}</span>
@@ -64,17 +53,17 @@ export default {
     #issue-box {
         display: grid;
         grid-template-columns: 1fr 3fr 1fr;
-        grid-template-areas: "title . voted"
-                            "desc results results"
-                            "tags . exp";
+        grid-template-areas: "title desc detail-link"
+                            "tags tags exp";
         align-items: center;
+        padding: 6px;
     }
 
     #title {
         grid-area: title;
     }
-    #voted {
-        grid-area: voted;
+    #detail-link {
+        grid-area: detail-link;
     }
     #desc {
         grid-area: desc;
@@ -87,5 +76,16 @@ export default {
     }
     #exp {
         grid-area: exp;
+        margin: 0px;
+    }
+
+    #issue-title {
+        margin: 0px;
+    }
+    #issue-author {
+        margin: 0px;
+    }
+    .user-author {
+        color: rgb(19, 201, 19);
     }
 </style>

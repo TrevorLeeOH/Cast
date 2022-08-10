@@ -83,8 +83,6 @@ export default {
         justify-content: space-between;
     }
 
-    
-
     #tag {
         flex-grow: 1;
         border-style: solid;

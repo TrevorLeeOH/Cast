@@ -1,7 +1,7 @@
 <template>
   <div>
       <h1>Active Issues</h1>
-      <issues-list :issues="getIssues()" :tags="getTags()" :active="true"></issues-list>
+      <issues-list :issues="issues" :tags="tags" :active="true"></issues-list>
   </div>
 </template>
 
@@ -15,14 +15,27 @@ export default {
     components: {
         IssuesList,
     },
+    data() {
+        return {
+            issues: [],
+            tags: []
+        }
+    },
 
     methods: {
         getIssues() {
-            return IssueService.getActiveIssues();
+            //IssueService.getActiveIssues().then(response => {
+           //     this.issues = response.data;
+            //})
+            this.issues = IssueService.getActiveIssues();
         },
         getTags() {
-            return TagService.getTags();
+            this.tags = TagService.getTags();
         }
+    },
+    created() {
+        this.getIssues();
+        this.getTags();
     }
 }
 </script>

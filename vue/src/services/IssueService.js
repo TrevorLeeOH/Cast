@@ -3,7 +3,7 @@
 const issues = [
     {
       issue_id: 1,
-      name: 'murder',
+      issue_name: 'murder',
       description: 'What is your opinion on murder?',
       expiration: new Date(2022, 5, 20, 12, 0),
       tags: [
@@ -16,29 +16,15 @@ const issues = [
           name: 'tag8'
         }
       ],
-      results: [
-        {
-          answer: 'Never okay',
-          votes: 10
-        },
-        {
-          answer: 'Sometimes okay',
-          votes: 3
-        },
-        {
-          answer: 'Totally cool',
-          votes: 1
-        }
-      ],
-      userVote: 1,
-      author: {
+        user_voted: true,
+        author: {
         user_id: 1,
         username: 'Trevor'
       }
     },
     {
       issue_id: 2,
-      name: 'ice cream',
+      issue_name: 'ice cream',
       description: 'What is your opinion on ice cream?',
       expiration: new Date(2022, 9, 22, 10, 0),
       tags: [
@@ -47,21 +33,7 @@ const issues = [
           name: 'food'
         }
       ],
-      results: [
-        {
-          answer: 'love it',
-          votes: 30
-        },
-        {
-          answer: 'indifferent',
-          votes: 4
-        },
-        {
-          answer: 'hate it',
-          votes: 0
-        }
-      ],
-      userVote: null,
+      user_voted: false,
       author: {
         user_id: 1,
         username: 'Trevor'
@@ -69,7 +41,7 @@ const issues = [
     },
     {
       issue_id: 3,
-      name: 'World Peace',
+      issue_name: 'World Peace',
       description: 'What is your opinion on world peace?',
       expiration: new Date(2022, 7, 8, 1, 1),
       tags: [
@@ -78,21 +50,7 @@ const issues = [
           name: 'tag7'
         }
       ],
-      results: [
-        {
-          answer: 'love it',
-          votes: 30
-        },
-        {
-          answer: 'indifferent',
-          votes: 4
-        },
-        {
-          answer: 'hate it',
-          votes: 0
-        }
-      ],
-      userVote: null,
+      user_voted: false,
       author: {
         user_id: 2,
         username: 'Matt'
@@ -100,7 +58,7 @@ const issues = [
     },
     {
       issue_id: 4,
-      name: 'issue4',
+      issue_name: 'issue4',
       description: 'What is your opinion on issue4?',
       expiration: new Date(2022, 1, 1, 1, 20),
       tags: [
@@ -109,21 +67,7 @@ const issues = [
           name: 'tag4'
         }
       ],
-      results: [
-        {
-          answer: 'love it',
-          votes: 30
-        },
-        {
-          answer: 'indifferent',
-          votes: 4
-        },
-        {
-          answer: 'hate it',
-          votes: 0
-        }
-      ],
-      userVote: null,
+      user_voted: false,
       author: {
         user_id: 3,
         username: 'Zac'
@@ -131,7 +75,7 @@ const issues = [
     },
     {
       issue_id: 5,
-      name: 'issue5',
+      issue_name: 'issue5',
       description: 'What is your opinion on issue5?',
       expiration: new Date(2022, 9, 22, 10, 0),
       tags: [
@@ -140,21 +84,7 @@ const issues = [
           name: 'tag5'
         }
       ],
-      results: [
-        {
-          answer: 'love it',
-          votes: 30
-        },
-        {
-          answer: 'indifferent',
-          votes: 4
-        },
-        {
-          answer: 'hate it',
-          votes: 0
-        }
-      ],
-      userVote: 0,
+      user_voted: false,
       author: {
         user_id: 4,
         username: 'Carrie'
@@ -162,24 +92,27 @@ const issues = [
     }
   ];
 
+
 export default {
 
     getClosedIssues() {
-        return issues.filter(issue => {
-          return issue.expiration <= Date.now();
-        });
+      //return axios.get('/closed-issues');
+      return issues.filter(issue => {
+        return issue.expiration <= Date.now();
+      });
     },
 
     getActiveIssues() {
-        return issues.filter(issue => {
-          return issue.expiration > Date.now();
-        })
+      //return axios.get('/active-issues');
+      return issues.filter(issue => {
+        return issue.expiration > Date.now();
+      })
     },
 
     getIssue(id) {
-        return issues.find(issue => {
-            return issue.issue_id === id;
-        });
+      return issues.find(issue => {
+          return issue.issue_id === id;
+      });
     },
 
     createIssue(issue) {
@@ -205,6 +138,6 @@ export default {
         }
       }
       return false;
-    }
+    },
 
 }
