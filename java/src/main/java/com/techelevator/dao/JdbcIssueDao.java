@@ -13,9 +13,11 @@ import java.util.List;
 public class JdbcIssueDao implements IssueDao {
 
     private final JdbcTemplate jdbcTemplate;
+    private final TagDao tagDao;
 
-    public JdbcIssueDao(JdbcTemplate jdbcTemplate) {
+    public JdbcIssueDao(JdbcTemplate jdbcTemplate, TagDao tagDao) {
         this.jdbcTemplate = jdbcTemplate;
+        this.tagDao = tagDao;
     }
 
 
@@ -25,7 +27,7 @@ public class JdbcIssueDao implements IssueDao {
     @Override
     public List<Issue> getAllIssues() {
         List<Issue> allIssues = new ArrayList<>();
-        SqlRowSet results = jdbcTemplate.queryForRowSet("SELECT * FROM issues JOIN tag_issue ON issue_id, JOIN tags ON tag_id;");
+        SqlRowSet results = jdbcTemplate.queryForRowSet("SELECT * FROM issues;");
         while (results.next()) {
             allIssues.add(mapRowToIssue(results));
         }
@@ -119,6 +121,7 @@ public class JdbcIssueDao implements IssueDao {
         issue.setName(results.getString("name"));
         issue.setDescription(results.getString("description"));
         issue.setExpiration(results.getDate("expiration_date").toLocalDate());
+        issue.setTagList(tagDao.getTagsForIssue(issue.getIssueId()));
         issue.setOptionA(results.getString("option_a"));
         issue.setOptionB(results.getString("option_b"));
         issue.setOptionC(results.getString("option_c"));
