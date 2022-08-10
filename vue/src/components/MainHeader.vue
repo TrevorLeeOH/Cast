@@ -1,5 +1,6 @@
 <template>
   <div>
+      <h2>Cast✓</h2>
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'active-issues' }">Active Polls</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'closed-issues' }">Closed Polls</router-link>&nbsp;|&nbsp;
