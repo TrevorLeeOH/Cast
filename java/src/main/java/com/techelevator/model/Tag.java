@@ -11,7 +11,7 @@ public class Tag {
         this.tagName = tagName;
     }
 
-    public String getTagName(String tag_name) {
+    public String getTagName(String tagName) {
         return tagName;
     }
 
