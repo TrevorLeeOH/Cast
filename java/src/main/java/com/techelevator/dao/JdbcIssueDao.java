@@ -121,7 +121,6 @@ public class JdbcIssueDao implements IssueDao {
         } else {
             issue.setExpiration(null);
         }
-
         issue.setTagList(tagDao.getTagsForIssue(issue.getIssueId()));
         issue.setOptionA(results.getString("option_a"));
         issue.setOptionB(results.getString("option_b"));

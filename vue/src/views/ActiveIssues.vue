@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div>
       <h1>Active Issues</h1>
       <issues-list :issues="issues" :tags="tags" :active="true"></issues-list>
