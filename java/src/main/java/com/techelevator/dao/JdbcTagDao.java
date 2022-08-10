@@ -16,18 +16,23 @@ public class JdbcTagDao implements TagDao {
     }
     @Override
     public Tag createTag(String tagName) {
-        return null;
+        String sql = "INSERT INTO tags (tag_name)" +
+                "VALUES (?) RETURNING tag_id";
+        int tagId = jdbcTemplate.queryForObject(sql, Integer.class, tagName);
+        return getTag(tagId);
     }
 
-    @Override
-    public Tag updateTag(String tagName) {
-        return null;
+    public Tag getTag(int tagId) {
+        Tag tag = null;
+        String sql = "SELECT * FROM tags WHERE tag_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, tagId);
+        if (results.next()){
+            tag = mapRowToTag(results);
+
+        }
+        return tag;
     }
 
-    @Override
-    public Tag deleteTag(String tagName) {
-        return null;
-    }
 
     @Override
     public List<Tag> getTagsForIssue(int issueId) {
