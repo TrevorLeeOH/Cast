@@ -9,8 +9,8 @@ public class Issue {
     private Date expiration;
     private boolean isExpired;
 
-    public void setExpired(java.sql.Date expired) {
-        isExpired = expired;
+    public void setExpired() {
+        isExpired = false;
     }
 
     public String getOptionA() {

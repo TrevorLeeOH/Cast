@@ -13,11 +13,11 @@ public interface IssueDao {
 
     Issue createIssue(Issue issue);
 
-    Issue deleteIssueByName(String name);
-    Issue deleteIssueById(int issueId);
+    void deleteIssueByName(String name);
+    void deleteIssueById(int issueId);
 
-    Issue updateIssueByName(String name);
-    Issue updateIssueById(String issueId);
+    void updateIssueByName(Issue updatedIssue);
+    void updateIssueById(Issue updatedIssue);
 
 
 

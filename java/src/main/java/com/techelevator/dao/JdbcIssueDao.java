@@ -7,10 +7,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
-
 
 
 @Component
@@ -88,30 +84,39 @@ public class JdbcIssueDao implements IssueDao {
 
 
     @Override
-    public Issue deleteIssueByName(String name) {
-        return null;
+    public void deleteIssueByName(String name) {
+        String sql = "DELETE FROM issues WHERE name = ?;";
+        jdbcTemplate.update(sql, name);
     }
 
     @Override
-    public Issue deleteIssueById(int issueId) {
-        return null;
+    public void deleteIssueById(int issueId) {
+        String sql = "DELETE FROM issues WHERE issueId = ?";
+        jdbcTemplate.update(sql, issueId);
     }
 
     @Override
-    public Issue updateIssueByName(String name) {
-        return null;
+    public void updateIssueByName(Issue updatedIssue) {
+        String sql = "UPDATE issues SET expiration_date = ?, option_a = ?, option_b = ?, option_c = ?, option_d = ?, option_e = ?, " +
+                "option_f = ?, option_g = ?, option_h = ? WHERE name = ?;";
+        jdbcTemplate.update(sql, updatedIssue.getExpiration(), updatedIssue.getOptionA(), updatedIssue.getOptionB(), updatedIssue.getOptionC(), updatedIssue.getOptionD(),
+                updatedIssue.getOptionE(), updatedIssue.getOptionF(), updatedIssue.getOptionG(), updatedIssue.getOptionH());
+
     }
 
     @Override
-    public Issue updateIssueById(String issueId) {
-        return null;
+    public void updateIssueById(Issue updatedIssue) {
+        String sql = "UPDATE issues SET name = ?, expiration_date = ?, option_a = ?, option_b = ?, option_c = ?, option_d = ?, option_e = ?, " +
+                "option_f = ?, option_g = ?, option_h = ? WHERE issue_id = ?;";
+        jdbcTemplate.update(sql, updatedIssue.getName(), updatedIssue.getExpiration(), updatedIssue.getOptionA(), updatedIssue.getOptionB(), updatedIssue.getOptionC(), updatedIssue.getOptionD(),
+                updatedIssue.getOptionE(), updatedIssue.getOptionF(), updatedIssue.getOptionG(), updatedIssue.getOptionH());
     }
 
     private Issue mapRowToIssue(SqlRowSet results) {
         Issue issue = new Issue();
         issue.setIssueId(results.getInt("issue_id"));
         issue.setName(results.getString("name"));
-        issue.setExpired(results.getDate("expiration_date"));
+        issue.setExpiration(results.getDate("expiration_date"));
         issue.setOptionA(results.getString("option_a"));
         issue.setOptionB(results.getString("option_b"));
         issue.setOptionC(results.getString("option_c"));
