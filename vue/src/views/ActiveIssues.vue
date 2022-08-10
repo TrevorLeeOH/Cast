@@ -1,7 +1,7 @@
 <template>
   <div>
-      <h1>Closed Issues</h1>
-      <issues-list :issues="getIssues()" :tags="getTags()" :active="false"></issues-list>
+      <h1>Active Issues</h1>
+      <issues-list :issues="getIssues()" :tags="getTags()" :active="true"></issues-list>
   </div>
 </template>
 
@@ -11,14 +11,14 @@ import IssueService from '@/services/IssueService.js';
 import TagService from '@/services/TagService.js';
 
 export default {
-    name: 'closed-issues',
+    name: 'active-issues',
     components: {
         IssuesList,
     },
 
     methods: {
         getIssues() {
-            return IssueService.getClosedIssues();
+            return IssueService.getActiveIssues();
         },
         getTags() {
             return TagService.getTags();
