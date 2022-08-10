@@ -1,0 +1,33 @@
+package com.techelevator.controller;
+
+
+import com.techelevator.dao.TagDao;
+import com.techelevator.model.Tag;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+
+@RestController
+//@PreAuthorize()
+@RequestMapping("/tag")
+public class TagController {
+    private TagDao tagDao;
+
+    public TagController(TagDao tagDao) {
+        this.tagDao = tagDao;
+    }
+
+    @RequestMapping(path = "/{issueId}", method = RequestMethod.GET)
+    public List<Tag> tagById(@PathVariable int issueId){
+        return tagDao.getTagsForIssue(issueId);
+    }
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/new",  method = RequestMethod.POST)
+    public Tag tagByName(@Valid @RequestBody Tag tag) {
+        return tagDao.createTag(String.valueOf(tag));
+    }
+
+}
