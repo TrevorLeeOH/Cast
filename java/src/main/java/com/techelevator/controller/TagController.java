@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 //@PreAuthorize()
 @RequestMapping("/tag")
 public class TagController {
@@ -26,8 +27,8 @@ public class TagController {
     }
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/new",  method = RequestMethod.POST)
-    public Tag tagByName(@Valid @RequestBody Tag tag) {
-        return tagDao.createTag(String.valueOf(tag));
+    public void tagByName(@Valid @RequestBody Tag tag) {
+        tagDao.createTag(String.valueOf(tag));
     }
 
 }
