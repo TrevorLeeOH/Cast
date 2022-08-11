@@ -12,13 +12,13 @@ public class Issue {
     private LocalDate expiration;
     private boolean isExpired;
     private List<Tag> tagList= new ArrayList<>();
-    private List<Option> optionList = new ArrayList<>();
+    private List<String> optionList = new ArrayList<>();
 
-    public List<Option> getOptionList() {
+    public List<String> getOptionList() {
         return optionList;
     }
 
-    public void setOptionList(List<Option> optionList) {
+    public void setOptionList(List<String> optionList) {
         this.optionList = optionList;
     }
 

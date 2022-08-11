@@ -130,8 +130,28 @@ public class JdbcIssueDao implements IssueDao {
             issue.setExpiration(null);
         }
         issue.setTagList(tagDao.getTagsForIssue(issue.getIssueId()));
-        option.setOptionList(optionDao.getOptionsForIssue(issue.getIssueId()));
         user.setUsername(userDao.findUsernameById(user.getId()));
+
+        List<String> options = new ArrayList<>();
+        options.add(results.getString("option_a"));
+        options.add(results.getString("option_b"));
+        options.add(results.getString("option_c"));
+        if (results.getString("option_d") != null) {
+            options.add(results.getString("option_d"));
+        }
+        if (results.getString("option_e") != null) {
+            options.add(results.getString("option_d"));
+        }
+        if (results.getString("option_f") != null) {
+            options.add(results.getString("option_d"));
+        }
+        if (results.getString("option_g") != null) {
+            options.add(results.getString("option_d"));
+        }
+        if (results.getString("option_h") != null) {
+            options.add(results.getString("option_d"));
+        }
+        issue.setOptionList(options);
 
         return issue;
     }
