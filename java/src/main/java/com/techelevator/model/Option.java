@@ -1,5 +1,8 @@
 package com.techelevator.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Option {
     private String optionA;
     private String optionB;
@@ -9,6 +12,15 @@ public class Option {
     private String optionF;
     private String optionG;
     private String optionH;
+    private List<Option> optionList = new ArrayList<>();
+
+    public List<Option> getOptionList() {
+        return optionList;
+    }
+
+    public void setOptionList(List<Option> optionList) {
+        this.optionList = optionList;
+    }
 
     public String getOptionA(String option_a) {
         return optionA;

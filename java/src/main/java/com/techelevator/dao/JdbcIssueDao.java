@@ -1,6 +1,8 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Issue;
+import com.techelevator.model.Option;
+import com.techelevator.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -14,10 +16,14 @@ public class JdbcIssueDao implements IssueDao {
 
     private final JdbcTemplate jdbcTemplate;
     private final TagDao tagDao;
+    private final OptionDao optionDao;
+    private final UserDao userDao;
 
-    public JdbcIssueDao(JdbcTemplate jdbcTemplate) {
+    public JdbcIssueDao(JdbcTemplate jdbcTemplate, OptionDao optionDao, UserDao userDao) {
         this.jdbcTemplate = jdbcTemplate;
         tagDao = new JdbcTagDao(jdbcTemplate);
+        this.optionDao = optionDao;
+        this.userDao = userDao;
     }
 
     @Override
@@ -113,6 +119,8 @@ public class JdbcIssueDao implements IssueDao {
 
     private Issue mapRowToIssue(SqlRowSet results) {
         Issue issue = new Issue();
+        Option option = new Option();
+        User user = new User();
         issue.setIssueId(results.getInt("issue_id"));
         issue.setName(results.getString("issue_name"));
         issue.setDescription(results.getString("description"));
@@ -122,15 +130,8 @@ public class JdbcIssueDao implements IssueDao {
             issue.setExpiration(null);
         }
         issue.setTagList(tagDao.getTagsForIssue(issue.getIssueId()));
-        issue.setOptionA(results.getString("option_a"));
-        issue.setOptionB(results.getString("option_b"));
-        issue.setOptionC(results.getString("option_c"));
-        issue.setOptionD(results.getString("option_d"));
-        issue.setOptionE(results.getString("option_e"));
-        issue.setOptionF(results.getString("option_f"));
-        issue.setOptionG(results.getString("option_g"));
-        issue.setOptionH(results.getString("option_h"));
-
+        option.setOptionList(optionDao.getOptionsForIssue(issue.getIssueId()));
+        user.setUsername(userDao.findUsernameById(user.getId()));
 
         return issue;
     }
