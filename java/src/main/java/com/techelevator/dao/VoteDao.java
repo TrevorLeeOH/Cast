@@ -1,9 +1,18 @@
 package com.techelevator.dao;
 
-import java.util.Map;
+
+import com.techelevator.model.Vote;
+
+import java.util.List;
 
 public interface VoteDao {
-    Map<String, Integer> getVotesByIssue(int issueId); ///?
+
+    List<Vote> getVotesByIssueId(int issueId);
+
+    List<Vote> getVotesByUserId(int userId);
+
+    List<Vote> updateResults();
+
 
 
 }
