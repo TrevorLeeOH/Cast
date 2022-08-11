@@ -11,7 +11,7 @@ public interface VoteDao {
 
 
 
-     getVotesByUserId(int userId);
+    getVotesByUserId(int userId);
 
     List<Vote> updateResults();
 

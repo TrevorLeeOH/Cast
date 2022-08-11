@@ -1,7 +1,6 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Issue;
-import com.techelevator.model.Option;
 import com.techelevator.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -16,13 +15,11 @@ public class JdbcIssueDao implements IssueDao {
 
     private final JdbcTemplate jdbcTemplate;
     private final TagDao tagDao;
-    private final OptionDao optionDao;
     private final UserDao userDao;
 
-    public JdbcIssueDao(JdbcTemplate jdbcTemplate, OptionDao optionDao, UserDao userDao) {
+    public JdbcIssueDao(JdbcTemplate jdbcTemplate, UserDao userDao) {
         this.jdbcTemplate = jdbcTemplate;
         tagDao = new JdbcTagDao(jdbcTemplate);
-        this.optionDao = optionDao;
         this.userDao = userDao;
     }
 
@@ -119,7 +116,6 @@ public class JdbcIssueDao implements IssueDao {
 
     private Issue mapRowToIssue(SqlRowSet results) {
         Issue issue = new Issue();
-        Option option = new Option();
         User user = new User();
         issue.setIssueId(results.getInt("issue_id"));
         issue.setName(results.getString("issue_name"));
