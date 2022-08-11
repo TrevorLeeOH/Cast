@@ -24,10 +24,10 @@ public class JdbcVoteDao implements VoteDao {
     public Map<String, Integer> getVotesByIssueId = new HashMap<>();
 
 
-    @Override
-    public List<Vote> getVotesByUserId(int userId) {
-        return null;
-    }
+//    @Override
+//    public List<Vote> getVotesByUserId(int userId) {
+//        return null;
+//    }
 
     @Override
     public List<Vote> updateResults() {
@@ -58,7 +58,9 @@ public class JdbcVoteDao implements VoteDao {
             pointsList.add(results.getInt("option_d"));
         }
         vote.setPoints(pointsList);
+        return pointsList;
     }
+
 
 }
 
