@@ -15,7 +15,7 @@ const tags = [
     },
     {
         id: 4,
-        name: 'tag4'
+        name: 'Election'
     },
     {
         id: 5,
@@ -27,7 +27,7 @@ const tags = [
     },
     {
         id: 7,
-        name: 'tag7'
+        name: 'Politics'
     },
     {
         id: 8,
