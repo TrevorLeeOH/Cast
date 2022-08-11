@@ -26,13 +26,13 @@ const issues = [
     },
     {
       issue_id: 2,
-      issue_name: 'ice cream',
-      description: 'What is your opinion on ice cream?',
+      issue_name: 'Why You Vote',
+      description: 'Rank issues on their importance in the upcoming election',
       expiration: new Date(2022, 9, 22, 10, 0),
       tags: [
         {
-          id: 2,
-          name: 'food'
+          id: 4,
+          name: 'Election'
         }
       ],
       user_voted: false,
@@ -43,13 +43,13 @@ const issues = [
     },
     {
       issue_id: 3,
-      issue_name: 'World Peace',
-      description: 'What is your opinion on world peace?',
-      expiration: new Date(2022, 7, 8, 1, 1),
+      issue_name: 'Political Labels',
+      description: 'Rank these labels from most positive association to least',
+      expiration: new Date(2023, 7, 8, 1, 1),
       tags: [
         {
           id: 7,
-          name: 'tag7'
+          name: 'Politics'
         }
       ],
       user_voted: false,
