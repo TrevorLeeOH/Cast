@@ -28,15 +28,15 @@ public class IssueController {
         return issueDao.getAllIssues();
     };
 
-    @GetMapping(path = "/issues/{user_id}")
+    /*@GetMapping(path = "/issues/{user_id}")
     public List<Issue> getIssuesByUser(@PathVariable int user_id){
         return issueDao.getIssuesByUser(user_id);
-    };
+    };*/
 
-    @GetMapping(path = "/issues/{tag_id}")
+    /*@GetMapping(path = "/issues/{tag_id}")
     public List<Issue> getIssuesByTag(@PathVariable int tag_id){
         return issueDao.getIssuesByTag(tag_id);
-    };
+    };*/
 
     @GetMapping(path = "/issues/{issue_id}")
     public Issue getIssueByIssueId(@PathVariable int issue_id){

@@ -10,6 +10,7 @@ import store from '../store/index'
 import ClosedIssues from '@/views/ClosedIssues.vue';
 import ActiveIssues from '@/views/ActiveIssues.vue';
 import IssueEditor from '@/views/IssueEditor.vue';
+import Issue from '@/views/Issue.vue';
 
 Vue.use(Router)
 
@@ -83,13 +84,21 @@ const router = new Router({
       }
     },
     {
-    path: '/register',
-    name: 'register',
-    component: Register,
-    meta: {
-      requiresAuth: false
+      path: '/register',
+      name: 'register',
+      component: Register,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/issues/:id",
+      name: "issue",
+      component: Issue,
+      meta: {
+        requiresAuth: false
+      }
     }
-  }
   ]
 })
 

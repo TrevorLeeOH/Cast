@@ -4,7 +4,7 @@
             <h2 id="issue-title">{{issue.issue_name}}</h2>
             <p id="issue-author" :class="{'user-author': $store.state.user.user_id === issue.author.user_id}">{{'by ' + issue.author.username}}</p>
         </div>
-        <router-link id="detail-link" :to="{name: 'issue'}" tag="button">View Issue</router-link>
+        <router-link id="detail-link" :to="{name: 'issue', params: {id: issue.issue_id}}" tag="button">View Issue</router-link>
         <p id="desc">{{issue.description}}</p>
         <div id="tags">
             Tags: 

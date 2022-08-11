@@ -1,5 +1,7 @@
 //import axios from 'axios';
 
+import axios from "axios";
+
 const issues = [
     {
       issue_id: 1,
@@ -110,8 +112,18 @@ export default {
     },
 
     getIssue(id) {
-      return issues.find(issue => {
-          return issue.issue_id === id;
+      return axios.get('/issues/' + id).then(response => {
+        let issue = this.mapOptions(response.data);
+
+        let results = [];
+
+        for (let i = 0; i < issue.options.length; i++) {
+          results.push(i * 5 + 1);
+        }
+        issue.results = results;
+
+
+        return issue;
       });
     },
 
@@ -139,5 +151,41 @@ export default {
       }
       return false;
     },
+
+
+    mapOptions(issue) {
+      let options = [];
+      options.push(issue.optionA);
+      options.push(issue.optionB);
+      options.push(issue.optionC);
+      if (issue.optionD != null) {
+        options.push(issue.optionD)
+      }
+      if (issue.optionE != null) {
+        options.push(issue.optionE)
+      }
+      if (issue.optionF != null) {
+        options.push(issue.optionF)
+      }
+      if (issue.optionG != null) {
+        options.push(issue.optionG)
+      }
+      if (issue.optionH != null) {
+        options.push(issue.optionH)
+      }
+      delete issue.optionA;
+      delete issue.optionB;
+      delete issue.optionC;
+      delete issue.optionD;
+      delete issue.optionE;
+      delete issue.optionF;
+      delete issue.optionG;
+      delete issue.optionH;
+
+      issue.options = options;
+      return issue;
+    }
+
+
 
 }
