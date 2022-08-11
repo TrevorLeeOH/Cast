@@ -12,6 +12,15 @@ public class Issue {
     private LocalDate expiration;
     private boolean isExpired;
     private List<Tag> tagList= new ArrayList<>();
+    private List<Option> optionList = new ArrayList<>();
+
+    public List<Option> getOptionList() {
+        return optionList;
+    }
+
+    public void setOptionList(List<Option> optionList) {
+        this.optionList = optionList;
+    }
 
     public List<Tag> getTagList() {
         return tagList;

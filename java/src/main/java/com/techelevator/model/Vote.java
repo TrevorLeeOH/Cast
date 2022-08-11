@@ -12,10 +12,48 @@ public class Vote {
     private int voteF;
     private int voteG;
     private int voteH;
-    private List<Vote> voteList = new ArrayList<>();
+    private String[] rankedOptions;
     private List<Vote> results = new ArrayList<>();
     private int points;
     private boolean isWinner;
+    private int vote;
+    private int issueId;
+
+    public int getIssueId() {
+        return issueId;
+    }
+
+    public void setIssueId(int issueId) {
+        this.issueId = issueId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    private int userId;
+
+    public int getVote() {
+        return vote;
+    }
+
+    public void setVote(int vote) {
+        this.vote = vote;
+    }
+
+    public String getOption() {
+        return option;
+    }
+
+    public void setOption(String option) {
+        this.option = option;
+    }
+
+    private String option;
 
     public boolean isWinner() {
         return isWinner;

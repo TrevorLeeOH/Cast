@@ -3,15 +3,19 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Vote;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface VoteDao {
 
-    List<Vote> getVotesByIssueId(int issueId);
 
-    List<Vote> getVotesByUserId(int userId);
+
+     getVotesByUserId(int userId);
 
     List<Vote> updateResults();
+
+
 
 
 

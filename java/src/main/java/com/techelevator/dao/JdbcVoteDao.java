@@ -4,7 +4,9 @@ import com.techelevator.model.Vote;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Component
@@ -15,11 +17,9 @@ import java.util.List;
             this.jdbcTemplate = jdbcTemplate;
         }
 
-    @Override
-    public List<Vote> getVotesByIssueId(int issueId) {
 
-        return null;
-    }
+    public Map<String, Integer> getVotesByIssueId = new HashMap<>();
+
 
     @Override
     public List<Vote> getVotesByUserId(int userId) {
@@ -30,5 +30,10 @@ import java.util.List;
     public List<Vote> updateResults() {
         return null;
     }
+
+
+   // someone votes - take list votes fore each option
+    // assign points in that issue
+    //update results
 }
 
