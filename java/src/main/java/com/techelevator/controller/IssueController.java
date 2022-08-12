@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.IssueDao;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.Issue;
 import com.techelevator.model.IssueDetailsDTO;
 import com.techelevator.model.IssueOverviewDTO;
@@ -9,6 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -17,10 +19,12 @@ public class IssueController {
 
 //    @Autowired  //this brings in the IssueDao as a new object for us to use automatically
     private IssueDao issueDao;
+    private UserDao userDao;
 
 
-    public IssueController(IssueDao issueDao) {
+    public IssueController(IssueDao issueDao, UserDao userDao) {
         this.issueDao = issueDao;
+        this.userDao = userDao;
     }
 
     @PreAuthorize("permitAll")
@@ -55,8 +59,12 @@ public class IssueController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
     @PutMapping(path = "/issues/issue-name/{issue_name}")
-    public void updateIssueByName(Issue updatedIssue) {
-        issueDao.updateIssueByName(updatedIssue);
+    public void updateIssueByName(Issue updatedIssue, Principal principal) {
+        String username = principal.getName();
+        int userId = userDao.findIdByUsername(username);
+        if (userId == updatedIssue.getUserId()) {
+            issueDao.updateIssueByName(updatedIssue);
+        }
     };
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
