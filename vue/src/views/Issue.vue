@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="issue != {}">
       <h1>{{issue.name}}</h1>
       <p>{{issue.description}}</p>
       <div>

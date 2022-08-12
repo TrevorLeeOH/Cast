@@ -8,28 +8,20 @@ import java.util.List;
 public class Issue {
 
     private int issueId;
+    private int userId;
     private String name;
+    private String description;
     private LocalDate expiration;
-    private boolean isExpired;
-    private List<Tag> tagList= new ArrayList<>();
-    private List<String> optionList = new ArrayList<>();
 
-    public List<String> getOptionList() {
-        return optionList;
-    }
+    private String optionA;
+    private String optionB;
+    private String optionC;
+    private String optionD;
+    private String optionE;
+    private String optionF;
+    private String optionG;
+    private String optionH;
 
-    public void setOptionList(List<String> optionList) {
-        this.optionList = optionList;
-    }
-
-    public List<Tag> getTagList() {
-        return tagList;
-    }
-
-
-    public void setTagList(List<Tag> tagList) {
-        this.tagList = tagList;
-    }
 
     public String getDescription() {
         return description;
@@ -37,12 +29,6 @@ public class Issue {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    private String description;
-
-    public void setExpired() {
-        isExpired = false;
     }
 
     public String getOptionA() {
@@ -109,35 +95,6 @@ public class Issue {
         this.optionH = optionH;
     }
 
-    private String optionA;
-    private String optionB;
-    private String optionC;
-    private String optionD;
-    private String optionE;
-    private String optionF;
-    private String optionG;
-    private String optionH;
-
-
-
-    public Issue(int isssueId, String name, String optionA, String optionB, String optionC, String optionD, String optionE, String optionF, String optionG, String optionH, Date expirationDate){
-        this.issueId = issueId;
-        this.name = name;
-        this.optionA = optionA;
-        this.optionB = optionB;
-        this.optionC = optionC;
-        this.optionD = optionD;
-        this.optionE = optionE;
-        this.optionF = optionF;
-        this.optionG = optionG;
-        this.optionH = optionH;
-        this.isExpired = false;
-    }
-
-    public Issue() {
-
-    }
-
     public LocalDate getExpiration() {
         return expiration;
     }
@@ -146,17 +103,9 @@ public class Issue {
         this.expiration = expiration;
     }
 
-    public boolean isExpired() {
-        return isExpired;
-    }
 
 
 //open vs. closed
-
-
-    public Issue(String name) {
-        this.name = name;
-    }
 
     public int getIssueId() {
         return issueId;

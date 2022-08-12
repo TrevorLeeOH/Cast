@@ -9,11 +9,9 @@ import java.util.Map;
 
 public interface VoteDao {
 
+    List<Vote> getVotesByIssueId(int issue_id);
 
-
-  //  getVotesByUserId(int userId);
-
-    List<Vote> updateResults();
+    boolean createVote(Vote vote);
 
 
 
