@@ -7,7 +7,7 @@ import java.util.List;
 public class IssueDetailsDTO {
 
     private int issueId;
-    private int userId;
+    private User author;
     private String name;
     private String description;
     private LocalDate expiration;
@@ -40,12 +40,12 @@ public class IssueDetailsDTO {
         this.issueId = issueId;
     }
 
-    public int getUserId() {
-        return userId;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     public String getName() {

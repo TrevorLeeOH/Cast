@@ -121,7 +121,6 @@ public class JdbcIssueDao implements IssueDao {
 
     private IssueOverviewDTO mapRowToIssueOverviewDTO(SqlRowSet results) {
         IssueOverviewDTO issue = new IssueOverviewDTO();
-        User user = new User();
         issue.setIssueId(results.getInt("issue_id"));
         issue.setName(results.getString("issue_name"));
         issue.setDescription(results.getString("description"));
@@ -130,9 +129,8 @@ public class JdbcIssueDao implements IssueDao {
         } else {
             issue.setExpiration(null);
         }
+        issue.setAuthor(userDao.getUserById(results.getInt("user_id")));
         issue.setTagList(tagDao.getTagsForIssue(issue.getIssueId()));
-        user.setUsername(userDao.findUsernameById(user.getId()));
-
         issue.setOptionList(mapOptions(results));
 
         return issue;
@@ -140,7 +138,6 @@ public class JdbcIssueDao implements IssueDao {
 
     private IssueDetailsDTO mapRowToIssueDetailsDTO(SqlRowSet results) {
         IssueDetailsDTO issue = new IssueDetailsDTO();
-        User user = new User();
         issue.setIssueId(results.getInt("issue_id"));
         issue.setName(results.getString("issue_name"));
         issue.setDescription(results.getString("description"));
@@ -149,15 +146,12 @@ public class JdbcIssueDao implements IssueDao {
         } else {
             issue.setExpiration(null);
         }
+        issue.setAuthor(userDao.getUserById(results.getInt("user_id")));
         issue.setTagList(tagDao.getTagsForIssue(issue.getIssueId()));
-        user.setUsername(userDao.findUsernameById(user.getId()));
-
         issue.setOptionList(mapOptions(results));
         issue.setResultsList(mapResults(issue.getIssueId()));
 
         return issue;
-
-
     }
 
     private List<String> mapOptions(SqlRowSet results) {
@@ -185,9 +179,11 @@ public class JdbcIssueDao implements IssueDao {
 
     private List<Integer> mapResults(int issueId) {
         List<Vote> votesList = voteDao.getVotesByIssueId(issueId);
-
+        if (votesList.size() == 0) {
+            return new ArrayList<Integer>();
+        }
         Integer[] pointsArray = new Integer[votesList.get(0).getPoints().size()];
-
+        Arrays.fill(pointsArray, 0);
         for (Vote vote : votesList) {
             for (int i = 0; i < vote.getPoints().size(); i++) {
                 if (vote.getPoints().get(i) == 1) {
