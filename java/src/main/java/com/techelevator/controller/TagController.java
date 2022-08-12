@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-//@PreAuthorize()
+@PreAuthorize("permitAll")
 @RequestMapping("/tag")
 public class TagController {
     private TagDao tagDao;
@@ -25,6 +25,8 @@ public class TagController {
     public List<Tag> tagById(@PathVariable int issueId){
         return tagDao.getTagsForIssue(issueId);
     }
+
+    @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/new",  method = RequestMethod.POST)
     public void tagByName(@Valid @RequestBody Tag tag) {

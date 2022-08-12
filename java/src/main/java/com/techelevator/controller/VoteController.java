@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
+@PreAuthorize("isAuthenticated()")
 @RestController
 @CrossOrigin
 public class VoteController {
