@@ -10,6 +10,7 @@ import store from '../store/index'
 import ClosedIssues from '@/views/ClosedIssues.vue';
 import ActiveIssues from '@/views/ActiveIssues.vue';
 import IssueEditor from '@/views/IssueEditor.vue';
+import IssueCreator from '@/views/IssueCreator.vue';
 import Issue from '@/views/Issue.vue';
 
 Vue.use(Router)
@@ -79,6 +80,14 @@ const router = new Router({
       path: "/edit-issue/:id",
       name: "issue-editor",
       component: IssueEditor,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/create-issue",
+      name: "issue-creator",
+      component: IssueCreator,
       meta: {
         requiresAuth: true
       }

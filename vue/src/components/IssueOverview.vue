@@ -11,7 +11,7 @@
             <span v-for="tag in issue.tagList" :key="tag.id">{{tag.name + ' '}}</span>
         </div>
         
-        <p id="exp" v-if="active && issue.expiration != null">{{'Closes on ' + formatDate(issue.expiration)}}</p>
+        <p id="exp" v-if="active && issue.expiration != null">{{'Closes on ' + formatDate(new Date(issue.expiration))}}</p>
     </div>
 </template>
 
@@ -26,11 +26,7 @@ export default {
                 day: 'numeric',
                 year: 'numeric',
             }
-            const timeOptions = {
-                hour: '2-digit',
-                minute: '2-digit'
-            }
-            return date.toLocaleDateString('en-US', dateOptions) + " at " + date.toLocaleTimeString('en-US', timeOptions);
+            return date.toLocaleDateString('en-US', dateOptions);
         }
     }
 }

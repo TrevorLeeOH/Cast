@@ -27,12 +27,19 @@ export default {
         }
     },
     created() {
-        IssueService.getIssue(this.$route.params.id).then(issue => {
-            this.issue = issue;
-            this.vote = new Array(issue.optionList.length);
-        });
+        this.getIssue();
     },
     methods: {
+        getIssue() {
+            IssueService.getIssue(this.$route.params.id).then(response => {
+                if (response.status == 200) {
+                    this.issue = response.data;
+                    this.vote = new Array(this.issue.optionList.length);
+                } else {
+                    alert("Failed to load issue");
+                }
+            });
+        },
         getVotePercentage(votes) {
             let sum = this.issue.results.reduce((prev, curr) => {
                 return prev + curr;

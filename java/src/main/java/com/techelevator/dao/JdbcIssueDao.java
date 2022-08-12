@@ -112,10 +112,10 @@ public class JdbcIssueDao implements IssueDao {
 
     @Override
     public void updateIssueById(Issue updatedIssue) {
-        String sql = "UPDATE issues SET name = ?, description = ?, expiration_date = ?, option_a = ?, option_b = ?, option_c = ?, option_d = ?, option_e = ?, " +
+        String sql = "UPDATE issues SET issue_name = ?, description = ?, expiration_date = ?, option_a = ?, option_b = ?, option_c = ?, option_d = ?, option_e = ?, " +
                 "option_f = ?, option_g = ?, option_h = ? WHERE issue_id = ?;";
         jdbcTemplate.update(sql, updatedIssue.getName(), updatedIssue.getDescription(),updatedIssue.getExpiration(), updatedIssue.getOptionA(), updatedIssue.getOptionB(), updatedIssue.getOptionC(), updatedIssue.getOptionD(),
-                updatedIssue.getOptionE(), updatedIssue.getOptionF(), updatedIssue.getOptionG(), updatedIssue.getOptionH());
+                updatedIssue.getOptionE(), updatedIssue.getOptionF(), updatedIssue.getOptionG(), updatedIssue.getOptionH(), updatedIssue.getIssueId());
     }
 
 

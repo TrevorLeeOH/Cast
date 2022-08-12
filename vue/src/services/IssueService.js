@@ -2,99 +2,6 @@
 
 import axios from "axios";
 
-const issues = [
-    {
-      issue_id: 1,
-      issue_name: 'murder',
-      description: 'What is your opinion on murder?',
-      expiration: new Date(2022, 5, 20, 12, 0),
-      tags: [
-        {
-          id: 1,
-          name: 'crime'
-        },
-        {
-          id: 8,
-          name: 'tag8'
-        }
-      ],
-        user_voted: true,
-        author: {
-        user_id: 1,
-        username: 'Trevor'
-      }
-    },
-    {
-      issue_id: 2,
-      issue_name: 'Why You Vote',
-      description: 'Rank issues on their importance in the upcoming election',
-      expiration: new Date(2022, 9, 22, 10, 0),
-      tags: [
-        {
-          id: 4,
-          name: 'Election'
-        }
-      ],
-      user_voted: false,
-      author: {
-        user_id: 1,
-        username: 'Trevor'
-      }
-    },
-    {
-      issue_id: 3,
-      issue_name: 'Political Labels',
-      description: 'Rank these labels from most positive association to least',
-      expiration: new Date(2023, 7, 8, 1, 1),
-      tags: [
-        {
-          id: 7,
-          name: 'Politics'
-        }
-      ],
-      user_voted: false,
-      author: {
-        user_id: 2,
-        username: 'Matt'
-      }
-    },
-    {
-      issue_id: 4,
-      issue_name: 'issue4',
-      description: 'What is your opinion on issue4?',
-      expiration: new Date(2022, 1, 1, 1, 20),
-      tags: [
-        {
-          id: 4,
-          name: 'tag4'
-        }
-      ],
-      user_voted: false,
-      author: {
-        user_id: 3,
-        username: 'Zac'
-      }
-    },
-    {
-      issue_id: 5,
-      issue_name: 'issue5',
-      description: 'What is your opinion on issue5?',
-      expiration: new Date(2022, 9, 22, 10, 0),
-      tags: [
-        {
-          id: 5,
-          name: 'tag5'
-        }
-      ],
-      user_voted: false,
-      author: {
-        user_id: 4,
-        username: 'Carrie'
-      }
-    }
-  ];
-
-
 export default {
 
     getClosedIssues() {
@@ -106,79 +13,24 @@ export default {
     },
 
     getIssue(id) {
-      return axios.get('/issues/id/' + id).then(response => {
-        let issue = this.mapOptions(response.data);
-
-        let results = [];
-
-        for (let i = 0; i < issue.options.length; i++) {
-          results.push(i * 5 + 1);
-        }
-        issue.results = results;
-
-
-        return issue;
-      });
+      return axios.get('/issues/id/' + id);
     },
 
     createIssue(issue) {
-      return issue;
+      return axios.post('/issues/create', issue);
     },
 
     updateIssue(issue) {
-      for (let i = 0; i < issues.length; i++) {
-        if (issues[i].issue_id === issue.issue_id) {
-          issues[i] = issue;
-          return true;
-        }
-      }
-
-      return false;
+      return axios.put('/issues/issue-id/' + issue.issue_id, issue);
     },
 
     deleteIssue(issueId) {
-      for (let i = 0; i < issues.length; i++) {
-        if (issues[i].issue_id === issueId) {
-          issues.splice(i, 1);
-          return true;
-        }
-      }
-      return false;
+      
+      return issueId;
     },
 
 
-    mapOptions(issue) {
-      let options = [];
-      options.push(issue.optionA);
-      options.push(issue.optionB);
-      options.push(issue.optionC);
-      if (issue.optionD != null) {
-        options.push(issue.optionD)
-      }
-      if (issue.optionE != null) {
-        options.push(issue.optionE)
-      }
-      if (issue.optionF != null) {
-        options.push(issue.optionF)
-      }
-      if (issue.optionG != null) {
-        options.push(issue.optionG)
-      }
-      if (issue.optionH != null) {
-        options.push(issue.optionH)
-      }
-      delete issue.optionA;
-      delete issue.optionB;
-      delete issue.optionC;
-      delete issue.optionD;
-      delete issue.optionE;
-      delete issue.optionF;
-      delete issue.optionG;
-      delete issue.optionH;
-
-      issue.options = options;
-      return issue;
-    }
+    
 
 
 

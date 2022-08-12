@@ -6,7 +6,7 @@
             <label for="desc">Issue Description: </label>
             <textarea id="desc" cols="30" rows="10" v-model="issue.description"></textarea>
             <label for="exp">Issue Expires: </label>
-            <input type="datetime-local" id="exp" v-model="expDate">
+            <input type="date" id="exp" v-model="issue.expiration">
             <h3>Tags:</h3>
             <div id="tag-box">
                 <label class="tag" v-for="tag in getTags()" :key="tag.id" :for="tag.name">{{tag.name}} 
@@ -29,27 +29,48 @@ export default {
     data() {
         return {
             issue: {},
-            expDate: ""
         }
     },
     methods: {
         getIssue() {
-            return IssueService.getIssue(this.$route.params.id);
+            IssueService.getIssue(this.$route.params.id).then(response => {
+                if (response.status == 200) {
+                    this.issue = response.data;
+                } else {
+                    alert("Failed to load issue");
+                }
+            });
         },
         getTags() {
             return TagService.getTags();
         },
         saveChanges() {
-            this.issue.expiration = new Date(this.expDate); //seems to be adding four hours to the time for some reason....
-            if (IssueService.updateIssue(this.issue)) {
-                alert('Issue Saved!');
-            } else {
-                alert('Issue failed to save!');
-            }
+            let issueToSave = {
+                issueId: this.issue.issueId,
+                userId: this.issue.author.id,
+                name: this.issue.name,
+                description: this.issue.description,
+                expiration: this.issue.expiration,
+                optionA: this.issue.optionList[0],
+                optionB: this.issue.optionList[1],
+                optionC: this.issue.optionList[2],
+                optionD: this.issue.optionList.length > 3 ? this.issue.optionList[3] : null,
+                optionE: this.issue.optionList.length > 4 ? this.issue.optionList[4] : null,
+                optionF: this.issue.optionList.length > 5 ? this.issue.optionList[5] : null,
+                optionG: this.issue.optionList.length > 6 ? this.issue.optionList[6] : null,
+                optionH: this.issue.optionList.length > 7 ? this.issue.optionList[7] : null
+            };         
+            IssueService.updateIssue(issueToSave).then(response => {
+                if (response.status == 200) {
+                    alert('Issue Saved!');
+                } else {
+                    alert('Failed to save! - response status: ' + response.status);
+                }
+            })
         },
         deleteIssue(event) {
             event.preventDefault();
-            if (IssueService.deleteIssue(this.issue.issue_id)) {
+            if (IssueService.deleteIssue(this.issue.issueId)) {
                 alert('Issue Deleted');
             } else {
                 alert('Issue failed to be deleted');
@@ -57,8 +78,7 @@ export default {
         }
     },
     created() {
-        this.issue = this.getIssue();
-        this.expDate = this.issue.expiration.toISOString().substring(0, 16)
+        this.getIssue();
     }
 }
 </script>

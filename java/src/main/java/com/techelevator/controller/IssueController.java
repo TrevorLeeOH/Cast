@@ -45,7 +45,7 @@ public class IssueController {
     };
 
     @PostMapping(path = "/issues/create")
-    public void createIssue(Issue issue) {
+    public void createIssue(@RequestBody Issue issue) {
         issueDao.createIssue(issue);
     };
 
@@ -55,7 +55,7 @@ public class IssueController {
     };
 
     @PutMapping(path = "/issues/issue-id/{issue_id}")
-    public void updateIssueById(Issue updatedIssue) { //should this be a string or int? may need to change model/jdbcdao
+    public void updateIssueById(@RequestBody Issue updatedIssue) { //should this be a string or int? may need to change model/jdbcdao
         issueDao.updateIssueById(updatedIssue);
     };
 

@@ -27,7 +27,7 @@ export default {
             IssueService.getClosedIssues().then(response => {
                 if (response.status == 200) {
                     let allIssues = response.data;
-                    this.issues = allIssues.filter(i => i.expiration != null && i.expiration < Date.now());
+                    this.issues = allIssues.filter(i => i.expiration != null && new Date(i.expiration) < Date.now());
                 } else {
                     alert("failed");
                 }

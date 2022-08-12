@@ -22,6 +22,21 @@ public class Issue {
     private String optionG;
     private String optionH;
 
+    public int getIssueId() {
+        return issueId;
+    }
+
+    public void setIssueId(int issueId) {
+        this.issueId = issueId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public String getDescription() {
         return description;
@@ -107,13 +122,7 @@ public class Issue {
 
 //open vs. closed
 
-    public int getIssueId() {
-        return issueId;
-    }
 
-    public void setIssueId(int issue_id) {
-        this.issueId = issueId;
-    }
 
     public String getName() {
         return name;

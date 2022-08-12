@@ -69,7 +69,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .issue {
         font-size: 1.0rem;
         border-style: solid;
