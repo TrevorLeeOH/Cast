@@ -163,16 +163,16 @@ public class JdbcIssueDao implements IssueDao {
             options.add(results.getString("option_d"));
         }
         if (results.getString("option_e") != null) {
-            options.add(results.getString("option_d"));
+            options.add(results.getString("option_e"));
         }
         if (results.getString("option_f") != null) {
-            options.add(results.getString("option_d"));
+            options.add(results.getString("option_f"));
         }
         if (results.getString("option_g") != null) {
-            options.add(results.getString("option_d"));
+            options.add(results.getString("option_g"));
         }
         if (results.getString("option_h") != null) {
-            options.add(results.getString("option_d"));
+            options.add(results.getString("option_h"));
         }
         return options;
     }
