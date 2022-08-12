@@ -16,7 +16,6 @@ public class IssueController {
 
 //    @Autowired  //this brings in the IssueDao as a new object for us to use automatically
     private IssueDao issueDao;
-//    private List<Issue> issueList;
 
 
     public IssueController(IssueDao issueDao) {
@@ -28,48 +27,44 @@ public class IssueController {
         return issueDao.getAllIssues();
     };
 
-    /*@GetMapping(path = "/issues/{user_id}")
+    @GetMapping(path = "/issues/user/{user_id}")
     public List<Issue> getIssuesByUser(@PathVariable int user_id){
         return issueDao.getIssuesByUser(user_id);
-    };*/
+    };
 
-    /*@GetMapping(path = "/issues/{tag_id}")
+    @GetMapping(path = "/issues/tag/{tag_id}")
     public List<Issue> getIssuesByTag(@PathVariable int tag_id){
         return issueDao.getIssuesByTag(tag_id);
-    };*/
+    };
 
-    @GetMapping(path = "/issues/{issue_id}")
+    @GetMapping(path = "/issues/id/{issue_id}")
     public Issue getIssueByIssueId(@PathVariable int issue_id){
         return issueDao.getIssueByIssueId(issue_id);
     };
 
-    @PostMapping(path = "/issues")
+    @PostMapping(path = "/issues/create")
     public void createIssue(Issue issue) {
         issueDao.createIssue(issue);
     };
 
-    @PutMapping(path = "/issues/{issue_name}")
+    @PutMapping(path = "/issues/issue-name/{issue_name}")
     public void updateIssueByName(Issue updatedIssue) {
         issueDao.updateIssueByName(updatedIssue);
     };
 
-    @PutMapping(path = "/issues/{issue_id}")
+    @PutMapping(path = "/issues/issue-id/{issue_id}")
     public void updateIssueById(Issue updatedIssue) { //should this be a string or int? may need to change model/jdbcdao
         issueDao.updateIssueById(updatedIssue);
     };
 
-    @RequestMapping(path = "/issues/{issue_name}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/issues/delete-name/{issue_name}", method = RequestMethod.DELETE)
     public void deleteIssueByName(String name) {
         issueDao.deleteIssueByName(name);
     };
 
-    @RequestMapping(path = "/issues/{issue_id}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/issues/delete-id/{issue_id}", method = RequestMethod.DELETE)
     public void deleteIssueById(int issueId) {
         issueDao.deleteIssueById(issueId);
     };
 
-
-
-
-    //request mapping with endpoints for CRUD
 }
