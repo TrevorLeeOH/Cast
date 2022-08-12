@@ -1,17 +1,17 @@
 <template>
     <div id="issue-box">
         <div id="title">
-            <h2 id="issue-title">{{issue.issue_name}}</h2>
-            <p id="issue-author" :class="{'user-author': $store.state.user.user_id === issue.author.user_id}">{{'by ' + issue.author.username}}</p>
+            <h2 id="issue-title">{{issue.name}}</h2>
+            <p id="issue-author" :class="{'user-author': $store.state.user.user_id === issue.author.username}">{{'by ' + issue.author.username}}</p>
         </div>
-        <router-link id="detail-link" :to="{name: 'issue', params: {id: issue.issue_id}}" tag="button">View Issue</router-link>
+        <router-link id="detail-link" :to="{name: 'issue', params: {id: issue.issueId}}" tag="button">View Issue</router-link>
         <p id="desc">{{issue.description}}</p>
         <div id="tags">
             Tags: 
-            <span v-for="tag in issue.tags" :key="tag.id">{{tag.name + ' '}}</span>
+            <span v-for="tag in issue.tagList" :key="tag.id">{{tag.name + ' '}}</span>
         </div>
         
-        <p id="exp" v-if="active">{{'Closes on ' + formatDate(issue.expiration)}}</p>
+        <p id="exp" v-if="active && issue.expiration != null">{{'Closes on ' + formatDate(issue.expiration)}}</p>
     </div>
 </template>
 
@@ -19,12 +19,7 @@
 export default {
     props: ['issue', 'active'],
     methods: {
-        getVotePercentage(votes) {
-            let sum = this.issue.results.reduce((prev, curr) => {
-                return prev + curr.votes;
-            }, 0);
-            return votes / sum;
-        },
+        
         formatDate(date) {
             const dateOptions = {
                 month: 'short',

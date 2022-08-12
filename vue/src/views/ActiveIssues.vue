@@ -24,10 +24,16 @@ export default {
 
     methods: {
         getIssues() {
-            //IssueService.getActiveIssues().then(response => {
-           //     this.issues = response.data;
-            //})
-            this.issues = IssueService.getActiveIssues();
+            IssueService.getActiveIssues().then(response => {
+                console.log(response.status);
+                console.log(response.data);
+                if (response.status == 200) {
+                    let allIssues = response.data;
+                    this.issues = allIssues.filter(i => i.expiration == null || i.expiration > Date.now());
+                } else {
+                    alert("failed");
+                }
+            });
         },
         getTags() {
             this.tags = TagService.getTags();

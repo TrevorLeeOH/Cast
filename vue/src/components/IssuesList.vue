@@ -38,7 +38,7 @@ export default {
             let filteredIssues = this.issues
             if (this.tagFilter.length > 0) {
                 filteredIssues = filteredIssues.filter(issue => {                
-                    return issue.tags.some(tag => {
+                    return issue.tagList.some(tag => {
                         return this.tagFilter.includes(tag.id);
                     });
                 });
@@ -59,7 +59,7 @@ export default {
     methods: {
         getNumberOfIssuesForTag(tagId) {
             return this.issues.reduce((sum, curr) => {
-                if (curr.tags.some(t => t.id === tagId)) {
+                if (curr.tagList.some(t => t.id === tagId)) {
                     sum += 1;
                 }
                 return sum;

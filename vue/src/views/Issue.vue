@@ -3,11 +3,11 @@
       <h1>{{issue.name}}</h1>
       <p>{{issue.description}}</p>
       <div>
-          <div v-for="(option, index) in issue.options" :key="option">
+          <div v-for="(option, index) in issue.optionList" :key="option">
               <span class="option-label">{{option}}</span>
               <span v-if="voted" class="vote-bar" :style="'width: ' + getVotePercentage(issue.results[index]) * 1000 + 'px'">{{issue.results[index]}}</span>
               <select v-else id="rank" v-model="vote[index]">
-                  <option v-for="index in issue.options.length" :key="index" :value="index">{{index}}</option>
+                  <option v-for="index in issue.optionList.length" :key="index" :value="index">{{index}}</option>
               </select>
           </div>
           <button @click="castBallot">Cast Ballot</button>
@@ -29,7 +29,7 @@ export default {
     created() {
         IssueService.getIssue(this.$route.params.id).then(issue => {
             this.issue = issue;
-            this.vote = new Array(issue.options.length);
+            this.vote = new Array(issue.optionList.length);
         });
     },
     methods: {
@@ -40,7 +40,7 @@ export default {
             return votes / sum;
         },
         castBallot() {
-            for (let i = 1; i <= this.issue.options.length; i++) {
+            for (let i = 1; i <= this.issue.optionList.length; i++) {
                 if (!this.vote.includes(i)) {
                     alert("Invalid Input, please fill out all options and use each rank only once for each option");
                     return;

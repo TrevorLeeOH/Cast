@@ -98,21 +98,15 @@ const issues = [
 export default {
 
     getClosedIssues() {
-      //return axios.get('/closed-issues');
-      return issues.filter(issue => {
-        return issue.expiration <= Date.now();
-      });
+      return axios.get('/issues');
     },
 
     getActiveIssues() {
-      //return axios.get('/active-issues');
-      return issues.filter(issue => {
-        return issue.expiration > Date.now();
-      })
+      return axios.get('/issues');
     },
 
     getIssue(id) {
-      return axios.get('/issues/' + id).then(response => {
+      return axios.get('/issues/id/' + id).then(response => {
         let issue = this.mapOptions(response.data);
 
         let results = [];
