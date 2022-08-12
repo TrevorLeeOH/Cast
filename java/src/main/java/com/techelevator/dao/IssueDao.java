@@ -1,17 +1,19 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Issue;
+import com.techelevator.model.IssueDetailsDTO;
+import com.techelevator.model.IssueOverviewDTO;
 
 import java.util.List;
 
 public interface IssueDao {
-    List<Issue> getAllIssues();
-    List<Issue> getIssuesByUser(int userId);
-    List<Issue> getIssuesByTag(int tagId);
+    List<IssueOverviewDTO> getAllIssues();
+    List<IssueOverviewDTO> getIssuesByUser(int userId);
+    List<IssueOverviewDTO> getIssuesByTag(int tagId);
 
-    Issue getIssueByIssueId(int issueId);
+    IssueDetailsDTO getIssueByIssueId(int issueId);
 
-    Issue createIssue(Issue issue);
+    IssueDetailsDTO createIssue(Issue issue);
 
     void deleteIssueByName(String name);
     void deleteIssueById(int issueId);

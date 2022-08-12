@@ -2,6 +2,8 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.IssueDao;
 import com.techelevator.model.Issue;
+import com.techelevator.model.IssueDetailsDTO;
+import com.techelevator.model.IssueOverviewDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -23,22 +25,22 @@ public class IssueController {
     }
 
     @GetMapping(path = "/issues")
-    public List<Issue> getAllIssues(){
+    public List<IssueOverviewDTO> getAllIssues(){
         return issueDao.getAllIssues();
     };
 
     @GetMapping(path = "/issues/user/{user_id}")
-    public List<Issue> getIssuesByUser(@PathVariable int user_id){
+    public List<IssueOverviewDTO> getIssuesByUser(@PathVariable int user_id){
         return issueDao.getIssuesByUser(user_id);
     };
 
     @GetMapping(path = "/issues/tag/{tag_id}")
-    public List<Issue> getIssuesByTag(@PathVariable int tag_id){
+    public List<IssueOverviewDTO> getIssuesByTag(@PathVariable int tag_id){
         return issueDao.getIssuesByTag(tag_id);
     };
 
     @GetMapping(path = "/issues/id/{issue_id}")
-    public Issue getIssueByIssueId(@PathVariable int issue_id){
+    public IssueDetailsDTO getIssueByIssueId(@PathVariable int issue_id){
         return issueDao.getIssueByIssueId(issue_id);
     };
 

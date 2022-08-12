@@ -28,46 +28,46 @@ public class JdbcIssueDao implements IssueDao {
     }
 
     @Override
-    public List<Issue> getAllIssues() {
-        List<Issue> allIssues = new ArrayList<>();
+    public List<IssueOverviewDTO> getAllIssues() {
+        List<IssueOverviewDTO> allIssues = new ArrayList<>();
         SqlRowSet results = jdbcTemplate.queryForRowSet("SELECT * FROM issues;");
         while (results.next()) {
-            allIssues.add(mapRowToIssue(results));
+            allIssues.add(mapRowToIssueOverviewDTO(results));
         }
         return allIssues;
     }
 
     @Override
-    public List<Issue> getIssuesByUser(int userId) {
-        List<Issue> issuesByUser = new ArrayList<>();
+    public List<IssueOverviewDTO> getIssuesByUser(int userId) {
+        List<IssueOverviewDTO> issuesByUser = new ArrayList<>();
         String sql = "SELECT * FROM issues WHERE user_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         while (results.next()) {
-            Issue issue = mapRowToIssue(results);
+            IssueOverviewDTO issue = mapRowToIssueOverviewDTO(results);
             issuesByUser.add(issue);
         }
         return issuesByUser;
     }
 
     @Override
-    public List<Issue> getIssuesByTag(int tagId) {
-        List<Issue> issuesByTag = new ArrayList<>();
+    public List<IssueOverviewDTO> getIssuesByTag(int tagId) {
+        List<IssueOverviewDTO> issuesByTag = new ArrayList<>();
         String sql = "SELECT * FROM issues JOIN tags_issues AT issue_id WHERE tag_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, tagId);
         while (results.next()) {
-            Issue issue = mapRowToIssue(results);
+            IssueOverviewDTO issue = mapRowToIssueOverviewDTO(results);
             issuesByTag.add(issue);
         }
         return issuesByTag;
     }
 
     @Override
-    public Issue getIssueByIssueId(int issueId) {
-        Issue issue = null;
+    public IssueDetailsDTO getIssueByIssueId(int issueId) {
+        IssueDetailsDTO issue = null;
         String sql = "SELECT * FROM issues WHERE issue_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, issueId);
         if (results.next()) {
-            issue = mapRowToIssue(results);
+            issue = mapRowToIssueDetailsDTO(results);
         }
         return issue;
     }
@@ -75,7 +75,7 @@ public class JdbcIssueDao implements IssueDao {
 
 
     @Override
-    public Issue createIssue(Issue issue) {
+    public IssueDetailsDTO createIssue(Issue issue) {
 
         String sql = "INSERT INTO issues (issue_name, description, expiration_date, option_a, option_b, option_c, option_d, option_e, option_f, " +
                 "option_g, option_h)" +
