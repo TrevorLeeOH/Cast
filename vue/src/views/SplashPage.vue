@@ -2,7 +2,8 @@
   <div class="splash">
     <div class="Frame-53">
       <div class="Image">
-        <div class="Fill"></div>
+        
+          <img id="logo" src="..\assets\CAST_logo-02.png" alt="logo">
       </div>
       <div class="Content">        
           <div class="Pagination-Dots">
@@ -33,7 +34,6 @@ export default {
 <style>
 
 
-
 .Frame-53 {
   
   width: 375px;
@@ -44,6 +44,8 @@ export default {
   align-items: stretch;
   margin: 0.4px 0 0;
   padding: 0;
+  border-radius: 12px;
+  
 }
 
 .Image {
@@ -57,6 +59,7 @@ export default {
   padding: 40px;
   background-color: #edf2fe;
   height: 485px;
+  border-radius: 12px;
 }
 .Content {
   height: 326.6px;
@@ -186,6 +189,12 @@ button {
   height: 26.7px;
   background-color: #b5cafb;
 }
+
+#logo {
+  width: 100%;
+  height: auto;
+}
+
 
 
 </style>

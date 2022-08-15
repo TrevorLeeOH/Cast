@@ -3,16 +3,13 @@
   
   <div class="navbar" id="myNavBar">
     
-      <a id="logo"><img src="@/assets/CAST_logo-02.png"/></a>
+      <a><img src="..\assets\CAST_logo-02.png" alt="logo"></a>
       <router-link tag="li" v-bind:to="{ name: 'home' }">Home</router-link>
       <router-link tag="li" v-bind:to="{ name: 'active-issues' }">Vote Now!</router-link>
       <router-link tag="li" v-bind:to="{ name: 'closed-issues' }">Closed Polls</router-link>
       <router-link tag="li" v-bind:to="{ name: 'register' }">Create Account</router-link>
       <router-link tag="li" v-bind:to="{ name: 'login' }" v-if="$store.state.token = 'true'">Login</router-link>
       <router-link tag="li" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != 'true'">Logout</router-link>
-   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
   </div>
 </template>
 
@@ -41,13 +38,9 @@ methods: {
 
 <style>
 
-#logo {
-  width: 10px;
-  height: 10px
-}
-
 .navbar {
-  background-color: #467BF5;
+  display: flex;
+  background-color: #000000;
   overflow: hidden;
 }
 
@@ -68,33 +61,38 @@ methods: {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 10px;
 }
 .navbar .icon {
   display: none;
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   
   .navbar li {display: none;}
   .navbar .icon {
     float: right;
     display: block;
   }
-}
+} */
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   .navbar {position: relative;}
-  .navbar.responsive li.icon {
+  .navbar.responsive img {
     position: absolute;
     right: 0;
     top: 0;
   }
   .navbar.responsive li {
-    float: none;
-    display: block;
+    display: flex;
+    flex-direction: column;
     text-align: left;
   }
+} */
+
+img {
+  width: 50px;
+  height: auto;
 }
 
 </style>

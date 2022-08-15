@@ -27,15 +27,10 @@
 @import url('https://use.typekit.net/ows0uho.css');
 
 #app {
-  display: flex;
-  justify-self: center;
-  flex-direction: column;
-  justify-content: space-between;
-  
-
+ margin: auto;
   height: 812px;
   width: 375px;
-  /* border-radius: 12px; */
+  border-radius: 12px;
   border: solid 1px #202858;
   
 }

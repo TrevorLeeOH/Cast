@@ -19,6 +19,7 @@
             !-->
               
           </div>
+          <p></p>
           <button class="Button-Primary" v-if="!voted" @click="castBallot">Cast Ballot</button>
       </div>
   </div>
@@ -111,9 +112,10 @@ export default {
     #name-description {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-content: center;
         padding: 0px;
         gap: 16px;
+        
         /*
         width: 327px;
         height: 114px;
@@ -123,10 +125,13 @@ export default {
     #issue-name {
         font-family: 'museo-sans';
         font-style: normal;
-        font-weight: 700;
+        font-weight: bolder;
         font-size: 24px;
         line-height: 29px;
-        letter-spacing: 0.02em;
+        letter-spacing: 0.48px;
+        color: #1f2024;
+        margin-bottom: 0%;
+        
     }
     #issue-description {
         font-family: 'museo-sans';
@@ -134,6 +139,7 @@ export default {
         font-weight: 400;
         font-size: 16px;
         line-height: 20px;
+        margin-top: 0%;
     }
     #options-box {
         display: flex;

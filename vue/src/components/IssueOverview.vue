@@ -1,5 +1,7 @@
 <template>
     <div id="issue-box">
+        <div id="issue-image"></div>
+        <div class="frame-23">
         <div id="title">
             <h2 id="issue-title">{{issue.name}}</h2>
             <p id="issue-author" :class="{'user-author': $store.state.user.user_id === issue.author.username}">{{'by ' + issue.author.username}}</p>
@@ -12,6 +14,7 @@
         </div>
         
         <p id="exp" v-if="active && issue.expiration != null">{{'Closes on ' + formatDate(new Date(issue.expiration))}}</p>
+    </div>
     </div>
 </template>
 
@@ -42,13 +45,22 @@ export default {
     }
 
     #issue-box {
-        display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
-        grid-template-areas: "title desc detail-link"
-                            "tags tags exp";
+        height: auto;
+        width: 263px;
+        align-self: center;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
         align-items: center;
-        padding: 6px;
-    }
+        padding: 16px;
+        border-radius: 16px;
+        background-color: #f8f9fe;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+}
+    
 
     #title {
         grid-area: title;
@@ -79,4 +91,16 @@ export default {
     .user-author {
         color: rgb(19, 201, 19);
     }
+
+#issue_image {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 40px;
+  background-color: #edf2fe;
+}
 </style>
