@@ -23,3 +23,12 @@ export default {
 
 </script>
 
+<style>
+@import url('https://use.typekit.net/ows0uho.css');
+
+#app {
+ border-radius: 12px;
+  border: solid 1px #202858;
+}
+</style>
+

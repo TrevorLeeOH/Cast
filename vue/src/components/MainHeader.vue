@@ -2,7 +2,7 @@
 
   
   <div class="navbar" id="myNavBar">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
       <a><img src="C:\Users\Student\workspace\java-yellow-finalcapstone-team3\vue\src\assets\CAST_logo-02.png"/></a>
       <router-link tag="li" v-bind:to="{ name: 'home' }">Home</router-link>
       <router-link tag="li" v-bind:to="{ name: 'active-issues' }">Vote Now!</router-link>
@@ -23,11 +23,17 @@ export default {
 methods: { 
   myFunction() {
   var x = document.getElementById("myNavbar");
-  if (x.className === "navbar") {
-    x.className += "responsive";
+  if (x.style.display === "block") {
+    x.style.display = "none";
   } else {
-    x.className = "navbar";
+    x.style.display = "block";
   }
+  // var x = document.getElementById("myNavbar");
+  // if (x.className === "navbar") {
+  //   x.className += "responsive";
+  // } else {
+  //   x.className = "navbar";
+  // }
 }
 }
 }
@@ -36,7 +42,7 @@ methods: {
 <style>
 
 .navbar {
-  background-color: rgb(32, 86, 187);
+  background-color: #467BF5;
   overflow: hidden;
 }
 
@@ -64,6 +70,7 @@ methods: {
 }
 
 @media screen and (max-width: 600px) {
+  
   .navbar li {display: none;}
   .navbar .icon {
     float: right;
@@ -72,7 +79,7 @@ methods: {
 }
 
 @media screen and (max-width: 600px) {
-  .navbar.responsive {position: relative;}
+  .navbar {position: relative;}
   .navbar.responsive li.icon {
     position: absolute;
     right: 0;
