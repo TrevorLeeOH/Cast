@@ -1,4 +1,5 @@
 <template>
+
   <!-- <div class="Sign-up">
     <link rel="stylesheet" href="https://use.typekit.net/ows0uho.css">
     <div class="Login-options">
@@ -8,7 +9,7 @@
         Create an account to start voting
       </span>
       </div> -->
-      <register> </register>
+      <register></register>
        <!-- <button class="Button-Primary" type="submit">
         Create Account
       </button>
@@ -43,12 +44,12 @@ export default {
 }
 
 
-.Sign-up {
+/* .Sign-up {
   width: 375px;
   height: 812px;
   padding: 0 0 238px;
   background-color: #fff;
-}
+} */
 
 .Login-options {
   width: 375px;
@@ -66,7 +67,7 @@ export default {
   width: 327px;
   height: 19px;
   flex-grow: 0;
-  font-family: Inter;
+  font-family: 'museo-sans';
   font-size: 16px;
   font-weight: 900;
   font-stretch: normal;
@@ -81,7 +82,7 @@ export default {
   width: 327px;
   height: 16px;
   flex-grow: 0;
-  font-family: MuseoSans;
+  font-family: 'museo-sans';
   font-size: 14px;
   font-weight: 500;
   font-stretch: normal;
@@ -124,7 +125,7 @@ order: 3;
 align-self: stretch;
 flex-grow: 0;
 
-font-family: 'Museo Sans';
+font-family: 'museo-sans';
 font-style: normal;
 font-weight: 600;
 font-size: 14px;

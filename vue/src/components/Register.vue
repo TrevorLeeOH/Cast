@@ -2,92 +2,69 @@
 
   <div id="register" class="text-center">
     <div class="Sign-up">
-    <link rel="stylesheet" href="https://use.typekit.net/ows0uho.css">
-    <div class="Login-options">
-      <div class="Text">
-       <span class="sign-up">Sign up</span>
-      <span class="Create-an-account-to-start-voting">
-        Create an account to start voting
-      </span>
-      </div>
-    <link rel="stylesheet" href="https://use.typekit.net/ows0uho.css">
-    <form class="form-register" @submit.prevent="register">
-      <div class="alert alert-danger" role="alert" v-if="registrationErrors">
-        {{ registrationErrorMsg }}
-      </div>
-      <div class="Text-Field">
-        <span class="Title"> Name </span>
-
-      <!-- <label for="username" class="sr-only">Username</label> -->
-          
-
-             <input
-                  type="text"
-                  id="username"
+      <link rel="stylesheet" href="https://use.typekit.net/ows0uho.css">
+      <div class="Login-options">
+        <div class="Text">
+          <span class="sign-up">Sign up</span>
+            <span class="Create-an-account-to-start-voting">
+                Create an account to start voting
+             </span>
+        </div>
+        <link rel="stylesheet" href="https://use.typekit.net/ows0uho.css">
+        <form class="form-register" @submit.prevent="register">
+          <div class="alert alert-danger" role="alert" v-if="registrationErrors">
+          {{ registrationErrorMsg }}
+          </div>
+          <div class="Text-Field">
+            <span class="Title"> Name </span>     
+            <input
+                    type="text"
+                    id="username"
+                    class="form-control"
+                    placeholder="Username"
+                    v-model="user.username"
+                    required
+                    autofocus
+                  />            
+            <span class="Title"> Email </span>
+            <input
                   class="form-control"
-                  placeholder="Username"
-                  v-model="user.username"
+                    placeholder="Email"
+                    v-model="user.username"
+                    required
+                    autofocus
+                  />
+            <span class="Title"> Password </span>
+            <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  placeholder="Password"
+                  v-model="user.password"
                   required
-                  autofocus
                 />
-            
-         <span class="Title"> Email </span>
-            
-                <input
-                 class="form-control"
-                  placeholder="Email"
-                  v-model="user.username"
+            <input
+                  type="password"
+                  id="confirmPassword"
+                  class="form-control"
+                  placeholder="Confirm Password"
+                  v-model="user.confirmPassword"
                   required
-                  autofocus
-                />
-            
-      
-      <span class="Title"> Password </span>
-     
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-  
-     
-      <input
-        type="password"
-        id="confirmPassword"
-        class="form-control"
-        placeholder="Confirm Password"
-        v-model="user.confirmPassword"
-        required
-      /> 
-      
-<div class="termsBox">
-  <div class="Checkbox"></div>
-      <span class="Terms">
-          I've read and agree with the
-          <span class="text-style-1">Terms and Conditions</span>
-           and the
-          <span class="text-style-1">Privacy Policy</span>.
-          </span>
+                /> 
+            <div class="termsBox">
+              <div class="Checkbox"></div>
+                  <span class="Terms">
+                      I've read and agree with the
+                      <span class="text-style-1">Terms and Conditions</span>
+                      and the
+                      <span class="text-style-1">Privacy Policy</span>.
+                      </span>
+              </div>
+            <button class="Button-Primary" type="submit">Create Account</button>
+            </div>
+       </form>  
       </div>
-      
-      <!-- <router-link :to="{ name: 'login' }">Have an account?</router-link> -->
-      <!-- <button class="Button-Primary" type="submit">
-        Create Account
-      </button> -->
-    <button class="Button-Primary" type="submit">
-        Create Account
-      </button>
-     </div>
-      <!-- <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Create Account
-      </button> -->
-    </form>
-      
-    </div>
-  </div>
+   </div>
   </div>
 </template>
 
@@ -158,6 +135,7 @@ form {
   width: 327px;
   height: 71px;
   flex-grow: 0;
+  font-family: 'museo-sans';
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -172,7 +150,7 @@ form {
   height: 15px;
   align-self: stretch;
   flex-grow: 0;
-  font-family: 'MuseoSans';
+  font-family: 'museo-sans';
   font-size: 12px;
   font-weight: bold;
   font-stretch: normal;
@@ -181,6 +159,7 @@ form {
   letter-spacing: normal;
   text-align: left;
   color: #2f3036;
+  
 }
 
 .Button-Primary {
@@ -189,7 +168,7 @@ flex-direction: row;
 justify-content: center;
 align-items: center;
 padding: 12px 16px;
-gap: 8px;
+gap:8px;
 
 width: 327px;
 height: 48px;
@@ -202,8 +181,7 @@ flex: none;
 order: 3;
 align-self: stretch;
 flex-grow: 0;
-
-font-family: 'Museo Sans';
+font-family: 'museo-sans';
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -232,7 +210,7 @@ flex-grow: 0;
 
 .Checkbox {
   width: 24px;
-  height: 20px;
+  height: 16px;
   flex-grow: 0;
   border-radius: 6px;
   border: solid 1.5px #c5c6cc;
@@ -240,7 +218,7 @@ flex-grow: 0;
 .Terms {
   height: 34px;
   flex-grow: 1;
-  font-family: MuseoSans;
+  font-family: 'museo-sans';
   font-size: 14px;
   font-weight: 500;
   font-stretch: normal;
@@ -265,6 +243,7 @@ flex-grow: 0;
   flex-grow: 1;
   display: flex;
   flex-direction: row;
+  font-family: 'museo-sans';
   justify-content: flex-start;
   align-items: center;
   gap: 1px;
@@ -284,5 +263,19 @@ flex-grow: 0;
   border-radius: 12px;
   border: solid 1px #c5c6cc;
 }
+
+.Text {
+  width: 327px;
+  height: 43px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 0;
+}
+
+
 
 </style>
