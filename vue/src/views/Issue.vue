@@ -5,24 +5,25 @@
       <div>
           <div v-for="(option, index) in issue.optionList" :key="option">
               <span class="option-label">{{option}}</span>
-              <span v-if="voted" class="vote-bar" :style="'width: ' + getVotePercentage(issue.results[index]) * 1000 + 'px'">{{issue.results[index]}}</span>
+              <span v-if="voted" class="vote-bar" :style="'width: ' + getVotePercentage(issue.resultsList[index]) * 1000 + 'px'">{{issue.resultsList[index]}}</span>
               <select v-else id="rank" v-model="vote[index]">
                   <option v-for="index in issue.optionList.length" :key="index" :value="index">{{index}}</option>
               </select>
           </div>
-          <button @click="castBallot">Cast Ballot</button>
+          <button v-if="!voted" @click="castBallot">Cast Ballot</button>
       </div>
   </div>
 </template>
 
 <script>
 import IssueService from '@/services/IssueService.js';
+import VoteService from '@/services/VoteService.js';
 
 export default {
     data() {
         return {
             issue: {},
-            voted: false,
+            voted: true,
             vote: []
         }
     },
@@ -41,7 +42,7 @@ export default {
             });
         },
         getVotePercentage(votes) {
-            let sum = this.issue.results.reduce((prev, curr) => {
+            let sum = this.issue.resultsList.reduce((prev, curr) => {
                 return prev + curr;
             }, 0);
             return votes / sum;
@@ -53,10 +54,20 @@ export default {
                     return;
                 }
             }
+
+            let voteDTO = {
+                issueId: this.issue.issueId,
+                userId: this.$store.state.user.id,
+                points: this.vote
+            }
+            VoteService.createVote(voteDTO).then(response => {
+                console.log(response);
+            })
+
             //call create vote on vote service
             //refresh issue
             alert("Vote Submitted!");
-            this.$router.push({name: 'active-issues'});
+            //this.$router.push({name: 'active-issues'});
         }
     }
     
@@ -72,6 +83,6 @@ export default {
     }
     .option-label {
         display: inline-block;
-        width: 100px;
+        width: 200px;
     }
 </style>
