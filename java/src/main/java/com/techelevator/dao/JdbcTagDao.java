@@ -46,6 +46,13 @@ public class JdbcTagDao implements TagDao {
         return tag;
     }
 
+//    @Override
+//    public List<Tag> updateTags(Tag updatedTag) {
+//        String sql = "UPDATE tags SET tag_id = ?, set tag_name = ?; ";
+//        jdbcTemplate.update(sql, updatedTag.getTagId, updatedTag.getTagName);
+//        return updatedTag;
+  //  }
+
     private Tag mapRowToTag(SqlRowSet results) {
         Tag tag = new Tag();
         tag.getTagId(results.getInt("tag_id"));
