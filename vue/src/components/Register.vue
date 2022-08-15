@@ -163,36 +163,36 @@ form {
 }
 
 .Button-Primary {
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 12px 16px;
-gap:8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 16px;
+  gap:8px;
 
-width: 327px;
-height: 48px;
+  width: 327px;
+  height: 48px;
 
-background: #467BF5;
-border-radius: 8px;
-border: none;
+  background: #467BF5;
+  border-radius: 8px;
+  border: none;
 
-flex: none;
-order: 3;
-align-self: stretch;
-flex-grow: 0;
-font-family: 'museo-sans';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 17px;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+  font-family: 'museo-sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
 
-color: #FFFFFF;
+  color: #FFFFFF;
 
 
-flex: none;
-order: 1;
-flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .termsBox {

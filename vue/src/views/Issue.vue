@@ -19,7 +19,7 @@
             !-->
               
           </div>
-          <button v-if="!voted" @click="castBallot">Cast Ballot</button>
+          <button class="Button-Primary" v-if="!voted" @click="castBallot">Cast Ballot</button>
       </div>
   </div>
 </template>
@@ -73,11 +73,9 @@ export default {
             return votes / sum;
         },
         castBallot() {
-            for (let i = 1; i <= this.issue.optionList.length; i++) {
-                if (!this.vote.includes(i)) {
-                    alert("Invalid Input, please fill out all options and use each rank only once for each option");
-                    return;
-                }
+            if (this.vote.includes(null)) {
+                alert("Please rank all options");
+                return;
             }
 
             let voteDTO = {
@@ -105,10 +103,9 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 24px;
+        padding: 18px;
         gap: 32px;
-        width: 375px;
-        height: 666px;
+        
 
     }
     #name-description {
@@ -153,8 +150,9 @@ export default {
         padding: 16px;
         gap: 16px;
         border-radius: 12px;
-        width: 327px;
+        width: 300px;
         background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #467BF5;
+        cursor: pointer;
         
     }
     .unselected-option {
@@ -164,8 +162,9 @@ export default {
         padding: 16px;
         gap: 16px;
         border-radius: 12px;
-        width: 327px;
+        width: 300px;
         border: 0.5px solid #C5C6CC;
+        cursor: pointer;
     }
     .issue-option {
         display: flex;
@@ -175,6 +174,7 @@ export default {
         gap: 16px;
         background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #467BF5;
         border-radius: 12px;
+        
     }
     .selected-option-number {
         font-style: normal;

@@ -3,7 +3,7 @@
   
   <div class="navbar" id="myNavBar">
     
-      <a><img src="C:\Users\Student\workspace\java-yellow-finalcapstone-team3\vue\src\assets\CAST_logo-02.png"/></a>
+      <a id="logo"><img src="@/assets/CAST_logo-02.png"/></a>
       <router-link tag="li" v-bind:to="{ name: 'home' }">Home</router-link>
       <router-link tag="li" v-bind:to="{ name: 'active-issues' }">Vote Now!</router-link>
       <router-link tag="li" v-bind:to="{ name: 'closed-issues' }">Closed Polls</router-link>
@@ -40,6 +40,11 @@ methods: {
 </script>
 
 <style>
+
+#logo {
+  width: 10px;
+  height: 10px
+}
 
 .navbar {
   background-color: #467BF5;
