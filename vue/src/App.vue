@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <main-header>
+      <!-- <main-header>
         
-      </main-header>
+      </main-header> -->
       
     </div>
     <router-view />
@@ -12,14 +12,14 @@
 
 <script>
 
-import MainHeader from '@/components/MainHeader.vue'
+// import MainHeader from '@/components/MainHeader.vue'
 
-export default {
-  name: "app",
-  components: {
-    MainHeader
-  }
-}
+// export default {
+//   name: "app",
+//   components: {
+//     MainHeader
+//   }
+// }
 
 </script>
 
@@ -27,8 +27,14 @@ export default {
 @import url('https://use.typekit.net/ows0uho.css');
 
 #app {
- border-radius: 12px;
+  display: flex;
+  justify-self: center;
+
+  height: 812px;
+  width: 375px;
+  /* border-radius: 12px; */
   border: solid 1px #202858;
+  
 }
 </style>
 
