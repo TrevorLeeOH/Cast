@@ -48,12 +48,10 @@ public class JdbcTagDao implements TagDao {
     }
 
     @Override
-    public List<Tag> updateTags(Tag updatedTag) {
-        List<Tag> tag = new ArrayList<>();
+    public void updateTags(Tag updatedTag) {
         String sql = "UPDATE tags SET tag_id = ?, set tag_name = ? " +
                 "JOIN tags_issue USING tag_id WHERE issue_id = ?; ";
         jdbcTemplate.update(sql, updatedTag.getTagId, updatedTag.getTagName);
-        return tag;
     }
 
     private Tag mapRowToTag(SqlRowSet results) {
