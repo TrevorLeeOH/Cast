@@ -28,7 +28,7 @@
 
 #app {
   display: flex;
-  justify-self: center;
+ 
 
   height: 812px;
   width: 375px;
