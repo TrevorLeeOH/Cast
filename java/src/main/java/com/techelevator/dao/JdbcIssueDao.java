@@ -178,6 +178,9 @@ public class JdbcIssueDao implements IssueDao {
     }
 
     private List<Integer> mapResults(int issueId) {
+        int allVotes = 0;
+        int firstVotes = 0;
+        int winner = 0;
         List<Vote> votesList = voteDao.getVotesByIssueId(issueId);
         if (votesList.size() == 0) {
             return new ArrayList<Integer>();
@@ -186,11 +189,16 @@ public class JdbcIssueDao implements IssueDao {
         Arrays.fill(pointsArray, 0);
         for (Vote vote : votesList) {
             for (int i = 0; i < vote.getPoints().size(); i++) {
+                allVotes ++;
                 if (vote.getPoints().get(i) == 1) {
                     pointsArray[i] += (int) Math.round(((vote.getPoints().size() + 1) - vote.getPoints().get(i)) * FIRST_CHOICE_MULTIPLIER);
+                firstVotes ++;
                 } else {
                     pointsArray[i] += (vote.getPoints().size() + 1) - vote.getPoints().get(i);
                 }
+            }
+            if (firstVotes > allVotes/2){
+                winner ++;
             }
         }
         return Arrays.asList(pointsArray);

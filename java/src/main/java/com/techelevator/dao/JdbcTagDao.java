@@ -6,6 +6,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +44,14 @@ public class JdbcTagDao implements TagDao {
         while (results.next()){
             tag.add(mapRowToTag(results));
         }
+        return tag;
+    }
+
+    @Override
+    public List<Tag> updateTags(Tag updatedTag) {
+        List<Tag> tag = new ArrayList<>();
+        String sql = "UPDATE tags SET tag_id = ?, set tag_name = ?; ";
+        jdbcTemplate.update(sql, updatedTag.getTagId, updatedTag.getTagName);
         return tag;
     }
 
