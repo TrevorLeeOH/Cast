@@ -1,6 +1,8 @@
 package com.techelevator.model;
 
 public class Tag {
+    public Object[] getTagId;
+    public int[] getTagName;
     String tagName;
     int tagId;
 
@@ -19,7 +21,7 @@ public class Tag {
         this.tagName = tagName;
     }
 
-    public int getTagId(int tag_id) {
+    public int getTagId(int tagId) {
         return tagId;
     }
 
