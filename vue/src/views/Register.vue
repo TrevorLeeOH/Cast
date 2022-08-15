@@ -65,11 +65,11 @@ export default {
 
 .sign-up {
   width: 327px;
-  height: 19px;
+  height: 22px;
   flex-grow: 0;
-  font-family: 'museo-sans';
-  font-size: 16px;
-  font-weight: 900;
+  font-family: 'museo-sans-display';
+  font-size: 18px;
+  font-weight: 600;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;

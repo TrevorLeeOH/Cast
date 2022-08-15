@@ -1,10 +1,12 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.IssueDao;
+import com.techelevator.dao.TagDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Issue;
 import com.techelevator.model.IssueDetailsDTO;
 import com.techelevator.model.IssueOverviewDTO;
+import com.techelevator.model.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -20,11 +22,13 @@ public class IssueController {
 //    @Autowired  //this brings in the IssueDao as a new object for us to use automatically
     private IssueDao issueDao;
     private UserDao userDao;
+    private TagDao tagDao;
 
 
-    public IssueController(IssueDao issueDao, UserDao userDao) {
+    public IssueController(IssueDao issueDao, UserDao userDao, TagDao tagDao) {
         this.issueDao = issueDao;
         this.userDao = userDao;
+        this.tagDao = tagDao;
     }
 
     @PreAuthorize("permitAll")
@@ -64,6 +68,10 @@ public class IssueController {
         int userId = userDao.findIdByUsername(username);
         if (userId == updatedIssue.getUserId()) {
             issueDao.updateIssueByName(updatedIssue);
+            List<Tag> tempTagList = tagDao.getTagsForIssue(updatedIssue.getIssueId());
+            for (Tag tag : tempTagList) {
+                tagDao.updateTags(tag);
+            }
         }
     };
 

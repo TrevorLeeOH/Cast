@@ -147,7 +147,7 @@ form {
 
 
 .Title {
-  height: 15px;
+  height: 10px;
   align-self: stretch;
   flex-grow: 0;
   font-family: 'museo-sans';
@@ -159,6 +159,7 @@ form {
   letter-spacing: normal;
   text-align: left;
   color: #2f3036;
+  padding-top: 5px;
   
 }
 
@@ -204,7 +205,8 @@ form {
   justify-content: flex-start;
   align-items: center;
   gap: 12px;
-  padding: 0px
+  padding-top: 10px;
+  padding-bottom: 10px
   ;
 }
 
@@ -275,6 +277,21 @@ form {
   gap: 8px;
   padding: 0;
 }
+
+/* .sign-up {
+  width: 327px;
+    height: 19px;
+    flex-grow: 0;
+    font-family: 'inter';
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: bold;
+    line-height: normal;
+    letter-spacing: 0.08px;
+    text-align: left;
+    color: #1f2024;
+} */
 
 
 
