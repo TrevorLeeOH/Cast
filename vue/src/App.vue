@@ -1,25 +1,25 @@
 <template>
   <div id="app">
+    <router-view />
     <div id="nav">
-      <!-- <main-header>
+      <main-header>
         
-      </main-header> -->
+      </main-header>
       
     </div>
-    <router-view />
   </div>
 </template>
 
 <script>
 
-// import MainHeader from '@/components/MainHeader.vue'
+  import MainHeader from '@/components/MainHeader.vue'
 
-// export default {
-//   name: "app",
-//   components: {
-//     MainHeader
-//   }
-// }
+ export default {
+   name: "app",
+   components: {
+     MainHeader
+   }
+ }
 
 </script>
 
@@ -29,6 +29,9 @@
 #app {
   display: flex;
   justify-self: center;
+  flex-direction: column;
+  justify-content: space-between;
+  
 
   height: 812px;
   width: 375px;

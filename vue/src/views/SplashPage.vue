@@ -12,9 +12,8 @@
           </div>
         <span class="Make-your-voice-heard"> Make your voice heard!</span>
         <span class="Rank">Rank the most important current topics that will be at the top of the ballots!</span>
-      <div class="sign-up-button">
-        <button>Sign Up</button>
-      </div>
+      <router-link class="sign-up-button" :to="{name: 'register'}"> Sign Up
+       </router-link>
       <div class="login">
         <span class="Already-Registered-Login-now">Already Registered? 
             <span class="text-style-1">Login now</span>
@@ -113,6 +112,16 @@ export default {
   padding: 12px 16px;
   border-radius: 8px;
   background-color: #467bf5;
+  font-family: 'museo-sans';
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  text-decoration: none;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
 }
 
 button {

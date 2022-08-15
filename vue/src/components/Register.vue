@@ -147,7 +147,7 @@ form {
 
 
 .Title {
-  height: 15px;
+  height: 10px;
   align-self: stretch;
   flex-grow: 0;
   font-family: 'museo-sans';
@@ -159,40 +159,41 @@ form {
   letter-spacing: normal;
   text-align: left;
   color: #2f3036;
+  padding-top: 5px;
   
 }
 
 .Button-Primary {
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 12px 16px;
-gap:8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 16px;
+  gap:8px;
 
-width: 327px;
-height: 48px;
+  width: 327px;
+  height: 48px;
 
-background: #467BF5;
-border-radius: 8px;
-border: none;
+  background: #467BF5;
+  border-radius: 8px;
+  border: none;
 
-flex: none;
-order: 3;
-align-self: stretch;
-flex-grow: 0;
-font-family: 'museo-sans';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 17px;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+  font-family: 'museo-sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
 
-color: #FFFFFF;
+  color: #FFFFFF;
 
 
-flex: none;
-order: 1;
-flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .termsBox {
@@ -204,7 +205,8 @@ flex-grow: 0;
   justify-content: flex-start;
   align-items: center;
   gap: 12px;
-  padding: 0px
+  padding-top: 10px;
+  padding-bottom: 10px
   ;
 }
 
@@ -275,6 +277,21 @@ flex-grow: 0;
   gap: 8px;
   padding: 0;
 }
+
+/* .sign-up {
+  width: 327px;
+    height: 19px;
+    flex-grow: 0;
+    font-family: 'inter';
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: bold;
+    line-height: normal;
+    letter-spacing: 0.08px;
+    text-align: left;
+    color: #1f2024;
+} */
 
 
 
