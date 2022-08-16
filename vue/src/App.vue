@@ -48,6 +48,8 @@
   height: 730px;
   max-height: 730px;
    overflow-y: auto;
+   width: 375px;
+   max-width: 375px;
 
 }
 </style>

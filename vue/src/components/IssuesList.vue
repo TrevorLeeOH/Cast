@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <form @submit.prevent="">
+  <div class="issues-list">
+      <!-- <form @submit.prevent="">
             <label>Search By Tag: </label>
             <div id="tag-box">
                 <label class="tag" v-for="tag in tags" :key="tag.id" :for="tag.name">{{tag.name + " (" + getNumberOfIssuesForTag(tag.id) + ")"}}
@@ -14,9 +14,11 @@
                 <label id="desc-label" for="desc">Search By Description: </label>
                 <input type="text" id="desc" v-model="descFilter">
             </div>
-      </form>
+      </form> -->
       <div id="issue-list-box">
+          <div id="another-box">
           <issue-overview class="issue" :issue="issue" :active="active" v-for="issue in filteredIssuesList" :key="issue.issue_id"></issue-overview>
+          </div>
       </div>
       
   </div>
@@ -75,8 +77,13 @@ export default {
 
 <style scoped>
 
+.issues-list {
+    max-width: 375px;
+    margin-right: 0px;
+}
+
     form {
-        margin: auto;
+        margin: 0px;
         margin-bottom: 24px;
         height: auto;
     }
@@ -104,9 +111,22 @@ export default {
     }
     
     #issue-list-box {
-        height: auto;
-        overflow-y: auto;
-        border: none;
+       display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 16px 0px;
+        gap: 40px;
+
+        max-width: 375px;
+        height: 521px;
+        overflow-y: scroll;
+
+
+        /* Inside auto layout */
+
+        flex: none;
+        order: 4;
+        flex-grow: 1;
     }
     #name-description-filter {
         display: grid;
@@ -126,4 +146,23 @@ export default {
     #desc-label {
         grid-area: desc-label;
     }
+
+    #another-box {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 16px;
+
+        width: 343px;
+        height: 668px;
+
+
+        /* Inside auto layout */
+
+        flex: none;
+        order: 0;
+        align-self: stretch;
+        flex-grow: 0;
+            }
 </style>

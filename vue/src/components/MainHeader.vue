@@ -72,11 +72,11 @@ methods: {
   gap: 4px;
   position: relative;
   flex-grow: 1;
-
  top: 0px;
   padding-top: 16px;
   opacity: 0.9;
   background-color: #fff;
+  box-shadow: 3px -3px -2px 2px rgba(0, 0, 0, 0.09);
 }
 
 .Tab {
