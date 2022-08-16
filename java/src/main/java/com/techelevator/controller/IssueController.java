@@ -55,13 +55,13 @@ public class IssueController {
         return issueDao.getIssueByIssueId(issue_id);
     };
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ISSUER')")
     @PostMapping(path = "/issues/create")
     public void createIssue(@RequestBody Issue issue) {
         issueDao.createIssue(issue);
     };
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ISSUER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
     @PutMapping(path = "/issues/issue-name/{issue_name}")
     public void updateIssueByName(Issue updatedIssue, Principal principal) {
         String username = principal.getName();
@@ -75,19 +75,19 @@ public class IssueController {
         }
     };
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ISSUER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
     @PutMapping(path = "/issues/issue-id/{issue_id}")
     public void updateIssueById(@RequestBody Issue updatedIssue) {
         issueDao.updateIssueById(updatedIssue);
     };
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ISSUER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
     @RequestMapping(path = "/issues/delete-name/{issue_name}", method = RequestMethod.DELETE)
     public void deleteIssueByName(String name) {
         issueDao.deleteIssueByName(name);
     };
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ISSUER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
     @RequestMapping(path = "/issues/delete-id/{issue_id}", method = RequestMethod.DELETE)
     public void deleteIssueById(int issueId) {
         issueDao.deleteIssueById(issueId);
