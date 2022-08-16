@@ -142,10 +142,11 @@ export default {
     #issue-description {
         font-family: 'museo-sans';
         font-style: normal;
-        font-weight: 400;
+        font-weight: 300;
         font-size: 16px;
         line-height: 20px;
         margin-top: 0%;
+        color: #71727A;
     }
     #options-box {
         display: flex;
