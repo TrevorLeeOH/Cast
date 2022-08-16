@@ -74,6 +74,13 @@ export default {
 </script>
 
 <style scoped>
+
+    form {
+        margin: auto;
+        margin-bottom: 24px;
+        height: auto;
+    }
+
     .issue {
         font-size: 1.0rem;
         border-style: solid;
@@ -82,9 +89,17 @@ export default {
     }
 
     #tag-box {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+         height: 40px;
+         width: 300px;
+         display: flex;
+         flex-direction: columns;
+         flex-wrap: nowrap;
+         align-self: center;
+         gap: 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        border: 1px solid blue;
+        border-radius: 12px;
     }
 
     #tag {
@@ -93,9 +108,9 @@ export default {
         border-width: 1px;
     }
     #issue-list-box {
-        height: 300px;
+        height: auto;
         overflow-y: auto;
-        border: 1px solid blue;
+        border: none;
     }
     #name-description-filter {
         display: grid;

@@ -1,5 +1,5 @@
 <template>
-  <div id="issue-box" v-if="issue != {}">
+  <div id="vote-box" v-if="issue != {}">
       <div id="name-description">
           <h1 id="issue-name">{{issue.name}}</h1>
           <p id="issue-description">{{issue.description}}</p>
@@ -102,7 +102,7 @@ export default {
 </script>
 
 <style>
-    #issue-box {
+    #vote-box {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -110,6 +110,10 @@ export default {
         gap: 32px;
         margin: 8px;
         width: 342px;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 24px;
+        margin-top: 30px;
     }
     #name-description {
         display: flex;
@@ -127,7 +131,7 @@ export default {
     #issue-name {
         font-family: 'museo-sans';
         font-style: normal;
-        font-weight: bolder;
+        font-weight: 900;
         font-size: 24px;
         line-height: 29px;
         letter-spacing: 0.48px;
@@ -171,7 +175,7 @@ export default {
         padding: 16px;
         gap: 16px;
         border-radius: 12px;
-        width: 300px;
+        width: 294px;
         border: 0.5px solid #C5C6CC;
         cursor: pointer;
     }

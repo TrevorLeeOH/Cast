@@ -32,7 +32,7 @@
   width: 375px;
   border-radius: 12px;
   border: solid 1px #202858;
-  
+  overflow-y: auto;
 }
 </style>
 

@@ -55,7 +55,7 @@ export default {
         align-items: center;
         padding: 16px;
         border-radius: 16px;
-        background-color: #f8f9fe;
+        background-color: white;
         margin-top: 10px;
         margin-left: auto;
         margin-right: auto;
