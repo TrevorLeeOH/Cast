@@ -13,9 +13,8 @@
                     <input type="checkbox" :id="tag.name" :value="tag" v-model="issue.tags">
                 </label>
             </div>
-            <button type="submit">Save Changes</button>
-            <button @click="deleteIssue">Delete Issue</button>
-            
+            <button class="Button-Primary" type="submit">Save Changes</button>
+            <button class="Button-Primary" v-if="$store.state.user.authorities.some(role => role.name == 'ROLE_ADMIN')" @click="deleteIssue">Delete Issue</button>    
         </form>
         
     </div>
@@ -70,11 +69,14 @@ export default {
         },
         deleteIssue(event) {
             event.preventDefault();
-            if (IssueService.deleteIssue(this.issue.issueId)) {
-                alert('Issue Deleted');
-            } else {
-                alert('Issue failed to be deleted');
-            }
+            IssueService.deleteIssue(this.issue.issueId).then(response => {
+                if (response.status === 200) {
+                    alert("Issue Deleted!")
+                    this.$router.push({name: 'home'});
+                } else {
+                    alert("Issue Failed To Be Deleted!");
+                }
+            })
         }
     },
     created() {
