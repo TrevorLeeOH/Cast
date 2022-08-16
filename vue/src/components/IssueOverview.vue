@@ -1,19 +1,21 @@
 <template>
     <div id="issue-box">
-        <div id="issue-image"></div>
-        <div class="frame-23">
-        <div id="title">
-            <h2 id="issue-title">{{issue.name}}</h2>
-            <p id="issue-author" :class="{'user-author': $store.state.user.user_id === issue.author.username}">{{'by ' + issue.author.username}}</p>
+        <div id="top-box">
+            <div id="content">
+                <div id="title">
+                    <h2 id="issue-title">{{issue.name}}</h2>
+                    <!-- <p id="issue-author" :class="{'user-author': $store.state.user.user_id === issue.author.username}">{{'by ' + issue.author.username}}</p> -->
+                </div>
+                <p id="desc">{{issue.description}}</p>
+            </div>
         </div>
-        <router-link id="detail-link" :to="{name: 'issue', params: {id: issue.issueId}}" tag="button">View Issue</router-link>
-        <p id="desc">{{issue.description}}</p>
-        <div id="tags">
-            Tags: 
-            <span v-for="tag in issue.tagList" :key="tag.id">{{tag.name + ' '}}</span>
+        <div id="bottom-box">
+             <div id="tags"> 
+                <span v-for="tag in issue.tagList" :key="tag.id">{{tag.name + ' '}}</span>
+                 <router-link id="detail-link" :to="{name: 'issue', params: {id: issue.issueId}}" tag="button">Vote</router-link>
+            </div>
+            <!-- <p id="exp" v-if="active && issue.expiration != null">{{'Closes on ' + formatDate(new Date(issue.expiration))}}</p> -->
         </div>
-        <p id="exp" v-if="active && issue.expiration != null">{{'Closes on ' + formatDate(new Date(issue.expiration))}}</p>
-    </div>
     </div>
 </template>
 
@@ -43,38 +45,173 @@ export default {
     }
 
     #issue-box {
-        height: auto;
-        width: 263px;
-        align-self: center;
-        flex-grow: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px;
+            width: 343px;
+            height: 155px;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #467BF5;
+            box-shadow: 3px 3px 13px 2px rgba(0, 0, 0, 0.09);
+            border-radius: 12px;
+            flex: none;
+            order: 0;
+            align-self: stretch;
+            flex-grow: 0;
+            }
+
+    
+    #top-box {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
-        padding: 16px;
-        border-radius: 16px;
-        background-color: white;
-        margin-top: 10px;
-        margin-left: auto;
-        margin-right: auto;
-}
-    
+        padding-left: 16px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        
+        gap: 16px;
+        max-width: 343px;
+        height: 97px;
+        flex: none;
+        order: 0;
+        align-self: stretch;
+        flex-grow: 0;
+    }
+
+    #content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 4px;
+        width: 311px;
+        height: 57px;
+        flex: none;
+        order: 0;
+        align-self: stretch;
+        flex-grow: 1;
+    }
 
     #title {
-        grid-area: title;
+        width: 311px;
+        height: 21px;
+
+        /* Heading/H2 */
+
+        font-family: 'museo-sans';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 18px;
+        line-height: 21px;
+        /* identical to box height, or 117% */
+
+        letter-spacing: 0.005em;
+
+        /* Neutral/Dark/Darkest */
+
+        color: #1F2024;
+
+
+        /* Inside auto layout */
+
+        flex: none;
+        order: 0;
+        align-self: stretch;
+        flex-grow: 0;
     }
     #detail-link {
-        grid-area: detail-link;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 16px;
+        gap: 8px;
+
+        width: 83px;
+        height: 40px;
+
+        /* Highlight/Darkest */
+
+        background: #467BF5;
+        border-radius: 8px;
+
+/* Inside auto layout */
+
+flex: none;
+order: 1;
+flex-grow: 0;
     }
     #desc {
-        grid-area: desc;
+        width: 311px;
+        height: 32px;
+
+        /* Body/Body S */
+
+        font-family: 'museo-sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        /* or 114% */
+
+        letter-spacing: 0.01em;
+
+        /* Neutral/Dark/Light */
+
+        color: #71727A;
+
+
+        /* Inside auto layout */
+
+        flex: none;
+        order: 1;
+        align-self: stretch;
+        flex-grow: 0;
     }
+
+    #bottom-box {
+            display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+
+        width: 343px;
+        height: 58px;
+
+        border-radius: 16px;
+
+        /* Inside auto layout */
+
+        flex: none;
+        order: 1;
+        align-self: stretch;
+        flex-grow: 0;
+    }
+
     #results {
         grid-area: results;
     }
     #tags {
-        grid-area: tags;
-    }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+
+        width: 343px;
+        height: 58px;
+
+        border-radius: 16px;
+
+        /* Inside auto layout */
+
+        flex: none;
+        order: 1;
+        align-self: stretch;
+        flex-grow: 0;
+            }
     #exp {
         grid-area: exp;
         margin: 0px;

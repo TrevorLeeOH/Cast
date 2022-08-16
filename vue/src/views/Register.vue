@@ -52,7 +52,7 @@ export default {
 } */
 
 .Login-options {
-  width: 375px;
+  width: 327px;
   height: 475px;
   display: flex;
   flex-direction: column;
