@@ -8,5 +8,7 @@ public interface TagDao {
     Tag createTag(String tagName);
     List<Tag> getTagsForIssue(int issueId);
     void updateTags(Tag updatedTag);
+    Tag assignTag(int issueId);
+
 
 }

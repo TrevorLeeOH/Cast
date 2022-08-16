@@ -19,9 +19,17 @@ public class JdbcTagDao implements TagDao {
     }
     @Override
     public Tag createTag(String tagName) {
-        String sql = "INSERT INTO tags (tag_name)" +
+        String sql = "INSERT INTO tags (tag_name) " +
                 "VALUES (?) RETURNING tag_id";
         int tagId = jdbcTemplate.queryForObject(sql, Integer.class, tagName);
+        return getTag(tagId);
+    }
+    
+    @Override
+    public Tag assignTag(int issueId) {
+        String sql = "INSERT INTO tag_issues (issueId) " +
+                "VALUES (?) RETURNING tag_id;";
+        int tagId = jdbcTemplate.queryForObject(sql, Integer.class, issueId);
         return getTag(tagId);
     }
 
