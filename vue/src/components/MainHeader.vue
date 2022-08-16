@@ -20,9 +20,14 @@
       <span class="Tab-name" tag="li">Poll Results</span>
     </router-link>
    
-    <router-link class="Tab"  v-bind:to="{ name: 'register' }">
+    <router-link class="Tab" v-bind:to="{ name: 'login' }" v-if="$store.state.token = 'true'">
       <div class="Fill"><img id="profile_icon" src="..\assets\Profile Icon.png"></div>
-      <span class="Tab-name" tag="li">Profile</span>
+      <span class="Tab-name" tag="li">Login</span>
+    </router-link>
+    
+    <router-link class="Tab" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != 'true'">
+      <div class="Fill"><img id="profile_icon" src="..\assets\Profile Icon.png"></div>
+      <span class="Tab-name" tag="li">Logout</span>
     </router-link>
     
       <!-- <router-link class="Tab-name" tag="li" v-bind:to="{ name: 'login' }" v-if="$store.state.token = 'true'">Login</router-link>
@@ -58,22 +63,24 @@ methods: {
 
 .navbar {
   width: 375px;
-  height: 88px;
+  height: 58px;
   display: flex;
   flex-direction: row;
+  justify-self: flex-end;
   justify-content: center;
   align-items: stretch;
   gap: 4px;
   position: relative;
-  bottom: 0px;
-  top: 200px;
-  padding: 0px;
+  flex-grow: 1;
+
+ top: 0px;
+  padding-top: 16px;
   opacity: 0.9;
   background-color: #fff;
 }
 
 .Tab {
-  height: 40px;
+
   flex: 1;
   min-width: 25%;
   display: flex;
