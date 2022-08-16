@@ -52,6 +52,12 @@ public class JdbcVoteDao implements VoteDao {
         return jdbcTemplate.update(sql, vote.getUserId(), vote.getIssueId(), optionA, optionB, optionC, optionD, optionE, optionF, optionG, optionH) == 1;
     }
 
+    @Override
+    public boolean userVoted(int userId, int issueId) {
+        String sql = "SELECT count(*) from votes WHERE user_id = ? AND issue_id = ?;";
+        return jdbcTemplate.queryForObject(sql, int.class, userId, issueId) > 0;
+    }
+
     private Vote mapRowToVote(SqlRowSet results) {
         Vote vote = new Vote();
         vote.setUserId(results.getInt("user_id"));

@@ -4,7 +4,7 @@
           <h1 id="issue-name">{{issue.name}}</h1>
           <p id="issue-description">{{issue.description}}</p>
       </div>
-      <div v-if="!voted && (issue.expiration == null || new Date(issue.expiration) > Date.now())" id="options-box">
+      <div v-if="!issue.userVoted && (issue.expiration == null || new Date(issue.expiration) > Date.now())" id="options-box">
           <div  @click="selectDeselect(index)" :class="vote[index] != null ? 'selected-option' : 'unselected-option'" v-for="(option, index) in issue.optionList" :key="option">
               <div v-if="vote[index] != null" class="selected-option-icon">
                   <p class="selected-option-number">{{vote[index] != null ? vote[index] : 'O'}}</p>
@@ -35,7 +35,6 @@ export default {
     data() {
         return {
             issue: {},
-            voted: false,
             vote: []
         }
     },

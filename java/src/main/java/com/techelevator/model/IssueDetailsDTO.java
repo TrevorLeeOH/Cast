@@ -15,6 +15,15 @@ public class IssueDetailsDTO {
     private List<Tag> tagList= new ArrayList<>();
     private List<String> optionList = new ArrayList<>();
     private List<Integer> resultsList = new ArrayList<>();
+    private boolean userVoted;
+
+    public boolean isUserVoted() {
+        return userVoted;
+    }
+
+    public void setUserVoted(boolean userVoted) {
+        this.userVoted = userVoted;
+    }
 
     public List<Integer> getResultsList() {
         return resultsList;

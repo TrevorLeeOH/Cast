@@ -14,6 +14,15 @@ public class IssueOverviewDTO {
     //private boolean isExpired;
     private List<Tag> tagList= new ArrayList<>();
     private List<String> optionList = new ArrayList<>();
+    private boolean userVoted;
+
+    public boolean isUserVoted() {
+        return userVoted;
+    }
+
+    public void setUserVoted(boolean userVoted) {
+        this.userVoted = userVoted;
+    }
 
     public String getDescription() {
         return description;
