@@ -100,15 +100,7 @@ export default {
 </script>
 
 <style>
-    #issue-box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 18px;
-        gap: 32px;
-        
-
-    }
+    
     #name-description {
         display: flex;
         flex-direction: column;
@@ -125,7 +117,7 @@ export default {
     #issue-name {
         font-family: 'museo-sans';
         font-style: normal;
-        font-weight: bolder;
+        font-weight: 900;
         font-size: 24px;
         line-height: 29px;
         letter-spacing: 0.48px;
