@@ -1,20 +1,24 @@
 <template>
   <div>
       <form @submit.prevent="">
-            <label for="tag">Search By Tag: </label>
+            <label>Search By Tag: </label>
             <div id="tag-box">
                 <button @click="tagFilter = []">Clear All Tags</button>
                 <label class="tag" v-for="tag in tags" :key="tag.id" :for="tag.name">{{tag.name + " (" + getNumberOfIssuesForTag(tag.id) + ")"}} 
                     <input type="checkbox" :id="tag.name" :value="tag.id" v-model="tagFilter">
                 </label>
             </div>
-            
-            <label for="name">Search By Name: </label>
-            <input type="text" id="name" v-model="nameFilter">
-            <label for="desc">Search By Description: </label>
-            <input type="text" id="desc" v-model="descFilter">
+            <div id="name-description-filter">
+                <label id="name-label" for="name">Search By Name: </label>
+                <input type="text" id="name" v-model="nameFilter">
+                <label id="desc-label" for="desc">Search By Description: </label>
+                <input type="text" id="desc" v-model="descFilter">
+            </div>
       </form>
-      <issue-overview class="issue" :issue="issue" :active="active" v-for="issue in filteredIssuesList" :key="issue.issue_id"></issue-overview>
+      <div id="issue-list-box">
+          <issue-overview class="issue" :issue="issue" :active="active" v-for="issue in filteredIssuesList" :key="issue.issue_id"></issue-overview>
+      </div>
+      
   </div>
 </template>
 
@@ -87,5 +91,28 @@ export default {
         flex-grow: 1;
         border-style: solid;
         border-width: 1px;
+    }
+    #issue-list-box {
+        height: 300px;
+        overflow-y: auto;
+        border: 1px solid blue;
+    }
+    #name-description-filter {
+        display: grid;
+        grid-template-columns: 1fr, 1fr;
+        grid-template-areas: "name-label desc-label" "name desc";
+
+    }
+    #name {
+        grid-area: name;
+    }
+    #desc {
+        grid-area: desc;
+    }
+    #name-label {
+        grid-area: name-label;
+    }
+    #desc-label {
+        grid-area: desc-label;
     }
 </style>

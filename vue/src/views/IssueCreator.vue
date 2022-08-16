@@ -1,17 +1,20 @@
 <template>
-  <form v-on:submit.prevent="">
-        <label for="name">Issue Name: </label>
-        <input type="text" id="name" v-model="issue.name">
-        <label for="desc">Issue Description: </label>
-        <textarea id="desc" cols="30" rows="10" v-model="issue.description"></textarea>
-        <label for="exp">Issue Expires: </label>
-        <input type="date" id="exp" v-model="issue.expiration">
+  <form id="create-issue-form" v-on:submit.prevent="">
+        <div id="name-desc-exp-inputs">
+            <label class="Title" for="name">Issue Name: </label>
+            <input class="form-control" type="text" id="name" v-model="issue.name">
+            <label class="Title" for="desc">Issue Description: </label>
+            <textarea class="form-control" id="desc" cols="30" rows="10" v-model="issue.description"></textarea>
+            <label class="Title" for="exp">Issue Expires: </label>
+            <input type="date" id="exp" v-model="issue.expiration"> 
+        </div>
+        
 
         
-        <div>
+        <div id="options-form-list">
             <h3>Options:</h3>
-            <div v-for="(option, index) in issue.options" :key="index">
-                <input size="100" type="text" v-model="issue.options[index]">
+            <div class="option-field" v-for="(option, index) in issue.options" :key="index">
+                <input class="option-input" type="text" v-model="issue.options[index]">
                 <button @click="removeOption(index)">x</button>
             </div>
             <button v-if="issue.options.length < 8" @click="addOption">Add Option</button>
@@ -22,14 +25,17 @@
             <label class="tag" v-for="tag in tags" :key="tag.id" :for="tag.name">{{tag.name}} 
                 <input type="checkbox" :id="tag.name" :value="tag" v-model="issue.tags">
             </label>
-            <div v-for="(tag, index) in issue.newTags" :key="index">
-                <label class="tag"  :for="tag"></label>
-                <input :id="tag" type="text" v-model="issue.newTags[index]">
-                <button @click="removeTag(index)">x</button>
+            <div id="new-tag-box">
+                <div class="new-tag-field" v-for="(tag, index) in issue.newTags" :key="index">
+                    <label class="tag"  :for="tag"></label>
+                    <input :id="tag" type="text" v-model="issue.newTags[index]">
+                    <button @click="removeTag(index)">x</button>
+                </div>
             </div>
+            
             <button @click="addTag()">Add Tag</button>
         </div>
-        <button type="submit" @click="saveChanges">Submit Issue</button>
+        <button type="submit" @click="submitIssue">Submit Issue</button>
         
     </form>
 </template>
@@ -90,5 +96,37 @@ export default {
 </script>
 
 <style>
-    
+    #create-issue-form {
+        display: flex;
+        height: 666px;
+        padding: 12px;
+        overflow-y: auto;
+    }
+    #name-desc-exp-inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        width: 100%;
+    }
+    .option-field {
+        display: flex;
+        flex-direction: row;
+    }
+    .option-input {
+        width: 308px;
+    }
+    #options-form-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    #new-tag-box {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .new-tag-field {
+        display: flex;
+        flex-direction: row;
+    }
 </style>
