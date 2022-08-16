@@ -21,6 +21,9 @@
               <span class="vote-count">{{issue.resultsList.length > 0 ? issue.resultsList[index] : 0}}</span>
           </div>
       </div>
+      <router-link v-if="issue.author.id === $store.state.user.id || $store.state.user.authorities.some(role => role.name == 'ROLE_ADMIN')" :to="{name: 'issue-editor', params: {id: issue.issueId}}">
+          Edit Issue
+      </router-link>
   </div>
 </template>
 
@@ -40,9 +43,7 @@ export default {
         this.getIssue();
     },
     methods: {
-        selectDeselect(index) {
-            console.log('index = ' + index);
-            
+        selectDeselect(index) {            
             if (this.vote[index] == null) {
                 let newValue = 1 + this.vote.reduce((prev, curr) => {
                     return Math.max(prev, curr != null ? curr : 0);
@@ -86,14 +87,13 @@ export default {
                 points: this.vote
             }
             VoteService.createVote(voteDTO).then(response => {
-                console.log(response);
+                if (response.status === 200) {
+                    alert("Vote Submitted!");
+                    this.getIssue();
+                } else {
+                    alert("Failed to submit vote!");
+                }
             })
-
-            //call create vote on vote service
-            //refresh issue
-            alert("Vote Submitted!");
-            this.getIssue();
-            //this.$router.push({name: 'active-issues'});
         }
     }
     

@@ -1,12 +1,12 @@
 <template>
   <div>
-        <form v-on:submit.prevent="saveChanges">
-            <label for="name">Issue Name: </label>
-            <input type="text" id="name" v-model="issue.name">
-            <label for="desc">Issue Description: </label>
-            <textarea id="desc" cols="30" rows="10" v-model="issue.description"></textarea>
-            <label for="exp">Issue Expires: </label>
-            <input type="date" id="exp" v-model="issue.expiration">
+        <form id="issue-edit-form" v-on:submit.prevent="saveChanges">
+            <label class="Title" for="name">Issue Name: </label>
+            <input class="form-control" type="text" id="name" v-model="issue.name">
+            <label class="Title" for="desc">Issue Description: </label>
+            <textarea class="form-control" id="desc" cols="30" rows="10" v-model="issue.description"></textarea>
+            <label class="Title" for="exp">Issue Expires: </label>
+            <input class="form-control" type="date" id="exp" v-model="issue.expiration">
             <h3>Tags:</h3>
             <div id="tag-box">
                 <label class="tag" v-for="tag in getTags()" :key="tag.id" :for="tag.name">{{tag.name}} 
@@ -14,9 +14,8 @@
                 </label>
             </div>
             <button class="Button-Primary" type="submit">Save Changes</button>
-            <button class="Button-Primary" v-if="$store.state.user.authorities.some(role => role.name == 'ROLE_ADMIN')" @click="deleteIssue">Delete Issue</button>    
+            <button v-if="$store.state.user.authorities.some(role => role.name == 'ROLE_ADMIN')" @click="deleteIssue">Delete Issue</button>    
         </form>
-        
     </div>
 </template>
 
@@ -65,7 +64,7 @@ export default {
                 } else {
                     alert('Failed to save! - response status: ' + response.status);
                 }
-            })
+            });
         },
         deleteIssue(event) {
             event.preventDefault();
@@ -86,5 +85,10 @@ export default {
 </script>
 
 <style>
-
+    #issue-edit-form {
+        padding: 10px;
+    }
+    #desc {
+        height: 300px;
+    }
 </style>
