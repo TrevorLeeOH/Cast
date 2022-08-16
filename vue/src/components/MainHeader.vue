@@ -5,24 +5,24 @@
     
       <!-- <a><img src="..\assets\CAST_logo-02.png" alt="logo"></a> -->
       <router-link class="Tab" v-bind:to="{ name: 'home' }">
-        <div class="Fill"></div>
+        <div class="Fill"><img id="star" src="..\assets\Star Icon.png"></div>
         <span class="Tab-name" tag="li" v-bind:to="{ name: 'home' }"><a> Home </a></span>
       </router-link>
      
      
      <router-link class="Tab" v-bind:to="{ name: 'active-issues' }">
-       <div class="Fill"></div>
+       <div class="Fill"><img id="check_icon" src="..\assets\Check Box Icon.png"></div>
       <span class="Tab-name" tag="li">Vote Now!</span>
      </router-link>
     
     <router-link class="Tab" v-bind:to="{ name: 'closed-issues' }">
-      <div class="Fill"></div>
+      <div class="Fill"><img id="lightning_icon" src="..\assets\Lightning Icon.png"></div>
       <span class="Tab-name" tag="li">Poll Results</span>
     </router-link>
    
     <router-link class="Tab"  v-bind:to="{ name: 'register' }">
-      <div class="Fill"></div>
-      <span class="Tab-name" tag="li">Create Account</span>
+      <div class="Fill"><img id="profile_icon" src="..\assets\Profile Icon.png"></div>
+      <span class="Tab-name" tag="li">Profile</span>
     </router-link>
     
       <!-- <router-link class="Tab-name" tag="li" v-bind:to="{ name: 'login' }" v-if="$store.state.token = 'true'">Login</router-link>
@@ -106,7 +106,7 @@ methods: {
   width: 20px;
   height: 19.1px;
   opacity: 0.9;
-  background-color: #d4d6dd;
+  background-color: #fff;
 }
 
 
@@ -126,6 +126,7 @@ methods: {
   text-align: center;
   color: #71727a;
   text-decoration: none;
+  
 }
   
 /* 
@@ -165,9 +166,18 @@ methods: {
   }
 } */
 
-img {
+#logo {
   width: 50px;
   height: auto;
+}
+
+#star {
+   width: 20px;
+  height: 20px;
+  flex-grow: 0;
+  object-fit: contain;
+  opacity: 0.9;
+
 }
 
 </style>

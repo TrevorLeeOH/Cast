@@ -184,11 +184,11 @@ button {
   background-color: #467bf5;
 }
 
-.Fill {
+/* .Fill {
   width: 32px;
   height: 26.7px;
   background-color: #b5cafb;
-}
+} */
 
 #logo {
   width: 100%;

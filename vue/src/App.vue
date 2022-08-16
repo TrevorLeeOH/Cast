@@ -31,12 +31,11 @@
   width: 375px;
   border-radius: 12px;
   border: solid 1px #202858;
- 
+  overflow-y: auto;
 }
 
 .bottom-menu {
   width: 360px;
-  position: inherit;
 
 }
 </style>
