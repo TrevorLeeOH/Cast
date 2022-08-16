@@ -34,7 +34,11 @@ export default {
             });
         },
         getTags() {
-            this.tags = TagService.getTags();
+           TagService.getTags().then(response => {
+               if (response.status == 200) {
+                   this.tags = response.data;
+               }
+           });
         }
     },
     created() {
