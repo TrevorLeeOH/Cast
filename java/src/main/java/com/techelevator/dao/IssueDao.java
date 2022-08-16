@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Issue;
 import com.techelevator.model.IssueDetailsDTO;
 import com.techelevator.model.IssueOverviewDTO;
+import com.techelevator.model.IssueUpdateDTO;
 
 import java.security.Principal;
 import java.util.List;
@@ -14,13 +15,13 @@ public interface IssueDao {
 
     IssueDetailsDTO getIssueByIssueId(int issueId, Principal principal);
 
-    IssueDetailsDTO createIssue(Issue issue);
+    void createIssue(IssueUpdateDTO issue);
 
     void deleteIssueByName(String name);
     void deleteIssueById(int issueId);
 
     void updateIssueByName(Issue updatedIssue);
-    void updateIssueById(Issue updatedIssue);
+    void updateIssueById(IssueUpdateDTO updatedIssue);
 
 
 

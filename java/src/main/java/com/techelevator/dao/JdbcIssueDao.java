@@ -76,15 +76,13 @@ public class JdbcIssueDao implements IssueDao {
 
 
     @Override
-    public IssueDetailsDTO createIssue(Issue issue) {
-
-        String sql = "INSERT INTO issues (issue_name, description, expiration_date, option_a, option_b, option_c, option_d, option_e, option_f, " +
+    public void createIssue(IssueUpdateDTO issue) {
+        String sql = "INSERT INTO issues (issue_name, description, user_id, expiration_date, option_a, option_b, option_c, option_d, option_e, option_f, " +
                 "option_g, option_h)" +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING issue_id;";
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, issue.getName(), issue.getDescription(), issue.getExpiration(), issue.getOptionA(), issue.getOptionB(),
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING issue_id;";
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, issue.getName(), issue.getDescription(), issue.getUserId(), issue.getExpiration(), issue.getOptionA(), issue.getOptionB(),
                 issue.getOptionC(), issue.getOptionD(), issue.getOptionE(), issue.getOptionF(), issue.getOptionG(), issue.getOptionH());
-
-        return getIssueByIssueId(newId, null);
+        tagDao.updateTagsForIssue(newId, issue.getTags());
     }
 
 
@@ -112,11 +110,12 @@ public class JdbcIssueDao implements IssueDao {
     }
 
     @Override
-    public void updateIssueById(Issue updatedIssue) {
+    public void updateIssueById(IssueUpdateDTO updatedIssue) {
         String sql = "UPDATE issues SET issue_name = ?, description = ?, expiration_date = ?, option_a = ?, option_b = ?, option_c = ?, option_d = ?, option_e = ?, " +
                 "option_f = ?, option_g = ?, option_h = ? WHERE issue_id = ?;";
         jdbcTemplate.update(sql, updatedIssue.getName(), updatedIssue.getDescription(),updatedIssue.getExpiration(), updatedIssue.getOptionA(), updatedIssue.getOptionB(), updatedIssue.getOptionC(), updatedIssue.getOptionD(),
                 updatedIssue.getOptionE(), updatedIssue.getOptionF(), updatedIssue.getOptionG(), updatedIssue.getOptionH(), updatedIssue.getIssueId());
+        tagDao.updateTagsForIssue(updatedIssue.getIssueId(), updatedIssue.getTags());
     }
 
 

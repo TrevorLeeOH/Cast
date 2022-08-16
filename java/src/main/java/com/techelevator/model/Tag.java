@@ -1,19 +1,11 @@
 package com.techelevator.model;
 
 public class Tag {
-    public Object[] getTagId;
-    public int[] getTagName;
+
     String tagName;
     int tagId;
 
-    public Tag() {
-    }
-
-    public Tag(String tagName) {
-        this.tagName = tagName;
-    }
-
-    public String getTagName(String tagName) {
+    public String getTagName() {
         return tagName;
     }
 
@@ -21,13 +13,11 @@ public class Tag {
         this.tagName = tagName;
     }
 
-    public int getTagId(int tagId) {
+    public int getTagId() {
         return tagId;
     }
 
     public void setTagId(int tagId) {
         this.tagId = tagId;
     }
-
-
 }

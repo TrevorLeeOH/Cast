@@ -34,7 +34,12 @@ import VoteService from '@/services/VoteService.js';
 export default {
     data() {
         return {
-            issue: {},
+            issue: {
+                author: {
+                    id: -1
+                },
+                issueId: -1
+            },
             vote: []
         }
     },

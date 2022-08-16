@@ -9,8 +9,8 @@
             <input class="form-control" type="date" id="exp" v-model="issue.expiration">
             <h3>Tags:</h3>
             <div id="tag-box">
-                <label class="tag" v-for="tag in getTags()" :key="tag.id" :for="tag.name">{{tag.name}} 
-                    <input type="checkbox" :id="tag.name" :value="tag" v-model="issue.tags">
+                <label class="tag" v-for="tag in tags" :key="tag.tagId" :for="tag.tagName">{{tag.tagName}} 
+                    <input type="checkbox" :id="tag.tagName" :value="tag" v-model="issue.tagList">
                 </label>
             </div>
             <button class="Button-Primary" type="submit">Save Changes</button>
@@ -27,6 +27,7 @@ export default {
     data() {
         return {
             issue: {},
+            tags: []
         }
     },
     methods: {
@@ -40,7 +41,11 @@ export default {
             });
         },
         getTags() {
-            return TagService.getTags();
+            TagService.getTags().then(response => {
+               if (response.status == 200) {
+                   this.tags = response.data;
+               }
+           });
         },
         saveChanges() {
             let issueToSave = {
@@ -56,7 +61,8 @@ export default {
                 optionE: this.issue.optionList.length > 4 ? this.issue.optionList[4] : null,
                 optionF: this.issue.optionList.length > 5 ? this.issue.optionList[5] : null,
                 optionG: this.issue.optionList.length > 6 ? this.issue.optionList[6] : null,
-                optionH: this.issue.optionList.length > 7 ? this.issue.optionList[7] : null
+                optionH: this.issue.optionList.length > 7 ? this.issue.optionList[7] : null,
+                tags: this.issue.tagList
             };         
             IssueService.updateIssue(issueToSave).then(response => {
                 if (response.status == 200) {
@@ -80,6 +86,7 @@ export default {
     },
     created() {
         this.getIssue();
+        this.getTags();
     }
 }
 </script>

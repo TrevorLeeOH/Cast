@@ -74,7 +74,34 @@ export default {
             this.issue.newTags.splice(index, 1);
         },
         submitIssue() {
-            IssueService.createIssue(this.issue).then(response => {
+            let tags = this.issue.tags;
+            this.issue.newTags.forEach(tag => {
+                tags.push(
+                    {
+                        tagId: -1,
+                        tagName: tag
+                    }
+                );
+            });
+
+            let issueToSave = {
+                userId: this.$store.state.user.id,
+                name: this.issue.name,
+                description: this.issue.description,
+                expiration: this.issue.expiration,
+                optionA: this.issue.options[0],
+                optionB: this.issue.options[1],
+                optionC: this.issue.options[2],
+                optionD: this.issue.options.length > 3 ? this.issue.options[3] : null,
+                optionE: this.issue.options.length > 4 ? this.issue.options[4] : null,
+                optionF: this.issue.options.length > 5 ? this.issue.options[5] : null,
+                optionG: this.issue.options.length > 6 ? this.issue.options[6] : null,
+                optionH: this.issue.options.length > 7 ? this.issue.options[7] : null,
+                tags: tags
+            }
+
+            
+            IssueService.createIssue(issueToSave).then(response => {
                 if (response.status == 200) {
                     alert('Issue Saved!');
                 } else {
@@ -84,7 +111,11 @@ export default {
         },
         
         getTags() {
-            this.tags = TagService.getTags();
+            TagService.getTags().then(response => {
+               if (response.status == 200) {
+                   this.tags = response.data;
+               }
+           });
         },
     },
     created() {

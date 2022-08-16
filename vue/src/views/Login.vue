@@ -58,8 +58,7 @@ export default {
 
 <style>
   #login {
-    height: 90%;
-    padding: 12px;
+    padding-left: 12px;
   }
  
 </style>
