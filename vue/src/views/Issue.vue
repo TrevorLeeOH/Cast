@@ -111,9 +111,10 @@ export default {
         margin: 8px;
         width: 342px;
         justify-content: flex-start;
-        align-items: stretch;
+        align-items: flex-start;
         padding: 24px;
         margin-top: 30px;
+        max-height: 640px;
     }
     #name-description {
         display: flex;

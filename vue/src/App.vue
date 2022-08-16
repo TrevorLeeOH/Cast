@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <router-view />
+    
+    <router-view class="router"/>
     
       <main-header class="bottom-menu">
       </main-header>
@@ -26,16 +27,27 @@
 @import url('https://use.typekit.net/ows0uho.css');
 
 #app {
- margin: auto;
+
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
   height: 812px;
   width: 375px;
   border-radius: 12px;
   border: solid 1px #202858;
-  overflow-y: auto;
+  gap: 10px;
+ 
 }
 
 .bottom-menu {
   width: 360px;
+
+}
+
+.router {
+  height: 730px;
+  max-height: 730px;
+   overflow-y: auto;
 
 }
 </style>
