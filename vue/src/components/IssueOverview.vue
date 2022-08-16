@@ -12,17 +12,25 @@
             Tags: 
             <span v-for="tag in issue.tagList" :key="tag.id">{{tag.name + ' '}}</span>
         </div>
-        
         <p id="exp" v-if="active && issue.expiration != null">{{'Closes on ' + formatDate(new Date(issue.expiration))}}</p>
+        <button v-if="$store.state.user.authorities.some(role => role.name == 'ROLE_ADMIN')" @click="deleteIssue">DELETE ISSUE</button>
     </div>
     </div>
 </template>
 
 <script>
+import IssueService from '@/services/IssueService.js';
+
 export default {
     props: ['issue', 'active'],
     methods: {
-        
+        deleteIssue() {
+            if (this.$store.state.user.authorities.some(role => role.name == 'ROLE_ADMIN')) {
+                IssueService.deleteIssue(this.issue.issueId).then(response => {
+                    console.log(response.status);
+                });
+            }
+        },
         formatDate(date) {
             const dateOptions = {
                 month: 'short',

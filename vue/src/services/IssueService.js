@@ -25,8 +25,7 @@ export default {
     },
 
     deleteIssue(issueId) {
-      
-      return issueId;
+      return axios.delete('/issues/delete-id/' + issueId);
     },
 
 
