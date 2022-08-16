@@ -12,6 +12,7 @@ import ActiveIssues from '@/views/ActiveIssues.vue';
 import IssueEditor from '@/views/IssueEditor.vue';
 import IssueCreator from '@/views/IssueCreator.vue';
 import Issue from '@/views/Issue.vue';
+import AccessDenied from '@/views/AccessDenied.vue';
 
 Vue.use(Router)
 
@@ -73,7 +74,8 @@ const router = new Router({
       name: "active-issues",
       component: ActiveIssues,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        requiredRole: null
       }
     },
     {
@@ -81,7 +83,8 @@ const router = new Router({
       name: "issue-editor",
       component: IssueEditor,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        requiredRole: 'ROLE_ISSUER'
       }
     },
     {
@@ -89,7 +92,8 @@ const router = new Router({
       name: "issue-creator",
       component: IssueCreator,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        requiredRole: 'ROLE_ISSUER'
       }
     },
     {
@@ -107,20 +111,35 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/access-denied",
+      name: "access-denied",
+      component: AccessDenied,
+      meta: {
+        requiresAuth: false
+      }
     }
   ]
 })
 
 router.beforeEach((to, from, next) => {
   // Determine if the route requires Authentication
-  const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
+  const requiresAuth = to.meta.requiresAuth;
 
   // If it does and they are not logged in, send the user to "/login"
   if (requiresAuth && store.state.token === '') {
     next("/login");
   } else {
-    // Else let them go to their next destination
-    next();
+    //determine if route requires a role
+    const requiredRole = to.meta.requiredRole;
+    if (requiredRole == null || store.state.user.authorities.some(role => role.name == 'ROLE_ADMIN')) {
+      next();
+    } else if (requiredRole == 'ROLE_ISSUER' && store.state.user.authorities.some(role => role.name == 'ROLE_ISSUER')) {
+      next();
+    } else {
+      next("/access-denied")
+    }
   }
 });
 
