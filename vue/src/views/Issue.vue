@@ -4,23 +4,22 @@
           <h1 id="issue-name">{{issue.name}}</h1>
           <p id="issue-description">{{issue.description}}</p>
       </div>
-      
-      <div id="options-box">
-          <div @click="selectDeselect(index)" :class="vote[index] != null ? 'selected-option' : 'unselected-option'" v-for="(option, index) in issue.optionList" :key="option">
+      <div v-if="!voted && new Date(issue.expiration) > Date.now()" id="options-box">
+          <div  @click="selectDeselect(index)" :class="vote[index] != null ? 'selected-option' : 'unselected-option'" v-for="(option, index) in issue.optionList" :key="option">
               <div v-if="vote[index] != null" class="selected-option-icon">
                   <p class="selected-option-number">{{vote[index] != null ? vote[index] : 'O'}}</p>
               </div>
-              
               <span class="option-label">{{option}}</span>
-
-
-              <!--
-                  <span v-if="voted" class="vote-bar" :style="'width: ' + getVotePercentage(issue.resultsList[index]) * 1000 + 'px'">{{issue.resultsList[index]}}</span>
-            !-->
-              
           </div>
-          <p></p>
-          <button class="Button-Primary" v-if="!voted" @click="castBallot">Cast Ballot</button>
+          <button class="Button-Primary" @click="castBallot">Cast Ballot</button>
+      </div>
+      <div v-else id="options-box">
+          <div class="option-results" v-for="(option, index) in issue.optionList" :key="option">
+              <div class="result-bar" :style="'width: ' + getVotePercentage(issue.resultsList[index]) * 100 + '%'">
+                  <span class="option-label">{{option}}</span>  
+              </div>
+              <span class="vote-count">{{issue.resultsList.length > 0 ? issue.resultsList[index] : 0}}</span>
+          </div>
       </div>
   </div>
 </template>
@@ -33,7 +32,7 @@ export default {
     data() {
         return {
             issue: {},
-            voted: false,
+            voted: true,
             vote: []
         }
     },
@@ -68,6 +67,9 @@ export default {
             });
         },
         getVotePercentage(votes) {
+            if (this.issue.resultsList.length == 0) {
+                return 0;
+            }
             let sum = this.issue.resultsList.reduce((prev, curr) => {
                 return prev + curr;
             }, 0);
@@ -104,10 +106,10 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 18px;
+        padding: 8px;
         gap: 32px;
-        
-
+        margin: 8px;
+        width: 342px;
     }
     #name-description {
         display: flex;
@@ -145,8 +147,9 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        width: 100%;
         padding: 0px;
-        gap: 16px;
+        gap: 12px;
 
     }
     .selected-option {
@@ -215,5 +218,28 @@ export default {
     .option-label {
         display: inline-block;
         width: 200px;
+    }
+    .option-results {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        
+        gap: 16px;
+        border-radius: 12px;
+        width: 300px;
+        border: 0.5px solid #C5C6CC;
+        
+    }
+    .result-bar {
+        display: flex;
+        flex-direction: row;
+        border-radius: 12px;
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #467BF5;
+        padding: 16px;
+        
+    }
+    .vote-count {
+        margin-right: 6px;
     }
 </style>
