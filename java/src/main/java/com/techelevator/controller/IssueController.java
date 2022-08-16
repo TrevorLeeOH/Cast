@@ -92,8 +92,8 @@ public class IssueController {
     };
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(path = "/issues/delete-id/{issue_id}", method = RequestMethod.DELETE)
-    public void deleteIssueById(int issueId) {
+    @RequestMapping(path = "/issues/delete-id/{issueId}", method = RequestMethod.DELETE)
+    public void deleteIssueById(@PathVariable int issueId) {
         issueDao.deleteIssueById(issueId);
     };
 
