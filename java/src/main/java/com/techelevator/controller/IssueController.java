@@ -77,17 +77,21 @@ public class IssueController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ISSUER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
     @PutMapping(path = "/issues/issue-id/{issue_id}")
-    public void updateIssueById(@RequestBody Issue updatedIssue) {
-        issueDao.updateIssueById(updatedIssue);
+    public void updateIssueById(@RequestBody Issue updatedIssue, Principal principal) {
+        String username = principal.getName();
+        int userId = userDao.findIdByUsername(username);
+        if (userId == updatedIssue.getUserId()) {
+            issueDao.updateIssueById(updatedIssue);
+        }
     };
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ISSUER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/issues/delete-name/{issue_name}", method = RequestMethod.DELETE)
     public void deleteIssueByName(String name) {
         issueDao.deleteIssueByName(name);
     };
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ISSUER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/issues/delete-id/{issue_id}", method = RequestMethod.DELETE)
     public void deleteIssueById(int issueId) {
         issueDao.deleteIssueById(issueId);

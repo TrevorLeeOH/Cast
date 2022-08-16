@@ -3,11 +3,11 @@
       <form @submit.prevent="">
             <label>Search By Tag: </label>
             <div id="tag-box">
-                <button @click="tagFilter = []">Clear All Tags</button>
-                <label class="tag" v-for="tag in tags" :key="tag.id" :for="tag.name">{{tag.name + " (" + getNumberOfIssuesForTag(tag.id) + ")"}} 
+                <label class="tag" v-for="tag in tags" :key="tag.id" :for="tag.name">{{tag.name + " (" + getNumberOfIssuesForTag(tag.id) + ")"}}
                     <input type="checkbox" :id="tag.name" :value="tag.id" v-model="tagFilter">
                 </label>
             </div>
+            <button @click="tagFilter = []">Clear All Tags</button>
             <div id="name-description-filter">
                 <label id="name-label" for="name">Search By Name: </label>
                 <input type="text" id="name" v-model="nameFilter">
@@ -89,24 +89,20 @@ export default {
     }
 
     #tag-box {
-         height: 40px;
-         width: 300px;
-         display: flex;
-         flex-direction: columns;
-         flex-wrap: nowrap;
-         align-self: center;
-         gap: 10px;
+        height: 32px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-self: center;
+        gap: 10px;
         overflow-x: auto;
         overflow-y: hidden;
         border: 1px solid blue;
         border-radius: 12px;
+        white-space: nowrap;
     }
-
-    #tag {
-        flex-grow: 1;
-        border-style: solid;
-        border-width: 1px;
-    }
+    
     #issue-list-box {
         height: auto;
         overflow-y: auto;
