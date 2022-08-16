@@ -10,6 +10,10 @@
         <span class="See-more">See more</span>
       </header>
       <issues-list :issues="issues" :tags="tags" :active="true"></issues-list>
+      <header id="cast-ballot">
+        <span class="cast-your-ballot"> Cast Your Ballot</span>
+        <span class="See-more">See more</span>
+      </header>
     </div>
 
     

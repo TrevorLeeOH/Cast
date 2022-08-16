@@ -11,7 +11,9 @@
         </div>
         <div id="bottom-box">
              <div id="tags"> 
+                 <div id="tag">
                 <span v-for="tag in issue.tagList" :key="tag.id">{{tag.name + ' '}}</span>
+                 </div>
                  <router-link id="detail-link" :to="{name: 'issue', params: {id: issue.issueId}}" tag="button">Vote</router-link>
             </div>
             <!-- <p id="exp" v-if="active && issue.expiration != null">{{'Closes on ' + formatDate(new Date(issue.expiration))}}</p> -->
@@ -35,7 +37,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
     .vote-bar {
         background-color: lightblue;
     }
@@ -50,7 +52,7 @@ export default {
             align-items: flex-start;
             padding: 0px;
             width: 343px;
-            height: 155px;
+            height: auto;
             background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #467BF5;
             box-shadow: 3px 3px 13px 2px rgba(0, 0, 0, 0.09);
             border-radius: 12px;
@@ -58,6 +60,7 @@ export default {
             order: 0;
             align-self: stretch;
             flex-grow: 0;
+            border: none;
             }
 
     
@@ -69,7 +72,7 @@ export default {
         padding-left: 16px;
         padding-top: 20px;
         padding-bottom: 20px;
-        
+
         gap: 16px;
         max-width: 343px;
         height: 97px;
@@ -143,6 +146,7 @@ order: 1;
 flex-grow: 0;
     }
     #desc {
+    
         width: 311px;
         height: 32px;
 
@@ -168,6 +172,13 @@ flex-grow: 0;
         order: 1;
         align-self: stretch;
         flex-grow: 0;
+        
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        
     }
 
     #bottom-box {
@@ -181,6 +192,8 @@ flex-grow: 0;
         height: 58px;
 
         border-radius: 16px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
 
         /* Inside auto layout */
 
@@ -188,6 +201,8 @@ flex-grow: 0;
         order: 1;
         align-self: stretch;
         flex-grow: 0;
+        background-color: #fff;
+        
     }
 
     #results {
@@ -195,10 +210,11 @@ flex-grow: 0;
     }
     #tags {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        padding: 0px;
+        
+
 
         width: 343px;
         height: 58px;
@@ -238,4 +254,17 @@ flex-grow: 0;
   padding: 40px;
   background-color: #edf2fe;
 }
+#tag {
+width: 68px;
+  height: 20px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 5px;
+  border-radius: 12px;
+  background-color: #edf2fe;
+}
+
 </style>

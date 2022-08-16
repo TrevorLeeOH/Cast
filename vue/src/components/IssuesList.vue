@@ -153,13 +153,10 @@ export default {
         align-items: flex-start;
         padding: 0px;
         gap: 16px;
+        flex-shrink: 0;
 
         width: 343px;
         height: 668px;
-
-
-        /* Inside auto layout */
-
         flex: none;
         order: 0;
         align-self: stretch;
