@@ -1,5 +1,5 @@
 <template>
-  <div id="issue-box" v-if="issue != {}">
+  <div id="vote-box" v-if="issue != {}">
       <div id="name-description">
           <h1 id="issue-name">{{issue.name}}</h1>
           <p id="issue-description">{{issue.description}}</p>
@@ -100,7 +100,16 @@ export default {
 </script>
 
 <style>
-    
+    #vote-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 32px;
+        padding: 24px;
+        margin-top: 30px;
+
+    }
     #name-description {
         display: flex;
         flex-direction: column;
@@ -160,7 +169,7 @@ export default {
         padding: 16px;
         gap: 16px;
         border-radius: 12px;
-        width: 300px;
+        width: 294px;
         border: 0.5px solid #C5C6CC;
         cursor: pointer;
     }
