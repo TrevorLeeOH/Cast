@@ -33,8 +33,8 @@ public class IssueController {
 
     @PreAuthorize("permitAll")
     @GetMapping(path = "/issues")
-    public List<IssueOverviewDTO> getAllIssues(){
-        return issueDao.getAllIssues();
+    public List<IssueOverviewDTO> getAllIssues(Principal principal) {
+        return issueDao.getAllIssues(principal);
     };
 
     @PreAuthorize("permitAll")
@@ -51,8 +51,8 @@ public class IssueController {
 
     @PreAuthorize("permitAll")
     @GetMapping(path = "/issues/id/{issue_id}")
-    public IssueDetailsDTO getIssueByIssueId(@PathVariable int issue_id){
-        return issueDao.getIssueByIssueId(issue_id);
+    public IssueDetailsDTO getIssueByIssueId(@PathVariable int issue_id, Principal principal){
+        return issueDao.getIssueByIssueId(issue_id, principal);
     };
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ISSUER')")

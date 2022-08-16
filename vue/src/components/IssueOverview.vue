@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .vote-bar {
         background-color: lightblue;
     }

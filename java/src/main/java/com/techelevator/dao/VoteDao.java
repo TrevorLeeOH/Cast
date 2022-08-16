@@ -13,6 +13,8 @@ public interface VoteDao {
 
     boolean createVote(Vote vote);
 
+    public boolean userVoted(int userId, int issueId);
+
 
 
 

@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,11 +29,11 @@ public class JdbcIssueDao implements IssueDao {
     }
 
     @Override
-    public List<IssueOverviewDTO> getAllIssues() {
+    public List<IssueOverviewDTO> getAllIssues(Principal principal) {
         List<IssueOverviewDTO> allIssues = new ArrayList<>();
         SqlRowSet results = jdbcTemplate.queryForRowSet("SELECT * FROM issues;");
         while (results.next()) {
-            allIssues.add(mapRowToIssueOverviewDTO(results));
+            allIssues.add(mapRowToIssueOverviewDTO(results, principal));
         }
         return allIssues;
     }
@@ -43,7 +44,7 @@ public class JdbcIssueDao implements IssueDao {
         String sql = "SELECT * FROM issues WHERE user_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         while (results.next()) {
-            IssueOverviewDTO issue = mapRowToIssueOverviewDTO(results);
+            IssueOverviewDTO issue = mapRowToIssueOverviewDTO(results, null);
             issuesByUser.add(issue);
         }
         return issuesByUser;
@@ -55,19 +56,19 @@ public class JdbcIssueDao implements IssueDao {
         String sql = "SELECT * FROM issues JOIN tags_issues AT issue_id WHERE tag_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, tagId);
         while (results.next()) {
-            IssueOverviewDTO issue = mapRowToIssueOverviewDTO(results);
+            IssueOverviewDTO issue = mapRowToIssueOverviewDTO(results, null);
             issuesByTag.add(issue);
         }
         return issuesByTag;
     }
 
     @Override
-    public IssueDetailsDTO getIssueByIssueId(int issueId) {
+    public IssueDetailsDTO getIssueByIssueId(int issueId, Principal principal) {
         IssueDetailsDTO issue = null;
         String sql = "SELECT * FROM issues WHERE issue_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, issueId);
         if (results.next()) {
-            issue = mapRowToIssueDetailsDTO(results);
+            issue = mapRowToIssueDetailsDTO(results, principal);
         }
         return issue;
     }
@@ -83,7 +84,7 @@ public class JdbcIssueDao implements IssueDao {
         Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, issue.getName(), issue.getDescription(), issue.getExpiration(), issue.getOptionA(), issue.getOptionB(),
                 issue.getOptionC(), issue.getOptionD(), issue.getOptionE(), issue.getOptionF(), issue.getOptionG(), issue.getOptionH());
 
-        return getIssueByIssueId(newId);
+        return getIssueByIssueId(newId, null);
     }
 
 
@@ -119,7 +120,7 @@ public class JdbcIssueDao implements IssueDao {
     }
 
 
-    private IssueOverviewDTO mapRowToIssueOverviewDTO(SqlRowSet results) {
+    private IssueOverviewDTO mapRowToIssueOverviewDTO(SqlRowSet results, Principal principal) {
         IssueOverviewDTO issue = new IssueOverviewDTO();
         issue.setIssueId(results.getInt("issue_id"));
         issue.setName(results.getString("issue_name"));
@@ -132,11 +133,14 @@ public class JdbcIssueDao implements IssueDao {
         issue.setAuthor(userDao.getUserById(results.getInt("user_id")));
         issue.setTagList(tagDao.getTagsForIssue(issue.getIssueId()));
         issue.setOptionList(mapOptions(results));
+        if (principal != null) {
+            issue.setUserVoted(voteDao.userVoted(userDao.findIdByUsername(principal.getName()), issue.getIssueId()));
+        }
 
         return issue;
     }
 
-    private IssueDetailsDTO mapRowToIssueDetailsDTO(SqlRowSet results) {
+    private IssueDetailsDTO mapRowToIssueDetailsDTO(SqlRowSet results, Principal principal) {
         IssueDetailsDTO issue = new IssueDetailsDTO();
         issue.setIssueId(results.getInt("issue_id"));
         issue.setName(results.getString("issue_name"));
@@ -150,6 +154,9 @@ public class JdbcIssueDao implements IssueDao {
         issue.setTagList(tagDao.getTagsForIssue(issue.getIssueId()));
         issue.setOptionList(mapOptions(results));
         issue.setResultsList(mapResults(issue.getIssueId()));
+        if (principal != null) {
+            issue.setUserVoted(voteDao.userVoted(userDao.findIdByUsername(principal.getName()), issue.getIssueId()));
+        }
 
         return issue;
     }
