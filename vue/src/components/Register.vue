@@ -118,7 +118,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 form {
   width: 327px;
   height: 309px;
@@ -160,7 +160,6 @@ form {
   text-align: left;
   color: #2f3036;
   padding-top: 5px;
-  
 }
 
 .Button-Primary {

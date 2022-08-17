@@ -1,9 +1,5 @@
 <template>
   <div class="home">
-    <header>
-      <img id="header-logo" src="..\assets\CAST_logo-02.png"/>
-      <img id="avatar" src="..\assets\Avatar@2x.png"/>
-    </header>
     <div id="home-content">
       <div class="Content2">        
 
@@ -78,21 +74,6 @@ export default {
   top: 170px;
   background: #FFFFFF;
   border-radius: 12px;
-}
-
-header {
-  max-width: 375px;
-  height: 80px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin: 35.4px 0px 0.5px 0;
-  padding: 16px;
-  border: solid 1px #e8e9f1;
-  background-color: #fff;
-  border-top: none;
- 
 }
 
 #header-logo {

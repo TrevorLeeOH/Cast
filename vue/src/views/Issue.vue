@@ -253,17 +253,17 @@ export default {
         margin-right: 6px;
     }
 
-#edit-issue{
+    #edit-issue{
 
-  font-family: 'museo-sans';
-  font-size: 14px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #467bf5;
-  text-decoration: none;
-}
+        font-family: 'museo-sans';
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: left;
+        color: #467bf5;
+        text-decoration: none;
+    }
 </style>
