@@ -60,26 +60,26 @@ public class IssueController {
         issueDao.createIssue(issue);
     };
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ISSUER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ISSUER')")
     @PutMapping(path = "/issues/issue-name/{issue_name}")
     public void updateIssueByName(Issue updatedIssue, Principal principal) {
         String username = principal.getName();
-        int userId = userDao.findIdByUsername(username);
-        if (userId == updatedIssue.getUserId()) {
+        User thisUser = userDao.findByUsername(username);
+        if (thisUser.getId() == updatedIssue.getUserId() || (thisUser.getAuthorities().contains("ROLE_ADMIN"))) {
             issueDao.updateIssueByName(updatedIssue);
             List<Tag> tempTagList = tagDao.getTagsForIssue(updatedIssue.getIssueId());
             for (Tag tag : tempTagList) {
                 tagDao.updateTags(tag);
             }
-        }
+        } //throw exception with 403 status code for these
     };
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ISSUER')") //need to add Principal principal to jdbctemplate to specify user that created issue only
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ISSUER')")
     @PutMapping(path = "/issues/issue-id/{issue_id}")
     public void updateIssueById(@RequestBody IssueUpdateDTO updatedIssue, Principal principal) {
         String username = principal.getName();
-        int userId = userDao.findIdByUsername(username);
-        if (userId == updatedIssue.getUserId()) {
+        User thisUser = userDao.findByUsername(username);
+        if (thisUser.getId() == updatedIssue.getUserId() || (thisUser.getAuthorities().contains("ROLE_ADMIN"))) {
             issueDao.updateIssueById(updatedIssue);
         }
     };
