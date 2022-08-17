@@ -70,5 +70,50 @@ VALUES ('2', '5');
 INSERT INTO tags_issue (tag_id, issue_id)
 VALUES ('2', '6');
 
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('3', '1');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('3', '2');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('3', '3');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('3', '4');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('3', '5');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('4', '1');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('4', '6');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('4', '7');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('4', '8');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('5', '2');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('5', '3');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('5', '5');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('6', '2');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('6', '4');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('6', '5');
+
 
 COMMIT TRANSACTION;
