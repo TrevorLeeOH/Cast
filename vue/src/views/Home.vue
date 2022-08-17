@@ -5,15 +5,25 @@
       <img id="avatar" src="..\assets\Avatar@2x.png"/>
     </header>
     <div id="home-content">
+      <div class="Content2">        
+
+        <span class="Tag-Line">Revealing The Complexity of Public Opinion</span>
+        <p></p>
+        <span class="Rank">Ranked choice polls allow our users to express the full breadth of their thoughts and opinions on a wide variety of topics.</span>
+      <!-- <router-link class="sign-up-button" :to="{name: 'register'}"> Sign Up
+       </router-link> -->
+      
+      </div>
+    
       <header id="cast-ballot">
         <span class="cast-your-ballot"> Cast Your Ballot</span>
         <span class="See-more">See more</span>
       </header>
       <issues-list id="home-issues" :issues="issues" :tags="tags" :active="true"></issues-list>
 
-      <header id="poll-results">
+      <!-- <header id="poll-results">
         <span class="cast-your-ballot">Poll Results</span>
-      </header>
+      </header> -->
     </div>
 
     
@@ -109,7 +119,7 @@ header {
     padding-top: 16px;
     gap: 10px;
     max-width: 375px;
-    height: 669px;
+    height: 569px;
     left: 0px;
     top: 143.41px;
     overflow-y: scroll;
@@ -128,7 +138,7 @@ header {
   order: 0;
   align-self: stretch;
   flex-grow: 0;
-  margin-top: 15px;
+  margin-top: 0px;
   border: none;
   }
 
@@ -181,5 +191,33 @@ overflow-y: scroll;
   padding: 0 0 0 8px;
   border: none;
 }
+
+.Tag-Line {
+  height: 29px;
+  align-self: stretch;
+  flex-grow: 0;
+  font-family: 'museo-sans';
+  font-size: 24px;
+  font-weight: 900;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-align: left;
+  color: #000;
+}
+
+.Content2 {
+  height: 326.6px;
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 24px;
+}
+
 
 </style>

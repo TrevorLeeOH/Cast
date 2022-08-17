@@ -1,6 +1,14 @@
  <template>
-  <div class="active-issues">
-      <h1 class="vote-header">Vote</h1>
+ <div>
+     <header>
+      <img id="header-logo" src="..\assets\CAST_logo-02.png"/>
+      <img id="avatar" src="..\assets\Avatar@2x.png"/>
+    </header>
+     <div class="active-issues">
+        <div id="vote-top">
+        <h1 class="vote-header">Vote</h1>
+        <img id="search-icon" src="..\assets\Search Icon.png">
+      </div>
       <div class="Frame-104">
           <div class="Content-Switcher">
             <div class="Section-1">
@@ -23,6 +31,7 @@
           </div>
       </div>
       <issues-list :issues="issues" :tags="tags" :active="true"></issues-list>
+  </div>
   </div>
 </template>
 
@@ -71,6 +80,7 @@ export default {
 
 <style>
 
+
 .active-issues {
     width: 375px;
     height: 732px;
@@ -83,10 +93,25 @@ export default {
     border-radius: 12px;
 }
 
+#vote-top {
+    display: flex;
+    justify-content: flex-end;
+    width: 300px;
+    gap: 95px;
+}
+
 .vote-header {
+    
     font-family: 'museo-sans';
-    margin-top: 70px;
+    margin-top: 20px;
     font-weight: 800;
+    
+}
+
+#search-icon {
+    height: 20px;
+    margin-top: 20px;
+  
 }
 
 .Frame-104 {
