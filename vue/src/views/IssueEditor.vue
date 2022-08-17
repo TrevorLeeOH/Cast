@@ -98,4 +98,5 @@ export default {
     #desc {
         height: 300px;
     }
+
 </style>

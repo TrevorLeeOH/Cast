@@ -86,6 +86,7 @@ export default {
 
     .issues-list {
         height: 100%;
+        width: 100%;
     }
 
     #tag-list {
@@ -108,6 +109,8 @@ export default {
         gap: 16px;
         height: 75%;
         overflow-y: scroll;
+        overflow-x: hidden;
+        
     }
     #name-description-filter {
         display: grid;

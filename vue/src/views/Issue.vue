@@ -111,10 +111,11 @@ export default {
         flex-direction: column;
         align-items: flex-start;
         gap: 24px;
-        width: 342px;
+        width: 97%;
         overflow-y: scroll;
+        overflow-x: hidden;
         justify-content: flex-start;
-        margin-left: 16px;
+        padding-left: 10px;
     }
     #name-description {
         display: flex;
