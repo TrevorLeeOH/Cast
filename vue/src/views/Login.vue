@@ -1,19 +1,22 @@
 <template>
   <div id="login" class="text-center">
-    <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+    <form id="login-form" @submit.prevent="login">
+      <h1 id="login-header">Welcome!</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
       <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
       </div>
-      <label for="username" class="sr-only">Username</label>
-      <input type="text" id="username" class="form-control" placeholder="Username" v-model="user.username" required autofocus/>
-      <label for="password" class="sr-only">Password</label>
-      <input type="password" id="password" class="form-control" placeholder="Password" v-model="user.password" required/>
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit" id="sign-in-button" class="Button-Primary">Sign in</button>
+      <div class="user-pass-frame">
+        <input type="text" class="user-pass-input" placeholder="Username" v-model="user.username" required autofocus/>
+      </div>
+      <div class="user-pass-frame">
+        <input type="password" class="user-pass-input" placeholder="Password" v-model="user.password" required/>
+      </div>
+      
+      <router-link id="register-link" :to="{ name: 'register' }">Need an account?</router-link>
+      <button type="submit" id="sign-in-button">Sign in</button>
     </form>
   </div>
 </template>
@@ -41,7 +44,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            this.$router.push({name: 'home'});
           }
         })
         .catch(error => {
@@ -56,20 +59,63 @@ export default {
 };
 </script>
 
-<style>
-  #login {
-    height: 718px;
-    padding-top: 12px;
+<style scoped>
+  #login-header {
+    font-family: 'museo-sans';
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 24px;
+    line-height: 29px;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: #000000;
+  }
+  #login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px 24px;
+    
+
+  }
+  .user-pass-frame {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    color: #8F9098;
+    border: 1px solid #C5C6CC;
+    border-radius: 12px;
     padding-left: 12px;
   }
-  #password {
-    height: 8px;
+  .user-pass-input {
+    font-family: 'museo-sans';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    border: none;
+    width: 290px;
   }
-  #username {
-    height: 8px;
+  #register-link {
+    font-family: 'museo-sans';
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    text-decoration: none;
+    color: #467BF5;
   }
+
   #sign-in-button {
     border-radius: 8px;
+    font-family: 'museo-sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    height: 48px;
+  }
+  .alert-danger {
+    color: red;
   }
   
  

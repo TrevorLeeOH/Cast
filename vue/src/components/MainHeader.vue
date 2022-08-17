@@ -3,32 +3,45 @@
   
   <div class="navbar" id="myNavBar">
     
-      <!-- <a><img src="..\assets\CAST_logo-02.png" alt="logo"></a> -->
-      <router-link class="Tab" v-bind:to="{ name: 'home' }">
-        <div class="Fill"><img id="star" src="..\assets\Star Icon.png"></div>
-        <span class="Tab-name" tag="li" v-bind:to="{ name: 'home' }"><a> Home </a></span>
-      </router-link>
+    <router-link v-if="$store.state.currentTab === 'home'" class="Tab" :to="{ name: 'home' }">
+      <div class="Fill"><img id="star" src="@/assets/StarIconSelected.png"></div>
+      <p class="Tab-name Tab-name-selected" tag="li">Home</p>
+    </router-link>
+    <router-link v-else class="Tab" v-bind:to="{ name: 'home' }">
+      <div class="Fill"><img id="star" src="@/assets/StarIcon.png"></div>
+      <p class="Tab-name" tag="li">Home</p>
+    </router-link>
+
+    <router-link v-if="$store.state.currentTab === 'active-issues'" class="Tab" :to="{ name: 'active-issues'}">
+      <div class="Fill"><img id="star" src="@/assets/CheckBoxIconSelected.png"></div>
+      <p class="Tab-name Tab-name-selected" tag="li">Vote Now!</p>
+    </router-link>
+    <router-link v-else class="Tab" v-bind:to="{ name: 'active-issues' }">
+      <div class="Fill"><img id="star" src="@/assets/CheckBoxIcon.png"></div>
+      <p class="Tab-name" tag="li">Vote Now!</p>
+    </router-link>
+
+    <router-link v-if="$store.state.currentTab === 'closed-issues'" class="Tab" :to="{ name: 'closed-issues'}">
+      <div class="Fill"><img id="star" src="@/assets/LightningIconSelected.png"></div>
+      <p class="Tab-name Tab-name-selected" tag="li">Poll Results</p>
+    </router-link>
+    <router-link v-else class="Tab" v-bind:to="{ name: 'closed-issues' }">
+      <div class="Fill"><img id="star" src="@/assets/LightningIcon.png"></div>
+      <p class="Tab-name" tag="li">Poll Results</p>
+    </router-link>
+
+    <router-link v-if="$store.state.currentTab === 'logout' || $store.state.currentTab === 'login'" class="Tab" :to="{ name: ($store.state.token ? 'logout' : 'login') }">
+      <div class="Fill"><img id="star" src="@/assets/ProfileIconSelected.png"></div>
+      <p class="Tab-name Tab-name-selected" tag="li">{{$store.state.token ? 'Logout' : 'Login'}}</p>
+    </router-link>
+    <router-link v-else class="Tab" v-bind:to="{ name: ($store.state.token ? 'logout' : 'login') }">
+      <div class="Fill"><img id="star" src="@/assets/ProfileIcon.png"></div>
+      <p class="Tab-name" tag="li">{{$store.state.token ? 'Logout' : 'Login'}}</p>
+    </router-link>
      
      
-     <router-link class="Tab" v-bind:to="{ name: 'active-issues' }">
-       <div class="Fill"><img id="check_icon" src="..\assets\Check Box Icon.png"></div>
-      <span class="Tab-name" tag="li">Vote Now!</span>
-     </router-link>
     
-    <router-link class="Tab" v-bind:to="{ name: 'closed-issues' }">
-      <div class="Fill"><img id="lightning_icon" src="..\assets\Lightning Icon.png"></div>
-      <span class="Tab-name" tag="li">Poll Results</span>
-    </router-link>
-   
-    <router-link class="Tab" v-bind:to="{ name: 'login' }" v-if="$store.state.token = 'true'">
-      <div class="Fill"><img id="profile_icon" src="..\assets\Profile Icon.png"></div>
-      <span class="Tab-name" tag="li">Login</span>
-    </router-link>
     
-    <router-link class="Tab" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != 'true'">
-      <div class="Fill"><img id="profile_icon" src="..\assets\Profile Icon.png"></div>
-      <span class="Tab-name" tag="li">Logout</span>
-    </router-link>
     
       <!-- <router-link class="Tab-name" tag="li" v-bind:to="{ name: 'login' }" v-if="$store.state.token = 'true'">Login</router-link>
       <router-link class="Tab-name" tag="li" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != 'true'">Logout</router-link>
@@ -38,24 +51,23 @@
 
 <script>
 export default {
-
-
-methods: { 
-  myFunction() {
-  var x = document.getElementById("myNavbar");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
+  methods: { 
+    myFunction() {
+      var x = document.getElementById("myNavbar");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+    
+    // var x = document.getElementById("myNavbar");
+    // if (x.className === "navbar") {
+    //   x.className += "responsive";
+    // } else {
+    //   x.className = "navbar";
+    // }
   }
-  // var x = document.getElementById("myNavbar");
-  // if (x.className === "navbar") {
-  //   x.className += "responsive";
-  // } else {
-  //   x.className = "navbar";
-  // }
-}
-}
 }
 </script>
 
@@ -66,23 +78,16 @@ methods: {
   height: 58px;
   display: flex;
   flex-direction: row;
-  justify-self: flex-end;
-  justify-content: center;
-  align-items: stretch;
-  gap: 4px;
-  position: relative;
-  flex-grow: 1;
- top: 0px;
-  padding-top: 16px;
-  opacity: 0.9;
+  justify-content: space-evenly;
+  padding-top: 24px;
   background-color: #fff;
-  box-shadow: 3px -3px -2px 2px rgba(0, 0, 0, 0.09);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  box-shadow: 3px -3px 13px 2px rgba(0, 0, 0, 0.09);
 }
 
 .Tab {
-
-  flex: 1;
-  min-width: 25%;
+  
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -93,22 +98,22 @@ methods: {
 }
 
 .Tab-name {
-  width: 35px;
   height: 14px;
-  flex-grow: 0;
   opacity: 0.9;
   font-family: 'museo-sans';
   font-size: 12px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.17;
+  line-height: 14px;
   letter-spacing: 0.18px;
+  white-space: nowrap;
   text-align: center;
   color: #71727a;
-  list-style-type: none;
+  margin: 0px;
 }
-
+.Tab-name-selected {
+  font-weight: 600;
+  color: #1F2024;
+}
 .Fill {
   width: 20px;
   height: 19.1px;
@@ -179,7 +184,7 @@ methods: {
 }
 
 #star {
-   width: 20px;
+  width: 20px;
   height: 20px;
   flex-grow: 0;
   object-fit: contain;

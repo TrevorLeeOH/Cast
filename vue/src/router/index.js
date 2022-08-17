@@ -134,8 +134,10 @@ router.beforeEach((to, from, next) => {
     //determine if route requires a role
     const requiredRole = to.meta.requiredRole;
     if (requiredRole == null || store.state.user.authorities.some(role => role.name == 'ROLE_ADMIN')) {
+      store.commit("SET_CURRENT_TAB", to.name);
       next();
     } else if (requiredRole == 'ROLE_ISSUER' && store.state.user.authorities.some(role => role.name == 'ROLE_ISSUER')) {
+      store.commit("SET_CURRENT_TAB", to.name);
       next();
     } else {
       next("/access-denied")

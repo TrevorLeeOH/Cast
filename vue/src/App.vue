@@ -7,7 +7,7 @@
     
     <router-view class="router"/>
     
-    <main-header class="bottom-menu"></main-header>
+    <main-header></main-header>
       
     
   </div>
@@ -45,19 +45,16 @@ header {
 }
 
 #app {
-
+  justify-self: center;
   flex-direction: column;
   justify-content: space-between;
-  margin: auto;
   height: 812px;
   width: 375px;
   border-radius: 12px;
   border: solid 1px #202858; 
 }
 
-.bottom-menu {
-  width: 360px;
-}
+
 
 .router {
   height: 615px;

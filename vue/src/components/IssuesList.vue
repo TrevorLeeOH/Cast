@@ -15,9 +15,10 @@
             <div id="tag-filter" v-if="showTagFilter">
                 <button id="clear-tags" @click="tagFilter = []">Clear All</button>
                 <div id="tag-list">
-                    <label class="tag" v-for="tag in tags" :key="tag.tagId" :for="tag.tagName">{{tag.tagName + " (" + getNumberOfIssuesForTag(tag.tagId) + ")"}}
+                    <div class="tag" v-for="tag in tags" :key="tag.tagId">
+                        <p class="tag-text">{{tag.tagName + " (" + getNumberOfIssuesForTag(tag.tagId) + ")"}}</p>
                         <input type="checkbox" :id="tag.tagName" :value="tag.tagId" v-model="tagFilter">
-                    </label>
+                    </div>
                 </div>
             </div>
             
@@ -201,7 +202,7 @@ export default {
     #name-filter {
         display: flex;
         flex-direction: row;
-        align-items: flex-end;
+        align-items: center;
         padding: 12px 16px;
         gap: 16px;
         height: 16px;
@@ -210,10 +211,30 @@ export default {
     }
     #name-filter-input {
         border: none;
+        height: 28px;
         background-color: #F8F9FE;
     }
-    #name-filter-icon {
-
+    
+    .tag {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        padding: 4px 5px;
+        height: 20px;
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #467BF5;
+        border-radius: 12px;
+    }
+    .tag-text {
+        font-family: 'museo-sans';
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 12px;
+        text-align: center;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #467BF5;
     }
 
 

@@ -184,14 +184,14 @@ export default {
     }
     #tags {
         margin-left: 8px;
+        margin-right: 8px;
         display: flex;
         flex-direction: row;
-        justify-content: center;
         align-items: center;
         height: 58px;
         border-radius: 16px;
         gap: 4px;
-        overflow-x: scroll;
+        overflow-x: auto;
         
     }
     #tag {
