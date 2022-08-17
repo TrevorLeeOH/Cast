@@ -65,7 +65,14 @@ public class IssueController {
     public void updateIssueByName(Issue updatedIssue, Principal principal) {
         String username = principal.getName();
         User thisUser = userDao.findByUsername(username);
-        if (thisUser.getId() == updatedIssue.getUserId() || (thisUser.getAuthorities().contains("ROLE_ADMIN"))) {
+        boolean userIsAdmin = false;
+        for (Authority auth : thisUser.getAuthorities()) {
+            if (auth.getName().equals("ROLE_ADMIN")) {
+                userIsAdmin = true;
+                break;
+            }
+        }
+        if (thisUser.getId() == updatedIssue.getUserId() || userIsAdmin) {
             issueDao.updateIssueByName(updatedIssue);
             List<Tag> tempTagList = tagDao.getTagsForIssue(updatedIssue.getIssueId());
             for (Tag tag : tempTagList) {
