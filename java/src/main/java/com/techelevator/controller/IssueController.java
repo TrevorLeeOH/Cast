@@ -79,7 +79,14 @@ public class IssueController {
     public void updateIssueById(@RequestBody IssueUpdateDTO updatedIssue, Principal principal) {
         String username = principal.getName();
         User thisUser = userDao.findByUsername(username);
-        if (thisUser.getId() == updatedIssue.getUserId() || (thisUser.getAuthorities().contains("ROLE_ADMIN"))) {
+        boolean userIsAdmin = false;
+        for (Authority auth : thisUser.getAuthorities()) {
+            if (auth.getName().equals("ROLE_ADMIN")) {
+                userIsAdmin = true;
+                break;
+            }
+        }
+        if (thisUser.getId() == updatedIssue.getUserId() || userIsAdmin) {
             issueDao.updateIssueById(updatedIssue);
         }
     };
