@@ -1,6 +1,27 @@
  <template>
-  <div>
-      <h1>Active Issues</h1>
+  <div class="active-issues">
+      <h1 class="vote-header">Vote</h1>
+      <div class="Frame-104">
+          <div class="Content-Switcher">
+            <div class="Section-1">
+                <section>All Polls</section>
+            </div>
+            <div class="Divider"></div>
+            <div class="Section-2">
+                <section>Popular</section>
+            </div>
+            <div class="Divider"></div>
+            <div class="Section-3">
+                <section>Your Votes</section>
+            </div>
+          </div>
+      </div>
+      <div class="Filtering">
+          <div class="Filter">
+              <img src="..\assets\Filter Icon.png" class="filter-icon">
+              <span class="filter-title">Filter</span>
+          </div>
+      </div>
       <issues-list :issues="issues" :tags="tags" :active="true"></issues-list>
   </div>
 </template>
@@ -49,5 +70,156 @@ export default {
 </script>
 
 <style>
+
+.active-issues {
+    width: 375px;
+    height: 732px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    background-color: #fff;
+    border-radius: 12px;
+}
+
+.vote-header {
+    font-family: 'museo-sans';
+    margin-top: 70px;
+    font-weight: 800;
+}
+
+.Frame-104 {
+  height: 59px;
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+}
+
+
+.Section-1 {
+  height: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+.Section-2 {
+  height: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+
+.Section-3 {
+  height: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+
+.Content-Switcher {
+  width: 343px;
+  height: 30px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  border-radius: 16px;
+  background-color: #f8f9fe;
+}
+
+section {
+  width: 70px;
+  height: 15px;
+  flex-grow: 0;
+  font-family: 'museo-sans';
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #71727a;
+}
+
+.Divider {
+  width: 1px;
+  height: 10px;
+  flex-grow: 0;
+  background-color: var(--neutral-light-darkest);
+}
+
+.Filtering {
+  width: 325px;
+  height: 52px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+}
+
+.Filter {
+  width: 50px;
+  height: 20px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: solid 0.5px; color: #c5c6cc;
+}
+
+.filter-icon {
+    width: 12px;
+    height: 12px;
+    flex-grow: 0;
+    object-fit: contain;
+}
+
+.filter-title {
+  width: 34px;
+  height: 16px;
+  flex-grow: 0;
+  font-family: 'museo-sans';
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.14;
+  letter-spacing: 0.14px;
+  text-align: left;
+  color: #1f2024;
+}
 
 </style>

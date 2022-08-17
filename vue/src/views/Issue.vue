@@ -21,7 +21,7 @@
               <span class="vote-count">{{issue.resultsList.length > 0 ? issue.resultsList[index] : 0}}</span>
           </div>
       </div>
-      <router-link v-if="issue.author.id === $store.state.user.id || $store.state.user.authorities.some(role => role.name == 'ROLE_ADMIN')" :to="{name: 'issue-editor', params: {id: issue.issueId}}">
+      <router-link id="edit-issue" v-if="issue.author.id === $store.state.user.id || $store.state.user.authorities.some(role => role.name == 'ROLE_ADMIN')" :to="{name: 'issue-editor', params: {id: issue.issueId}}">
           Edit Issue
       </router-link>
   </div>
@@ -252,4 +252,18 @@ export default {
     .vote-count {
         margin-right: 6px;
     }
+
+#edit-issue{
+
+  font-family: 'museo-sans';
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #467bf5;
+  text-decoration: none;
+}
 </style>

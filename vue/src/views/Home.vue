@@ -9,10 +9,10 @@
         <span class="cast-your-ballot"> Cast Your Ballot</span>
         <span class="See-more">See more</span>
       </header>
-      <issues-list :issues="issues" :tags="tags" :active="true"></issues-list>
-      <header id="cast-ballot">
-        <span class="cast-your-ballot"> Cast Your Ballot</span>
-        <span class="See-more">See more</span>
+      <issues-list id="home-issues" :issues="issues" :tags="tags" :active="true"></issues-list>
+
+      <header id="poll-results">
+        <span class="cast-your-ballot">Poll Results</span>
       </header>
     </div>
 
@@ -67,6 +67,7 @@ export default {
   left: 0px;
   top: 170px;
   background: #FFFFFF;
+  border-radius: 12px;
 }
 
 header {
@@ -81,6 +82,7 @@ header {
   border: solid 1px #e8e9f1;
   background-color: #fff;
   border-top: none;
+ 
 }
 
 #header-logo {
@@ -97,6 +99,7 @@ header {
   object-fit: contain;
   border-radius: 25px;
   background-color: #edf2fe;
+  margin-right: 10px;
 }
 
 #home-content {
@@ -104,7 +107,7 @@ header {
     flex-direction: column;
     align-items: flex-start;
     padding-top: 16px;
-    gap: 40px;
+    gap: 10px;
     max-width: 375px;
     height: 669px;
     left: 0px;
@@ -113,32 +116,29 @@ header {
 }
 
 #cast-ballot {
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: flex-end;
-padding: 0px 0px 0px 8px;
-gap: 138px;
-
-width: 343px;
-height: 17px;
-
-
-/* Inside auto layout */
-
-flex: none;
-order: 0;
-align-self: stretch;
-flex-grow: 0;
-}
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0px 0px 0px 8px;
+  gap: 138px;
+  width: 343px;
+  height: 17px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin-top: 15px;
+  border: none;
+  }
 
 .cast-your-ballot {
 
-  width: 111px;
+  width: auto;
   height: 17px;
   flex-grow: 0;
   font-family: 'museo-sans';
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 800;
   font-stretch: normal;
   font-style: normal;
@@ -161,7 +161,25 @@ flex-grow: 0;
   line-height: normal;
   letter-spacing: normal;
   text-align: left;
-  color: var(--highlight-darkest);
+  color: #467bf5;
+}
+
+#home-issues {
+max-height: 339px;
+overflow-y: scroll;
+}
+
+#poll-results {
+  height: 17px;
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 138px;
+  padding: 0 0 0 8px;
+  border: none;
 }
 
 </style>

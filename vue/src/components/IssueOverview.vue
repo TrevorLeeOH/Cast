@@ -3,7 +3,7 @@
         <div id="top-box">
             <div id="content">
                 <div id="title">
-                    <h2 id="issue-title">{{issue.name}}</h2>
+                    <p id="issue-title">{{issue.name}}</p>
                     <!-- <p id="issue-author" :class="{'user-author': $store.state.user.user_id === issue.author.username}">{{'by ' + issue.author.username}}</p> -->
                 </div>
                 <p id="desc">{{issue.description}}</p>
@@ -12,7 +12,7 @@
         <div id="bottom-box">
              <div id="tags"> 
                  <div id="tag">
-                <span v-for="tag in issue.tagList" :key="tag.id">{{tag.name + ' '}}</span>
+                    <span v-for="tag in issue.tagList" :key="tag.id">{{tag.name + ' '}}</span>
                  </div>
                  <router-link id="detail-link" :to="{name: 'issue', params: {id: issue.issueId}}" tag="button">Vote</router-link>
             </div>
@@ -67,15 +67,13 @@ export default {
     #top-box {
         display: flex;
         flex-direction: row;
-        justify-content: center;
         align-items: center;
         padding-left: 16px;
         padding-top: 20px;
         padding-bottom: 20px;
-
         gap: 16px;
         max-width: 343px;
-        height: 97px;
+        max-height: 97px;
         flex: none;
         order: 0;
         align-self: stretch;
@@ -105,7 +103,7 @@ export default {
         font-family: 'museo-sans';
         font-style: normal;
         font-weight: 900;
-        font-size: 18px;
+        font-size: 20px;
         line-height: 21px;
         /* identical to box height, or 117% */
 
@@ -128,6 +126,7 @@ export default {
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        align-self: center;
         padding: 12px 16px;
         gap: 8px;
 
@@ -139,64 +138,41 @@ export default {
         background: #467BF5;
         border-radius: 8px;
 
-/* Inside auto layout */
+        /* Inside auto layout */
 
-flex: none;
-order: 1;
-flex-grow: 0;
-    }
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+        
+        }
     #desc {
     
         width: 311px;
         height: 32px;
-
-        /* Body/Body S */
-
         font-family: 'museo-sans';
         font-style: normal;
         font-weight: 400;
         font-size: 14px;
         line-height: 16px;
-        /* or 114% */
-
         letter-spacing: 0.01em;
-
-        /* Neutral/Dark/Light */
-
         color: #71727A;
-
-
-        /* Inside auto layout */
-
         flex: none;
         order: 1;
         align-self: stretch;
         flex-grow: 0;
-        
         overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        
-    }
+        }
 
     #bottom-box {
-            display: flex;
-        flex-direction: column;
+        display: flex;
+        flex-direction: row;
         justify-content: center;
-        align-items: center;
-        padding: 0px;
-
-        width: 343px;
-        height: 58px;
-
+        align-items: flex-start;
+        max-width: 343px;
+        max-height: 58px;
         border-radius: 16px;
         border-top-left-radius: 0px;
         border-top-right-radius: 0px;
-
-        /* Inside auto layout */
-
         flex: none;
         order: 1;
         align-self: stretch;
@@ -211,22 +187,17 @@ flex-grow: 0;
     #tags {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 160px;
         align-items: center;
-        
-
-
         width: 343px;
         height: 58px;
-
         border-radius: 16px;
-
-        /* Inside auto layout */
-
         flex: none;
         order: 1;
         align-self: stretch;
         flex-grow: 0;
+        
             }
     #exp {
         grid-area: exp;
@@ -255,8 +226,8 @@ flex-grow: 0;
   background-color: #edf2fe;
 }
 #tag {
-width: 68px;
-  height: 20px;
+width: 55px;
+  height: 10px;
   flex-grow: 0;
   display: flex;
   flex-direction: row;
@@ -265,6 +236,8 @@ width: 68px;
   padding: 4px 5px;
   border-radius: 12px;
   background-color: #edf2fe;
+  align-self: flex-start;
+  margin-top: 8px;
 }
 
 </style>

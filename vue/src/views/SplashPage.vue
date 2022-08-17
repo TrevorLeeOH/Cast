@@ -37,7 +37,8 @@ export default {
 .Frame-53 {
   
   width: 375px;
-  height: 811.6px;
+  height: 730px;
+  max-height: 730px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
