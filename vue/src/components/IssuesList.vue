@@ -1,10 +1,17 @@
 <template>
   <div class="issues-list">
       <form id="issue-search-form" @submit.prevent="">
-            <div id="filter" @click="showTagFilter = !showTagFilter">
-                <img id="filter-icon" src="@/assets/Filter Icon.png" alt="">
-                <p id="filter-title">Filter</p>
-            </div>                
+            <div id="filters-box">
+                <div id="filter" @click="showTagFilter = !showTagFilter">
+                    <img id="filter-icon" src="@/assets/Filter Icon.png" alt="">
+                    <p id="filter-title">Filter</p>
+                </div>
+                <div id="name-filter">
+                    <img src="@/assets/SearchIconBlack.png" alt="">
+                    <input type="text" id="name-filter-input" v-model="nameFilter">
+                </div> 
+            </div>
+            
             <div id="tag-filter" v-if="showTagFilter">
                 <button id="clear-tags" @click="tagFilter = []">Clear All</button>
                 <div id="tag-list">
@@ -14,12 +21,7 @@
                 </div>
             </div>
             
-            <div id="name-description-filter">
-                <label class="Title" id="name-label" for="name">Search By Name: </label>
-                <input type="text" id="name" v-model="nameFilter">
-                <label class="Title" id="desc-label" for="desc">Search By Description: </label>
-                <input type="text" id="desc" v-model="descFilter">
-            </div>
+            
       </form>
       <div id="issue-list-box">
           <issue-overview :issue="issue" :active="active" v-for="issue in filteredIssuesList" :key="issue.issue_id"></issue-overview>
@@ -190,6 +192,28 @@ export default {
         letter-spacing: 0.14px;
         text-align: left;
         color: #1f2024;
+    }
+    #filters-box {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+    }
+    #name-filter {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        padding: 12px 16px;
+        gap: 16px;
+        height: 16px;
+        background: #F8F9FE;
+        border-radius: 24px;
+    }
+    #name-filter-input {
+        border: none;
+        background-color: #F8F9FE;
+    }
+    #name-filter-icon {
+
     }
 
 

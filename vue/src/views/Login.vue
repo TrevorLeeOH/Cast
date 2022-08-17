@@ -12,8 +12,8 @@
       <input type="text" id="username" class="form-control" placeholder="Username" v-model="user.username" required autofocus/>
       <label for="password" class="sr-only">Password</label>
       <input type="password" id="password" class="form-control" placeholder="Password" v-model="user.password" required/>
-      <router-link :to="{ name: 'home' }">Need an account?</router-link>
-      <button type="submit" class="Button-Primary">Sign in</button>
+      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <button type="submit" id="sign-in-button" class="Button-Primary">Sign in</button>
     </form>
   </div>
 </template>
@@ -62,5 +62,15 @@ export default {
     padding-top: 12px;
     padding-left: 12px;
   }
+  #password {
+    height: 8px;
+  }
+  #username {
+    height: 8px;
+  }
+  #sign-in-button {
+    border-radius: 8px;
+  }
+  
  
 </style>

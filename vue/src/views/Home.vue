@@ -13,10 +13,13 @@
     
       <header id="cast-ballot">
         <span class="cast-your-ballot"> Cast Your Ballot</span>
-        <span class="See-more">See more</span>
+        <router-link :to="{name: 'active-issues'}" class="See-more">See more</router-link>
       </header>
+      <issue-overview :issue="issue" :active="true"></issue-overview>
+      
+      <!--
       <issues-list id="home-issues" :issues="issues" :tags="tags" :active="true"></issues-list>
-
+      !-->
       <!-- <header id="poll-results">
         <span class="cast-your-ballot">Poll Results</span>
       </header> -->
@@ -27,7 +30,8 @@
 </template>
 
 <script>
-import IssuesList from '@/components/IssuesList.vue';
+//import IssuesList from '@/components/IssuesList.vue';
+import IssueOverview from '@/components/IssueOverview.vue';
 import IssueService from '@/services/IssueService.js';
 import TagService from '@/services/TagService.js';
 
@@ -35,20 +39,19 @@ export default {
     name: 'home',
     data() {
         return {
-            issues: [],
-            tags: []
+          issue: {}
         }
     },
     components: {
-        IssuesList,
+      //IssuesList,
+      IssueOverview
     },
 
     methods: {
         getIssues() {
-            IssueService.getActiveIssues().then(response => {
+            IssueService.getIssue(2).then(response => {
                 if (response.status == 200) {
-                    let allIssues = response.data;
-                    this.issues = allIssues.filter(i => i.expiration == null || new Date(i.expiration) > Date.now());
+                    this.issue = response.data;
                 } else {
                     alert("failed");
                 }
@@ -69,7 +72,6 @@ export default {
 
 .home {
   max-width: 375px;
-  height: 812px;
   left: 0px;
   top: 170px;
   background: #FFFFFF;
