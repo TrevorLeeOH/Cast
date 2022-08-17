@@ -1,7 +1,10 @@
 <template>
   <div class="issues-list">
       <form id="issue-search-form" @submit.prevent="">
-            <button id="search-by-tag" @click="showTagFilter = !showTagFilter">Search By Tag</button>
+            <div id="filter" @click="showTagFilter = !showTagFilter">
+                <img id="filter-icon" src="@/assets/Filter Icon.png" alt="">
+                <p id="filter-title">Filter</p>
+            </div>                
             <div id="tag-filter" v-if="showTagFilter">
                 <button id="clear-tags" @click="tagFilter = []">Clear All</button>
                 <div id="tag-list">
@@ -9,7 +12,6 @@
                         <input type="checkbox" :id="tag.tagName" :value="tag.tagId" v-model="tagFilter">
                     </label>
                 </div>
-                
             </div>
             
             <div id="name-description-filter">
@@ -22,7 +24,6 @@
       <div id="issue-list-box">
           <issue-overview :issue="issue" :active="active" v-for="issue in filteredIssuesList" :key="issue.issue_id"></issue-overview>
       </div>
-      
   </div>
 </template>
 
@@ -110,7 +111,6 @@ export default {
         height: 75%;
         overflow-y: scroll;
         overflow-x: hidden;
-        
     }
     #name-description-filter {
         display: grid;
@@ -146,7 +146,51 @@ export default {
         border-radius: 12px;
     }
     #search-by-tag {
+        display: flex;
+        flex-direction: row;
+        background: none;
+        color: black;
+        align-items: center;
         border-radius: 8px;
+        border: 0.5px solid #C5C6CC;
+        border-radius: 12px;
     }
+    
+    #filter {
+        width: 50px;
+        height: 20px;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 12px;
+        border-radius: 12px;
+        border: solid 0.5px; color: #c5c6cc;
+    }
+
+    #filter-icon {
+        width: 12px;
+        height: 12px;
+        flex-grow: 0;
+        object-fit: contain;
+    }
+
+    #filter-title {
+        width: 34px;
+        height: 16px;
+        flex-grow: 0;
+        font-family: 'museo-sans';
+        font-size: 14px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: 0.14px;
+        text-align: left;
+        color: #1f2024;
+    }
+
 
 </style>

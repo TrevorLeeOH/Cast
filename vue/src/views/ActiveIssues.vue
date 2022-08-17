@@ -55,8 +55,6 @@ export default {
     height: 530px;
   }
 
-  
-
   #vote-top {
     display: flex;
     justify-content: flex-end;

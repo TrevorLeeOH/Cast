@@ -61,8 +61,7 @@ header {
 
 .router {
   height: 615px;
-  
-  overflow-y: auto;
+  overflow-y: hidden;
   width: 375px;
   max-width: 375px;
 
@@ -84,6 +83,20 @@ button {
   color: #fff;
   background-color: #467bf5;
   border: none;
+}
+
+.form-control {
+  height: 48px;
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: solid 1px #c5c6cc;
 }
 </style>
 
