@@ -7,8 +7,7 @@
     
     <router-view class="router"/>
     
-      <main-header class="bottom-menu">
-      </main-header>
+    <main-header class="bottom-menu"></main-header>
       
     
   </div>
@@ -62,7 +61,7 @@ header {
 
 .router {
   height: 615px;
-  max-height: 730px;
+  
   overflow-y: auto;
   width: 375px;
   max-width: 375px;

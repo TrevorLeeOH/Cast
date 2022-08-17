@@ -1,10 +1,9 @@
  <template>
-    <div>
+    <div id="active-issues">
       <h1 id="active-issues-header">Vote</h1>
       <div id="active-issues-list">
         <issues-list :issues="issues" :tags="tags" :active="true"></issues-list>
       </div>
-      
     </div>
 </template>
 
@@ -56,16 +55,7 @@ export default {
     height: 530px;
   }
 
-  .active-issues {
-    width: 320px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0;
-    background-color: #fff;
-    border-radius: 12px;
-  }
+  
 
   #vote-top {
     display: flex;

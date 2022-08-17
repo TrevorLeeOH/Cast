@@ -11,7 +11,7 @@
               </div>
               <span class="option-label">{{option}}</span>
           </div>
-          <button class="Button-Primary" @click="castBallot">Cast Ballot</button>
+          <button id="cast-button" @click="castBallot">Cast Ballot</button>
       </div>
       <div v-else id="options-box">
           <div class="option-results" v-for="(option, index) in issue.optionList" :key="option">
@@ -109,16 +109,12 @@ export default {
     #vote-box {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        padding: 8px;
-        gap: 32px;
-        margin: 8px;
-        width: 342px;
-        justify-content: flex-start;
         align-items: flex-start;
-        padding: 24px;
-        margin-top: 30px;
-        max-height: 640px;
+        gap: 24px;
+        width: 342px;
+        overflow-y: scroll;
+        justify-content: flex-start;
+        margin-left: 16px;
     }
     #name-description {
         display: flex;
@@ -150,16 +146,16 @@ export default {
         font-weight: 300;
         font-size: 16px;
         line-height: 20px;
-        margin-top: 0%;
+        margin: 0%;
         color: #71727A;
     }
     #options-box {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        width: 100%;
-        padding: 0px;
         gap: 12px;
+        justify-content: flex-start;
+        align-items: center;
 
     }
     .selected-option {
@@ -265,5 +261,11 @@ export default {
         text-align: left;
         color: #467bf5;
         text-decoration: none;
+    }
+    #cast-button {
+        width: 200px;
+        height: 40px;
+        border-radius: 8px;
+
     }
 </style>

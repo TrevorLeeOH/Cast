@@ -85,10 +85,7 @@ export default {
     }
 
     .issues-list {
-        max-height: 100%;
-        max-width: 100%;
-        overflow-y: auto;
-        overflow-x: hidden;
+        height: 100%;
     }
 
     #tag-list {
@@ -104,13 +101,13 @@ export default {
     }
     
     #issue-list-box {
-       display: flex;
+        display: flex;
         flex-direction: column;
         align-items: flex-start;
         padding: 16px;
         gap: 16px;
-        
-
+        height: 75%;
+        overflow-y: scroll;
     }
     #name-description-filter {
         display: grid;
@@ -147,7 +144,6 @@ export default {
     }
     #search-by-tag {
         border-radius: 8px;
-        margin: 6px;
     }
 
 </style>
