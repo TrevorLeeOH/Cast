@@ -96,6 +96,8 @@ public class JdbcIssueDao implements IssueDao {
 
     @Override
     public void deleteIssueById(int issueId) {
+        tagDao.deleteTagsForIssue(issueId);
+        voteDao.deleteVotesForIssue(issueId);
         String sql = "DELETE FROM issues WHERE issue_id = ?";
         jdbcTemplate.update(sql, issueId);
     }

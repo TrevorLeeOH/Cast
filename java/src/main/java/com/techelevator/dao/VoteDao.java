@@ -15,8 +15,5 @@ public interface VoteDao {
 
     public boolean userVoted(int userId, int issueId);
 
-
-
-
-
+    void deleteVotesForIssue(int issueId);
 }

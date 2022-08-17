@@ -1,14 +1,17 @@
 <template>
   <div class="issues-list">
-      <form @submit.prevent="">
-            <label for="tag-selector">Search By Tag: </label>
-            
-            <div id="tag-box">
-                <label class="tag" v-for="tag in tags" :key="tag.tagId" :for="tag.tagName">{{tag.tagName + " (" + getNumberOfIssuesForTag(tag.tagId) + ")"}}
-                    <input type="checkbox" :id="tag.tagName" :value="tag.tagId" v-model="tagFilter">
-                </label>
+      <form id="issue-search-form" @submit.prevent="">
+            <button id="search-by-tag" @click="showTagFilter = !showTagFilter">Search By Tag</button>
+            <div id="tag-filter" v-if="showTagFilter">
+                <button id="clear-tags" @click="tagFilter = []">Clear All</button>
+                <div id="tag-list">
+                    <label class="tag" v-for="tag in tags" :key="tag.tagId" :for="tag.tagName">{{tag.tagName + " (" + getNumberOfIssuesForTag(tag.tagId) + ")"}}
+                        <input type="checkbox" :id="tag.tagName" :value="tag.tagId" v-model="tagFilter">
+                    </label>
+                </div>
+                
             </div>
-            <button @click="tagFilter = []">Clear All Tags</button>
+            
             <div id="name-description-filter">
                 <label class="Title" id="name-label" for="name">Search By Name: </label>
                 <input type="text" id="name" v-model="nameFilter">
@@ -17,7 +20,7 @@
             </div>
       </form>
       <div id="issue-list-box">
-          <issue-overview class="issue" :issue="issue" :active="active" v-for="issue in filteredIssuesList" :key="issue.issue_id"></issue-overview>
+          <issue-overview :issue="issue" :active="active" v-for="issue in filteredIssuesList" :key="issue.issue_id"></issue-overview>
       </div>
       
   </div>
@@ -35,7 +38,8 @@ export default {
         return {
             nameFilter: '',
             descFilter: '',
-            tagFilter: []
+            tagFilter: [],
+            showTagFilter: false
         }
     },
     computed: {
@@ -64,7 +68,7 @@ export default {
     methods: {
         getNumberOfIssuesForTag(tagId) {
             return this.issues.reduce((sum, curr) => {
-                if (curr.tagList.some(t => t.id === tagId)) {
+                if (curr.tagList.some(t => t.tagId === tagId)) {
                     sum += 1;
                 }
                 return sum;
@@ -76,6 +80,10 @@ export default {
 
 <style scoped>
 
+    #issue-search-form {
+        padding: 16px;
+    }
+
     .issues-list {
         max-height: 100%;
         max-width: 100%;
@@ -83,27 +91,15 @@ export default {
         overflow-x: hidden;
     }
 
-    
-
-    .issue {
-        font-size: 1.0rem;
-        border-style: solid;
-        border-width: 1px;
-        border-color: black;
-    }
-
-    #tag-box {
-        height: 42px;
-        width: 100%;
+    #tag-list {
+        
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         align-self: center;
-        gap: 10px;
+        gap: 6px;
         overflow-x: auto;
         overflow-y: hidden;
-        border: 1px solid blue;
-        border-radius: 12px;
         white-space: nowrap;
     }
     
@@ -134,6 +130,24 @@ export default {
     }
     #desc-label {
         grid-area: desc-label;
+    }
+    #clear-tags {
+        border-radius: 8px;
+        background: none;
+        color: rgb(32, 120, 221);
+        text-decoration: underline;
+    }
+    #tag-filter {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        white-space: nowrap;
+        border: 1px solid blue;
+        border-radius: 12px;
+    }
+    #search-by-tag {
+        border-radius: 8px;
+        margin: 6px;
     }
 
 </style>

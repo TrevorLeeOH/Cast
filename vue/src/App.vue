@@ -77,5 +77,14 @@ header {
   color: #2f3036;
   padding-top: 5px;
 }
+
+button {
+  font-family: 'museo-sans';
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #467bf5;
+  border: none;
+}
 </style>
 

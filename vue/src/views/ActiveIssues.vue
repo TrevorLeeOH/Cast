@@ -1,15 +1,6 @@
  <template>
     <div>
-      <div class="active-issues">
-        <h1 class="vote-header">Vote</h1>
-        <img id="search-icon" src="..\assets\Search Icon.png">
-      </div>
-      <div class="Filtering">
-          <div class="Filter">
-              <img src="..\assets\Filter Icon.png" class="filter-icon">
-              <span class="filter-title">Filter</span>
-          </div>
-      </div>
+      <h1 id="active-issues-header">Vote</h1>
       <div id="active-issues-list">
         <issues-list :issues="issues" :tags="tags" :active="true"></issues-list>
       </div>
@@ -62,7 +53,7 @@ export default {
 
 <style>
   #active-issues-list {
-    height: 424px;
+    height: 530px;
   }
 
   .active-issues {
@@ -83,12 +74,10 @@ export default {
     gap: 95px;
   }
 
-  .vote-header {
-    
+  #active-issues-header {
+    text-align: center;
     font-family: 'museo-sans';
-    margin-top: 20px;
     font-weight: 800;
-      
   }
 
   #search-icon {

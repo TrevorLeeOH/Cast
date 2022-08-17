@@ -58,6 +58,11 @@ public class JdbcVoteDao implements VoteDao {
         return jdbcTemplate.queryForObject(sql, int.class, userId, issueId) > 0;
     }
 
+    public void deleteVotesForIssue(int issueId) {
+        String sql = "DELETE FROM votes WHERE issue_id = ?;";
+        jdbcTemplate.update(sql, issueId);
+    }
+
     private Vote mapRowToVote(SqlRowSet results) {
         Vote vote = new Vote();
         vote.setUserId(results.getInt("user_id"));
