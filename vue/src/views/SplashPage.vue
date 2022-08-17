@@ -2,7 +2,6 @@
   <div class="splash">
     <div class="Frame-53">
       <div class="Image">
-        
           <img id="logo" src="..\assets\CAST_logo-02.png" alt="logo">
       </div>
       <div class="Content">        
@@ -38,7 +37,7 @@ export default {
   
   width: 375px;
   height: 730px;
-  max-height: 730px;
+  max-height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -59,7 +58,7 @@ export default {
   gap: 10px;
   padding: 40px;
   background-color: #edf2fe;
-  height: 485px;
+  height: 300px;
   border-radius: 12px;
 }
 .Content {
@@ -71,7 +70,7 @@ export default {
   justify-content: flex-start;
   align-items: center;
   gap: 24px;
-  padding: 48px 24px;
+  padding: 0px 24px;
 }
 
 
