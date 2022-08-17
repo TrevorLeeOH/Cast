@@ -26,7 +26,49 @@ INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option
 VALUES ('Health Care Systems', 'Rank from most preferred to least preferred these forms of health care systems', 1, 'Universal Government Funded Health Care', 'Fully Privatized Health Insurance', 'Government Assistance only for Those Who Meet Strict Requirements', 'Employer Provided Health Insurance');
 
 INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, option_e)
-VALUES ('Environmental Impacts', 'Rank these issues by how much they impact your community from most impactful to least impactful', 1, 'Water Contamination', 'Air Quality', 'CLimate Change', 'Sustainable Energy', 'Waste Disposal');
+VALUES ('Environmental Impacts', 'Rank these issues by how much they impact your community from most impactful to least impactful', 1, 'Water Contamination', 'Air Quality', 'Climate Change', 'Sustainable Energy', 'Waste Disposal');
+
+INSERT INTO tags (tag_name)  --1
+VALUES ('environment');
+
+INSERT INTO tags (tag_name)  --2
+VALUES ('social');
+
+INSERT INTO tags (tag_name)  --3
+VALUES ('electoral');
+
+INSERT INTO tags (tag_name)  --4
+VALUES ('policy');
+
+INSERT INTO tags (tag_name)  --5
+VALUES ('Dem');
+
+INSERT INTO tags (tag_name)  --6
+VALUES ('Repub');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('1', '2');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('1', '3');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('1', '5');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('1', '6');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('2', '4');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('2', '3');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('2', '5');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('2', '6');
 
 
 COMMIT TRANSACTION;
