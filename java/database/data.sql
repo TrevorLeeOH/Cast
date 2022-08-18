@@ -31,8 +31,8 @@ VALUES ('Environmental Impacts', 'Rank these issues by how much they impact your
 INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, option_e, expiration_date)
 VALUES ('Alternative Energy', 'Which of these alternative energies would you most like your state to invest in?', 1, 'Solar', 'Wind', 'Biomass', 'Hydro', 'Geothermal', '09-04-22');
 
-INSERT INTO issues (issue_name, user_id, option_a, option_b, option_c, option_d, option_e, option_f, expiration_date)
-VALUES ('Which of these issues mean the most to you and may affect how you vote in the midterms?', 1, 'Economic Inequality', 'Racism', 'Affordable Healthcare', 'Illegal Immigration', 'Job Opportunities',  'Federal Budget Deficit', '05-14-2023');
+INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, option_e, option_f, expiration_date)
+VALUES ('Your Issues', 'Which of these issues mean the most to you and may affect how you vote in the midterms?', 1, 'Economic Inequality', 'Racism', 'Affordable Healthcare', 'Illegal Immigration', 'Job Opportunities',  'Federal Budget Deficit', '05-14-2023');
 
 
 INSERT INTO tags (tag_name)  --1
@@ -53,14 +53,14 @@ VALUES ('Dem');
 INSERT INTO tags (tag_name)  --6
 VALUES ('Repub');
 
-INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('1', '2');
+--INSERT INTO tags_issue (tag_id, issue_id)
+--VALUES ('1', '2');
 
 INSERT INTO tags_issue (tag_id, issue_id)
 VALUES ('1', '3');
 
-INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('1', '5');
+--INSERT INTO tags_issue (tag_id, issue_id)
+--VALUES ('1', '5');
 
 INSERT INTO tags_issue (tag_id, issue_id)
 VALUES ('1', '6');
@@ -107,20 +107,20 @@ VALUES ('4', '8');
 INSERT INTO tags_issue (tag_id, issue_id)
 VALUES ('5', '2');
 
-INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('5', '3');
+--INSERT INTO tags_issue (tag_id, issue_id)
+--VALUES ('5', '3');
 
 INSERT INTO tags_issue (tag_id, issue_id)
 VALUES ('5', '5');
 
-INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('6', '2');
+--INSERT INTO tags_issue (tag_id, issue_id)
+--VALUES ('6', '2');
 
 INSERT INTO tags_issue (tag_id, issue_id)
 VALUES ('6', '4');
 
-INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('6', '5');
+--INSERT INTO tags_issue (tag_id, issue_id)
+--VALUES ('6', '5');
 
 INSERT INTO tags_issue (tag_id, issue_id)
 VALUES ('1', '9');
@@ -131,11 +131,11 @@ INSERT INTO tags_issue (tag_id, issue_id)
 VALUES ('2', '10');
 INSERT INTO tags_issue (tag_id, issue_id)
 VALUES ('3', '10');
-INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('4', '10');
-INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('5', '10');
-INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('6', '10');
+--INSERT INTO tags_issue (tag_id, issue_id)
+--VALUES ('4', '10');
+--INSERT INTO tags_issue (tag_id, issue_id)
+--VALUES ('5', '10');
+--INSERT INTO tags_issue (tag_id, issue_id)
+--VALUES ('6', '10');
 
 COMMIT TRANSACTION;

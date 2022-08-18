@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>Closed Issues</h1>
+      <h1 id="closed-issues">Poll Results</h1>
       <issues-list :issues="issues" :tags="tags" :active="false"></issues-list>
   </div>
 </template>
@@ -49,5 +49,11 @@ export default {
 </script>
 
 <style>
+
+#closed-issues {
+    text-align: center;
+    font-family: 'museo-sans';
+    font-weight: 800;
+}
 
 </style>
