@@ -1,9 +1,8 @@
 <template>
   <div class="home">
     <div id="home-content">
+      <h1 class="Tag-Line">Revealing The Complexity of Public Opinion</h1>
       <div class="Content2">        
-
-        <span class="Tag-Line">Revealing The Complexity of Public Opinion</span>
         <span class="Rank">Cast Ranked choice polls give you the opportunity to express the full breadth of your values beliefs on a wide variety of topics impacting your world.</span>
         <span class="Start-Now">Make Your Voice Heard Today. Start voting now!</span>
       <!-- <router-link class="sign-up-button" :to="{name: 'register'}"> Sign Up
@@ -187,11 +186,12 @@ overflow-y: scroll;
   line-height: normal;
   letter-spacing: 0.48px;
   text-align: left;
+  padding: 0px 20px;
   color: #000;
 }
 
 .Content2 {
-  height: 326.6px;
+  height: 200px;
   align-self: stretch;
   flex-grow: 0;
   display: flex;
@@ -230,6 +230,10 @@ overflow-y: scroll;
   letter-spacing: 0.48px;
   text-align: left;
   color: #000;
+}
+
+.issue-box {
+  align-self: center;
 }
 
 </style>

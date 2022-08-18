@@ -56,7 +56,7 @@ export default {
         border-radius: 12px;
         flex: none;
         order: 0;
-        align-self: stretch;
+        align-self: center;
         flex-grow: 0;
         border: none;
     }
