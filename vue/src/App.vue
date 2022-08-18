@@ -41,7 +41,8 @@ header {
   border: solid 1px #e8e9f1;
   background-color: #fff;
   border-top: none;
-  border-radius: 12px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
  
 }
 
