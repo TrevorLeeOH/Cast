@@ -1,22 +1,5 @@
 <template>
-
-  <!-- <div class="Sign-up">
-    <link rel="stylesheet" href="https://use.typekit.net/ows0uho.css">
-    <div class="Login-options">
-      <div class="Text">
-       <span class="sign-up">Sign up</span>
-      <span class="Create-an-account-to-start-voting">
-        Create an account to start voting
-      </span>
-      </div> -->
-      <register></register>
-       <!-- <button class="Button-Primary" type="submit">
-        Create Account
-      </button>
-    </div>
-  </div> -->
- 
-  
+  <register></register>
 </template>
 
 <script>

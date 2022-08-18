@@ -32,7 +32,7 @@
             <input
                   class="form-control"
                     placeholder="Email"
-                    v-model="user.username"
+                    v-model="email"
                     required
                     autofocus
                   />
@@ -83,6 +83,7 @@ export default {
         confirmPassword: '',
         role: 'user',
       },
+      email: "",
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
     };

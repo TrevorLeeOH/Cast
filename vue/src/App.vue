@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <header>
+    <header v-if="$store.state.currentTab != 'splash'">
       <img id="header-logo" src="@/assets/CAST_logo-02.png"/>
       <img id="avatar" src="@/assets/Avatar@2x.png"/>
     </header>
     
-    <router-view class="router"/>
+    <router-view :class="$store.state.currentTab != 'splash' ? 'router' : 'router router-splash'"/>
     
     <main-header></main-header>
       
@@ -63,7 +63,9 @@ header {
   overflow-y: hidden;
   width: 375px;
   max-width: 375px;
-
+}
+.router-splash {
+  height: 729px;
 }
 
 .Title {
