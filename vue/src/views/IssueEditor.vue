@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1 class="edit-issue">Edit Issue</h1>
+        <h1 class="edit-issue">Edit Issue</h1>
         <form id="issue-edit-form" v-on:submit.prevent="saveChanges">
             <label class="edit-title" for="name">Issue Name: </label>
             <input class="form-control" type="text" id="edit-name" v-model="issue.name">
@@ -10,12 +10,15 @@
             <input class="form-control" type="date" id="edit-exp" v-model="issue.expiration">
             <h3 class="tag-header">Tags:</h3>
             <div id="tag-box">
-                <label class="tag" v-for="tag in tags" :key="tag.tagId" :for="tag.tagName"> <input type="checkbox" :id="tag.tagName" :value="tag" v-model="issue.tagList"> {{tag.tagName}} 
+                <label class="tag" v-for="tag in tags" :key="tag.tagId" :for="tag.tagName">
+                    <input type="checkbox" :id="tag.tagName" :value="tag" v-model="issue.tagList"> {{tag.tagName}} 
                     <!-- <input type="checkbox" :id="tag.tagName" :value="tag" v-model="issue.tagList"> -->
                 </label>
             </div>
-            <button class="Button-Primary" type="submit">Save Changes</button>
-            <button v-if="$store.state.user.authorities.some(role => role.name == 'ROLE_ADMIN')" @click="deleteIssue">Delete Issue</button>    
+            <div id="edit-issue-buttons">
+                <button id="save-button" type="submit">Save Changes</button>
+                <button id="delete-button" v-if="$store.state.user.authorities.some(role => role.name == 'ROLE_ADMIN')" @click="deleteIssue">Delete Issue</button>    
+            </div>
         </form>
     </div>
 </template>
@@ -94,12 +97,12 @@ export default {
 
 <style scoped>
 
-.edit-issue {
-    display: flex;
-    font-family: 'museo-sans';
-    justify-content: center;
-    font-weight: 900;
-}
+    .edit-issue {
+        display: flex;
+        font-family: 'museo-sans';
+        justify-content: center;
+        font-weight: 900;
+    }
 
     #issue-edit-form {
         padding: 10px;
@@ -116,6 +119,7 @@ export default {
     }
 
     #edit-name {
+        font-family: 'museo-sans';
         height: 20px;
         margin: 10px;
         width: 300px;
@@ -136,9 +140,26 @@ export default {
     }
 
     .tag-header {
-         font-family: 'museo-sans';
-        font-size: 15;
+        font-family: 'museo-sans';
+        font-size: 15px;
         font-weight: 700;
+    }
+    #edit-issue-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 16px;
+        gap: 8px;
+    }
+    #save-button {
+        border-radius: 8px;
+        width: 327px;
+        height: 48px;
+    }
+    #delete-button {
+        background: none;
+        text-decoration: underline;
+        color: red;
     }
 
 
