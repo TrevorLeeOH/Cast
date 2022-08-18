@@ -223,6 +223,7 @@ export default {
         display: inline-block;
     }
     .option-label {
+        font-family: 'museo-sans';
         
     }
     .option-results {
@@ -230,7 +231,6 @@ export default {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        
         gap: 16px;
         border-radius: 12px;
         width: 300px;
