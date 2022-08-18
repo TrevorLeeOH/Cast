@@ -16,17 +16,24 @@ VALUES ('Democratic Primary Candidates', 'If Joe Biden decided not to run for re
 INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, option_e)
 VALUES ('Republican Primary Candidates', 'If the Republican presidential primary were held today, rank these choices from most likely to least likely to have your support:', 1, 'Donald Trump', 'Mike Pence', 'Ted Cruz', 'Nikki Haley', 'Ron DeSantis');
 
-INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, option_e)
-VALUES ('Third Parties', 'Rank these third parties based on how much you know about them from most to least:', 1, 'Libertarian Party', 'Green Party', 'Constitutional Party', 'Rent Is Too Damn High Party', 'Socialist Party USA');
+INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, option_e, expiration_date)
+VALUES ('Third Parties', 'Rank these third parties based on how much you know about them from most to least:', 1, 'Libertarian Party', 'Green Party', 'Constitutional Party', 'Rent Is Too Damn High Party', 'Socialist Party USA', '08-18-2022');
 
-INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, option_e)
-VALUES ('Gun Violence Policy Solutions', 'Rank from most preferred to least preferred these policy solutions to gun violence:', 1, 'Do Nothing', 'Incentivize Increased Gun Ownership for Self Protection', 'Minimal Increases in Firearm Regulations i.e Background Checks', 'Assault Weapons Ban', 'Full Firearm Ban');
+INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, option_e, expiration_date)
+VALUES ('Gun Violence Policy Solutions', 'Rank from most preferred to least preferred these policy solutions to gun violence:', 1, 'Do Nothing', 'Incentivize Increased Gun Ownership for Self Protection', 'Minimal Increases in Firearm Regulations i.e Background Checks', 'Assault Weapons Ban', 'Full Firearm Ban', '08-31-2022');
 
-INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d)
-VALUES ('Health Care Systems', 'Rank from most preferred to least preferred these forms of health care systems', 1, 'Universal Government Funded Health Care', 'Fully Privatized Health Insurance', 'Government Assistance only for Those Who Meet Strict Requirements', 'Employer Provided Health Insurance');
+INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, expiration_date)
+VALUES ('Health Care Systems', 'Rank from most preferred to least preferred these forms of health care systems', 1, 'Universal Government Funded Health Care', 'Fully Privatized Health Insurance', 'Government Assistance only for Those Who Meet Strict Requirements', 'Employer Provided Health Insurance', '08-19-2022');
 
-INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, option_e)
-VALUES ('Environmental Impacts', 'Rank these issues by how much they impact your community from most impactful to least impactful', 1, 'Water Contamination', 'Air Quality', 'Climate Change', 'Sustainable Energy', 'Waste Disposal');
+INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, option_e, expiration_date)
+VALUES ('Environmental Impacts', 'Rank these issues by how much they impact your community from most impactful to least impactful', 1, 'Water Contamination', 'Air Quality', 'Climate Change', 'Sustainable Energy', 'Waste Disposal', '09-15-22');
+
+INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, option_e, expiration_date)
+VALUES ('Alternative Energy', 'Which of these alternative energies would you most like your state to invest in?', 1, 'Solar', 'Wind', 'Biomass', 'Hydro', 'Geothermal', '09-04-22');
+
+INSERT INTO issues (issue_name, user_id, option_a, option_b, option_c, option_d, option_e, option_f, expiration_date)
+VALUES ('Which of these issues mean the most to you and may affect how you vote in the midterms?', 1, 'Economic Inequality', 'Racism', 'Affordable Healthcare', 'Illegal Immigration', 'Job Opportunities',  'Federal Budget Deficit', '05-14-2023');
+
 
 INSERT INTO tags (tag_name)  --1
 VALUES ('environment');
@@ -115,5 +122,20 @@ VALUES ('6', '4');
 INSERT INTO tags_issue (tag_id, issue_id)
 VALUES ('6', '5');
 
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('1', '9');
+
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('1', '10');
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('2', '10');
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('3', '10');
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('4', '10');
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('5', '10');
+INSERT INTO tags_issue (tag_id, issue_id)
+VALUES ('6', '10');
 
 COMMIT TRANSACTION;
