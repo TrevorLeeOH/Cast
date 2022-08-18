@@ -20,10 +20,10 @@ INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option
 VALUES ('Third Parties', 'Rank these third parties based on how much you know about them from most to least:', 1, 'Libertarian Party', 'Green Party', 'Constitutional Party', 'Rent Is Too Damn High Party', 'Socialist Party USA', '08-18-2022');
 
 INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, option_e, expiration_date)
-VALUES ('Gun Violence Policy Solutions', 'Rank from most preferred to least preferred these policy solutions to gun violence:', 1, 'Do Nothing', 'Incentivize Increased Gun Ownership for Self Protection', 'Minimal Increases in Firearm Regulations i.e Background Checks', 'Assault Weapons Ban', 'Full Firearm Ban', '08-31-2022');
+VALUES ('Gun Violence Policy Solutions', 'Rank from most preferred to least preferred these policy solutions to gun violence:', 1, 'Do Nothing', 'Incentivize Increased Gun Ownership for Self Protection', 'Minimal Increases in Firearm Regulations i.e Background Checks', 'Assault Weapons Ban', 'Full Firearm Ban', '09-02-98');
 
 INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, expiration_date)
-VALUES ('Health Care Systems', 'Rank from most preferred to least preferred these forms of health care systems', 1, 'Universal Government Funded Health Care', 'Fully Privatized Health Insurance', 'Government Assistance only for Those Who Meet Strict Requirements', 'Employer Provided Health Insurance', '08-19-2022');
+VALUES ('Health Care Systems', 'Rank from most preferred to least preferred these forms of health care systems', 1, 'Universal Government Funded Health Care', 'Fully Privatized Health Insurance', 'Government Assistance only for Those Who Meet Strict Requirements', 'Employer Provided Health Insurance', '12-14-22');
 
 INSERT INTO issues (issue_name, description, user_id, option_a, option_b, option_c, option_d, option_e, expiration_date)
 VALUES ('Environmental Impacts', 'Rank these issues by how much they impact your community from most impactful to least impactful', 1, 'Water Contamination', 'Air Quality', 'Climate Change', 'Sustainable Energy', 'Waste Disposal', '09-15-22');
@@ -131,11 +131,5 @@ INSERT INTO tags_issue (tag_id, issue_id)
 VALUES ('2', '10');
 INSERT INTO tags_issue (tag_id, issue_id)
 VALUES ('3', '10');
-INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('4', '10');
-INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('5', '10');
-INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('6', '10');
 
 COMMIT TRANSACTION;
