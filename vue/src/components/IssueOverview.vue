@@ -7,7 +7,6 @@
         <div id="bottom-box">
             <span id="tags">
                 <div id="tag" v-for="tag in issue.tagList" :key="tag.tagId">
-                    <div id="tag-icon"></div>
                     <p id="tag-text">{{tag.tagName}}</p>
                 </div>
             </span>
@@ -57,7 +56,7 @@ export default {
         border-radius: 12px;
         flex: none;
         order: 0;
-        align-self: stretch;
+        align-self: center;
         flex-grow: 0;
         border: none;
     }
@@ -74,6 +73,8 @@ export default {
         gap: 4px;
         width: 311px;
         height: 41px;
+        border-top-right-radius: 12px;
+        border-top-left-radius: 12px;
         background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #467BF5;
         
     }
@@ -187,11 +188,14 @@ export default {
         margin-right: 8px;
         display: flex;
         flex-direction: row;
-        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
         height: 58px;
-        border-radius: 16px;
         gap: 4px;
         overflow-x: auto;
+        margin-top: 16px;
+        
         
     }
     #tag {
@@ -199,9 +203,10 @@ export default {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 4px;
-        padding: 4px 5px;
+        gap: 5px;
+        padding: 0px 8px;
         height: 20px;
+        border-radius: 12px;
         background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #467BF5;
         border-radius: 12px;
     }
@@ -213,8 +218,8 @@ export default {
     }
     #tag-text {
         font-family: 'museo-sans';
-        font-weight: 600;
-        font-size: 10px;
+        font-weight: 700;
+        font-size: 9px;
         line-height: 12px;
         text-align: center;
         letter-spacing: 0.05em;

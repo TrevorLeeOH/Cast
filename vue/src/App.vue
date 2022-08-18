@@ -36,11 +36,12 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 0px 0.5px 0;
+  margin: 8px 0px 0.5px 0;
   padding: 16px;
   border: solid 1px #e8e9f1;
   background-color: #fff;
   border-top: none;
+  border-radius: 12px;
  
 }
 
@@ -57,7 +58,7 @@ header {
 
 
 .router {
-  height: 615px;
+  height: 627px;
   overflow-y: hidden;
   width: 375px;
   max-width: 375px;

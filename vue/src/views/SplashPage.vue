@@ -5,11 +5,11 @@
           <img id="logo" src="..\assets\CAST_logo-02.png" alt="logo">
       </div>
       <div class="Content">        
-          <div class="Pagination-Dots">
+          <!-- <div class="Pagination-Dots">
             <div class=".Dot"></div>
             <div class=".Dot"></div>
             <div class=".Dot"></div>
-          </div>
+          </div> -->
         <span class="Make-your-voice-heard"> Make your voice heard!</span>
         <span class="Rank">Rank the most important current topics that will be at the top of the ballots!</span>
       <router-link class="sign-up-button" :to="{name: 'register'}"> Sign Up
@@ -28,6 +28,7 @@
 export default {
 
 }
+
 </script>
 
 <style scoped>
@@ -59,7 +60,7 @@ export default {
   padding: 40px;
   background-color: #edf2fe;
   height: 300px;
-  border-radius: 12px;
+  
 }
 .Content {
   height: 326.6px;
@@ -70,7 +71,7 @@ export default {
   justify-content: flex-start;
   align-items: center;
   gap: 24px;
-  padding: 0px 24px;
+  padding: 20px 24px;
 }
 
 
