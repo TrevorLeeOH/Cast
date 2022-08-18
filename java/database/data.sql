@@ -143,5 +143,23 @@ VALUES ('3', '10');
 --INSERT INTO tags_issue (tag_id, issue_id)
 --VALUES ('6', '10');
 
+INSERT INTO votes (user_id, issue_id, option_a, option_b, option_c, option_d)
+VALUES ('4', '1', '4', '3', '1', '2');
+
+INSERT INTO votes (user_id, issue_id, option_a, option_b, option_c, option_d)
+VALUES ('5', '1', '3', '4', '2', '1');
+
+INSERT INTO votes (user_id, issue_id, option_a, option_b, option_c, option_d)
+VALUES ('6', '1', '2', '1', '4', '3');
+
+INSERT INTO votes (user_id, issue_id, option_a, option_b, option_c, option_d, option_e, option_f)
+VALUES ('4', '10', '4', '3', '1', '2', '6', '5');
+
+INSERT INTO votes (user_id, issue_id, option_a, option_b, option_c, option_d, option_e, option_f)
+VALUES ('5', '10', '1', '2', '3', '4', '5', '6');
+
+INSERT INTO votes (user_id, issue_id, option_a, option_b, option_c, option_d, option_e, option_f)
+VALUES ('6', '10', '5', '3', '2', '6', '1', '4');
+
 
 COMMIT TRANSACTION;
