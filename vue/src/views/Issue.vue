@@ -16,7 +16,7 @@
       <div v-else id="options-box">
           <div class="option-results" v-for="(option, index) in issue.optionList" :key="option">
               <div class="result-bar" :style="'width: ' + getVotePercentage(issue.resultsList[index]) * 100 + '%'">
-                  <span class="option-label">{{option}}</span>  
+                  <div class="option-label">{{option}}</div>  
               </div>
               <span class="vote-count">{{issue.resultsList.length > 0 ? issue.resultsList[index] : 0}}</span>
           </div>
@@ -223,8 +223,7 @@ export default {
         display: inline-block;
     }
     .option-label {
-        display: inline-block;
-        width: 200px;
+        
     }
     .option-results {
         display: flex;
