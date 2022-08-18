@@ -4,8 +4,8 @@
       <div class="Content2">        
 
         <span class="Tag-Line">Revealing The Complexity of Public Opinion</span>
-        <p></p>
-        <span class="Rank">Ranked choice polls allow our users to express the full breadth of their thoughts and opinions on a wide variety of topics.</span>
+        <span class="Rank">Cast Ranked choice polls give you the opportunity to express the full breadth of your values beliefs on a wide variety of topics impacting your world.</span>
+        <span class="Start-Now">Make Your Voice Heard Today. Start voting now!</span>
       <!-- <router-link class="sign-up-button" :to="{name: 'register'}"> Sign Up
        </router-link> -->
       
@@ -178,7 +178,7 @@ overflow-y: scroll;
 .Tag-Line {
   height: 29px;
   align-self: stretch;
-  flex-grow: 0;
+  flex-grow: .25;
   font-family: 'museo-sans';
   font-size: 24px;
   font-weight: 900;
@@ -202,5 +202,34 @@ overflow-y: scroll;
   padding: 24px 24px;
 }
 
+.Rank {
+
+  align-self: stretch;
+  flex-grow: .25;
+  font-family: 'museo-sans';
+  font-size: 16px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-align: left;
+  color: #000;
+}
+
+.Start-Now {
+
+  align-self: stretch;
+  flex-grow: 0;
+  font-family: 'museo-sans';
+  font-size: 20px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-align: left;
+  color: #000;
+}
 
 </style>

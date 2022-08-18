@@ -1,6 +1,7 @@
 <template>
 
   <div id="register" class="text-center">
+    
     <div class="Sign-up">
       <link rel="stylesheet" href="https://use.typekit.net/ows0uho.css">
       <div class="Login-options">
@@ -27,6 +28,7 @@
                     autofocus
                   />            
             <span class="Title"> Email </span>
+            
             <input
                   class="form-control"
                     placeholder="Email"
@@ -119,6 +121,9 @@ export default {
 </script>
 
 <style scoped>
+.text-center {
+  padding-left: 20px;
+}
 form {
   width: 327px;
   height: 309px;
@@ -142,6 +147,7 @@ form {
   align-items: stretch;
   gap: 8px;
   padding: 0;
+  margin-top: 70px;
 }
 
 
@@ -160,6 +166,7 @@ form {
   text-align: left;
   color: #2f3036;
   padding-top: 5px;
+  border: 10px;
 }
 
 .Button-Primary {
@@ -252,17 +259,12 @@ form {
 }
 
 .form-control {
-  height: 48px;
-  align-self: stretch;
-  flex-grow: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: solid 1px #c5c6cc;
+  font-family: 'museo-sans';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    border: 1px solid #C5C6CC;
+    width: 290px;
 }
 
 .Text {
@@ -277,20 +279,23 @@ form {
   padding: 0;
 }
 
-/* .sign-up {
-  width: 327px;
-    height: 19px;
-    flex-grow: 0;
-    font-family: 'inter';
-    font-size: 16px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: bold;
-    line-height: normal;
-    letter-spacing: 0.08px;
-    text-align: left;
-    color: #1f2024;
-} */
+.sign-up {
+  font-family: 'museo-sans';
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 24px;
+    line-height: 29px;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: #000000;
+    padding-top: 20px;
+}
+
+.Create-an-account-to-start-voting {
+  padding-top: 20px;
+}
+
+
 
 
 
