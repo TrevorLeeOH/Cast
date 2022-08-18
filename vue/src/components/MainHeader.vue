@@ -23,20 +23,29 @@
 
     <router-link v-if="$store.state.currentTab === 'closed-issues'" class="Tab" :to="{ name: 'closed-issues'}">
       <div class="Fill"><img id="star" src="@/assets/LightningIconSelected.png"></div>
-      <p class="Tab-name Tab-name-selected" tag="li">Poll Results</p>
+      <p class="Tab-name Tab-name-selected" tag="li">Results</p>
     </router-link>
     <router-link v-else class="Tab" v-bind:to="{ name: 'closed-issues' }">
       <div class="Fill"><img id="star" src="@/assets/LightningIcon.png"></div>
-      <p class="Tab-name" tag="li">Poll Results</p>
+      <p class="Tab-name" tag="li">Results</p>
+    </router-link>
+    
+    <router-link v-if="canCreate && $store.state.currentTab === 'issue-creator'" class="Tab" :to="{ name: 'issue-creator'}">
+      <div class="Fill"><img id="star" src="@/assets/PencilIconSelected.png"></div>
+      <p class="Tab-name Tab-name-selected" tag="li">Create</p>
+    </router-link>
+    <router-link v-else-if="canCreate" class="Tab" v-bind:to="{ name: 'issue-creator' }">
+      <div class="Fill"><img id="star" src="@/assets/PencilIcon.png"></div>
+      <p class="Tab-name" tag="li">Create</p>
     </router-link>
 
     <router-link v-if="$store.state.currentTab === 'logout' || $store.state.currentTab === 'login'" class="Tab" :to="{ name: ($store.state.token ? 'logout' : 'login') }">
       <div class="Fill"><img id="star" src="@/assets/ProfileIconSelected.png"></div>
-      <p class="Tab-name Tab-name-selected" tag="li">{{$store.state.token ? 'Logout' : 'Login'}}</p>
+      <p class="Tab-name Tab-name-selected" tag="li">{{$store.state.token ? 'Profile' : 'Login'}}</p>
     </router-link>
     <router-link v-else class="Tab" v-bind:to="{ name: ($store.state.token ? 'logout' : 'login') }">
       <div class="Fill"><img id="star" src="@/assets/ProfileIcon.png"></div>
-      <p class="Tab-name" tag="li">{{$store.state.token ? 'Logout' : 'Login'}}</p>
+      <p class="Tab-name" tag="li">{{$store.state.token ? 'Profile' : 'Login'}}</p>
     </router-link>
      
      
@@ -67,6 +76,11 @@ export default {
     // } else {
     //   x.className = "navbar";
     // }
+  },
+  computed: {
+    canCreate() {
+      return typeof this.$store.state.user.authorities !== 'undefined' && this.$store.state.user.authorities.some(auth => auth.name === 'ROLE_ADMIN' || auth.name === 'ROLE_ISSUER');
+    }
   }
 }
 </script>
