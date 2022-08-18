@@ -224,14 +224,15 @@ export default {
     }
     .option-label {
         display: inline-block;
-        width: 200px;
+        width: 600px;
+        font-family: 'museo-sans';
+        
     }
     .option-results {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        
         gap: 16px;
         border-radius: 12px;
         width: 300px;
