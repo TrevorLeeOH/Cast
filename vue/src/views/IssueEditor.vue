@@ -1,16 +1,17 @@
 <template>
   <div>
+      <h1 class="edit-issue">Edit Issue</h1>
         <form id="issue-edit-form" v-on:submit.prevent="saveChanges">
-            <label class="Title" for="name">Issue Name: </label>
-            <input class="form-control" type="text" id="name" v-model="issue.name">
-            <label class="Title" for="desc">Issue Description: </label>
-            <textarea class="form-control" id="desc" cols="30" rows="10" v-model="issue.description"></textarea>
-            <label class="Title" for="exp">Issue Expires: </label>
-            <input class="form-control" type="date" id="exp" v-model="issue.expiration">
-            <h3>Tags:</h3>
+            <label class="edit-title" for="name">Issue Name: </label>
+            <input class="form-control" type="text" id="edit-name" v-model="issue.name">
+            <label class="edit-title" for="desc">Issue Description: </label>
+            <textarea class="form-control" id="edit-desc" cols="30" rows="10" v-model="issue.description"></textarea>
+            <label class="edit-title" for="exp">Issue Expires: </label>
+            <input class="form-control" type="date" id="edit-exp" v-model="issue.expiration">
+            <h3 class="tag-header">Tags:</h3>
             <div id="tag-box">
-                <label class="tag" v-for="tag in tags" :key="tag.tagId" :for="tag.tagName">{{tag.tagName}} 
-                    <input type="checkbox" :id="tag.tagName" :value="tag" v-model="issue.tagList">
+                <label class="tag" v-for="tag in tags" :key="tag.tagId" :for="tag.tagName"> <input type="checkbox" :id="tag.tagName" :value="tag" v-model="issue.tagList"> {{tag.tagName}} 
+                    <!-- <input type="checkbox" :id="tag.tagName" :value="tag" v-model="issue.tagList"> -->
                 </label>
             </div>
             <button class="Button-Primary" type="submit">Save Changes</button>
@@ -91,12 +92,55 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+.edit-issue {
+    display: flex;
+    font-family: 'museo-sans';
+    justify-content: center;
+    font-weight: 900;
+}
+
     #issue-edit-form {
         padding: 10px;
     }
     #desc {
         height: 300px;
     }
+
+    .edit-title {
+        font-family: 'museo-sans';
+        font-size: 20;
+        font-weight: 700;
+        
+    }
+
+    #edit-name {
+        height: 20px;
+        margin: 10px;
+        width: 300px;
+    }
+
+    #edit-desc {
+        height: 100px;
+        font-family: 'museo-sans';
+        margin: 10px;
+        width: 300px;
+    }
+
+    #edit-exp {
+        height: 15px;
+        font-family: 'museo-sans';
+        margin: 10px;
+        width: 300px;
+    }
+
+    .tag-header {
+         font-family: 'museo-sans';
+        font-size: 15;
+        font-weight: 700;
+    }
+
+
 
 </style>
