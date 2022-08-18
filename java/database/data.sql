@@ -123,19 +123,19 @@ INSERT INTO tags_issue (tag_id, issue_id)
 VALUES ('6', '5');
 
 INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('9', '1');
+VALUES ('1', '9');
 
 INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('10', '1');
+VALUES ('1', '10');
 INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('10', '2');
+VALUES ('2', '10');
 INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('10', '3');
+VALUES ('3', '10');
 INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('10', '4');
+VALUES ('4', '10');
 INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('10', '5');
+VALUES ('5', '10');
 INSERT INTO tags_issue (tag_id, issue_id)
-VALUES ('10', '6');
+VALUES ('6', '10');
 
 COMMIT TRANSACTION;
