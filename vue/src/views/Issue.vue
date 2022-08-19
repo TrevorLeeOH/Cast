@@ -111,11 +111,14 @@ export default {
         flex-direction: column;
         align-items: flex-start;
         gap: 24px;
-        width: 97%;
+        width: fill;
+        height: 580px;
         overflow-y: scroll;
         overflow-x: hidden;
         justify-content: flex-start;
-        padding-left: 10px;
+        padding: 24px;
+        overflow-x: hidden;
+        overflow-y: scroll;
     }
     #name-description {
         display: flex;
@@ -194,7 +197,8 @@ export default {
     }
     .selected-option-number {
         font-style: normal;
-        font-weight: 600;
+        font-family: 'museo-sans';
+        font-weight: 900;
         font-size: 10px;
         line-height: 12px;
         text-align: center;
@@ -247,6 +251,7 @@ export default {
     }
     .vote-count {
         margin-right: 6px;
+        font-family: 'museo-sans';
     }
 
     #edit-issue{
@@ -263,9 +268,10 @@ export default {
         text-decoration: none;
     }
     #cast-button {
-        width: 200px;
+        width: 100%;
         height: 40px;
         border-radius: 8px;
+        align-self: flex-end;
 
     }
 </style>
