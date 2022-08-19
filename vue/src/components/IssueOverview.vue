@@ -108,7 +108,7 @@ export default {
         margin-right: 10px;
     }
     #detail-link-text {
-        width: 31px;
+        /* width: 31px; */
         height: 17px;
         font-family: 'museo-sans';
         font-weight: 500;
