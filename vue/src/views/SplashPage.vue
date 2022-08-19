@@ -2,7 +2,7 @@
   <div class="splash">
     <div class="Frame-53">
       <!-- <div class="Image"> -->
-        <img id="cast-gif" src="..\assets\Cast_your_vote.gif" alt="Logo">
+        <img id="cast-gif" src="..\assets\Cast_your_vote1.gif" alt="Logo">
           <!-- <img id="logo" src="..\assets\CAST_logo-02.png" alt="logo"> -->
       <!-- </div> -->
       <div class="Content">        
@@ -12,7 +12,7 @@
             <div class=".Dot"></div>
           </div> -->
         <span class="Make-your-voice-heard"> Make your voice heard!</span>
-        <span class="rank">Rank the most important current topics that will be at the top of the ballots!</span>
+        <span class="rank">You don't fit in a box. Your vote shouldn't either!</span>
       <router-link class="sign-up-button" :to="{name: 'register'}"> Sign Up
        </router-link>
       <div class="login">

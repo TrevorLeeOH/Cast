@@ -86,6 +86,7 @@ export default {
 
     #issue-search-form {
         padding: 16px;
+        background: #fff;
     }
 
     .issues-list {
@@ -172,7 +173,7 @@ export default {
         padding: 8px 12px;
         border-radius: 12px;
         border: solid 0.5px; color: #c5c6cc;
-        background: #fff;
+        background: #edf2fe;
     }
 
     #filter-icon {

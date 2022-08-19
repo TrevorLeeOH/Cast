@@ -50,7 +50,7 @@ export default {
 
 <style scoped>
 .router {
-    background: #edf2fe;
+    background: #fff;
 }
 #closed-issues {
     

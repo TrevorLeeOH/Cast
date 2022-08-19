@@ -52,7 +52,7 @@ export default {
 
 <style>
 #active-issues {
-  background: #edf2fe;
+  background: #fff;
 }
 
   #active-issues-list {

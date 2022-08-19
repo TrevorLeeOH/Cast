@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div id="home-content">
-      <img id="ballot-box" src="..\assets\Ballot_box.gif" alt="ballot box">
+      <img id="ballot-box" src="..\assets\Ballot_box1.gif" alt="ballot box">
       <span class="Tag-Line">Cast Your Ballot</span>
       <!-- <div class="Content2">         -->
         <span class="Rank">Ranked Choice Voting gives a broader picture of what voters want.</span>
@@ -15,7 +15,7 @@
     
       <header id="cast-ballot">
         <span class="cast-your-ballot">Poll of the Day</span>
-        <router-link :to="{name: 'active-issues'}" class="See-more">See more</router-link>
+        <router-link :to="{name: 'active-issues'}" class="See-more">See All</router-link>
       </header>
      
       <!-- <header id="poll-results">
@@ -132,7 +132,7 @@ export default {
   order: 0;
   align-self: stretch;
   flex-grow: 0;
-  margin-top: 0px;
+  margin-top: 30px;
   border: none;
   background-color: #edf2fe;
   }
