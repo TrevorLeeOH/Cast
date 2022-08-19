@@ -7,7 +7,7 @@
     
     <router-view :class="$store.state.currentTab != 'splash' ? 'router' : 'router router-splash'"/>
     
-    <main-header></main-header>
+    <main-header v-if="$store.state.currentTab != 'splash'"></main-header>
       
     
   </div>

@@ -48,12 +48,17 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.router {
+    background: #edf2fe;
+}
 #closed-issues {
+    
     text-align: center;
     font-family: 'museo-sans';
     font-weight: 800;
+    margin-bottom: 5px;
 }
+
 
 </style>

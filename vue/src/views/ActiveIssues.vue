@@ -51,8 +51,12 @@ export default {
 </script>
 
 <style>
+#active-issues {
+  background: #edf2fe;
+}
+
   #active-issues-list {
-    height: 530px;
+    height: 610px;
   }
 
   #vote-top {
@@ -66,6 +70,7 @@ export default {
     text-align: center;
     font-family: 'museo-sans';
     font-weight: 800;
+    margin-bottom: 5px;
   }
 
   #search-icon {

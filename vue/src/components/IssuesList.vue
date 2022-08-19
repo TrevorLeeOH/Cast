@@ -13,7 +13,7 @@
             </div>
             
             <div id="tag-filter" v-if="showTagFilter">
-                <button id="clear-tags" @click="tagFilter = []">Clear All</button>
+                <!-- <button id="clear-tags" @click="tagFilter = []">Clear All</button> -->
                 <div id="tag-list">
                     <div class="tag" v-for="tag in tags" :key="tag.tagId">
                         <p class="tag-text">{{tag.tagName + " (" + getNumberOfIssuesForTag(tag.tagId) + ")"}}</p>
@@ -91,6 +91,7 @@ export default {
     .issues-list {
         height: 100%;
         width: 100%;
+        background: #edf2fe;
     }
 
     #tag-list {
@@ -145,8 +146,8 @@ export default {
         flex-direction: row;
         align-items: center;
         white-space: nowrap;
-        border: 1px solid blue;
         border-radius: 12px;
+        padding-top: 20px;
     }
     #search-by-tag {
         display: flex;
@@ -171,6 +172,7 @@ export default {
         padding: 8px 12px;
         border-radius: 12px;
         border: solid 0.5px; color: #c5c6cc;
+        background: #fff;
     }
 
     #filter-icon {
@@ -198,6 +200,7 @@ export default {
         display: flex;
         flex-direction: row;
         gap: 8px;
+        
     }
     #name-filter {
         display: flex;
@@ -206,6 +209,7 @@ export default {
         padding: 12px 16px;
         gap: 16px;
         height: 16px;
+        width: 240px;
         background: #F8F9FE;
         border-radius: 24px;
     }

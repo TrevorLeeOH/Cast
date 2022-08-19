@@ -1,28 +1,30 @@
 <template>
   <div class="home">
     <div id="home-content">
-      <h1 class="Tag-Line">Revealing The Complexity of Public Opinion</h1>
-      <div class="Content2">        
-        <span class="Rank">Cast Ranked choice polls give you the opportunity to express the full breadth of your values beliefs on a wide variety of topics impacting your world.</span>
-        <span class="Start-Now">Make Your Voice Heard Today. Start voting now!</span>
+      <img id="ballot-box" src="..\assets\Ballot_box.gif" alt="ballot box">
+      <span class="Tag-Line">Cast Your Ballot</span>
+      <!-- <div class="Content2">         -->
+        <span class="Rank">Ranked Choice Voting gives a broader picture of what voters want.</span>
+        <router-link id="vote-now-link" :to="{name: 'active-issues'}" tag="button">
+                <p id="vote-now-text">Vote Now!</p>
+            </router-link>
       <!-- <router-link class="sign-up-button" :to="{name: 'register'}"> Sign Up
        </router-link> -->
       
-      </div>
+      <!-- </div> -->
     
       <header id="cast-ballot">
-        <span class="cast-your-ballot"> Cast Your Ballot</span>
+        <span class="cast-your-ballot">Poll of the Day</span>
         <router-link :to="{name: 'active-issues'}" class="See-more">See more</router-link>
       </header>
-      <issue-overview :issue="issue" :active="true"></issue-overview>
-      
-      <!--
-      <issues-list id="home-issues" :issues="issues" :tags="tags" :active="true"></issues-list>
-      !-->
+     
       <!-- <header id="poll-results">
         <span class="cast-your-ballot">Poll Results</span>
       </header> -->
+    
+        <issue-overview :issue="issue" :active="true"></issue-overview>
     </div>
+ 
 
     
   </div>
@@ -38,13 +40,15 @@ export default {
     name: 'home',
     data() {
         return {
-          issue: {}
+          issue: {},
+
         }
     },
     components: {
       //IssuesList,
       IssueOverview
     },
+  
 
     methods: {
         getIssues() {
@@ -63,8 +67,10 @@ export default {
     created() {
         this.getIssues();
         this.getTags();
-    }
+    },
+
 }
+
 </script>
 
 <style>
@@ -73,8 +79,7 @@ export default {
   max-width: 375px;
   left: 0px;
   top: 170px;
-  background: #FFFFFF;
-  border-radius: 12px;
+  background: #edf2fe;
 }
 
 #header-logo {
@@ -82,6 +87,12 @@ export default {
   height: auto;
   flex-grow: 0;
   padding: 0 0 0px;
+}
+
+#ballot-box {
+    width: 200px;
+  height: 200px;
+  flex-grow: 0;
 }
 
 #avatar {
@@ -97,7 +108,8 @@ export default {
 #home-content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
     padding-top: 16px;
     gap: 10px;
     max-width: 375px;
@@ -122,6 +134,7 @@ export default {
   flex-grow: 0;
   margin-top: 0px;
   border: none;
+  background-color: #edf2fe;
   }
 
 .cast-your-ballot {
@@ -176,8 +189,7 @@ overflow-y: scroll;
 
 .Tag-Line {
   height: 29px;
-  align-self: stretch;
-  flex-grow: .25;
+  margin: none;
   font-family: 'museo-sans';
   font-size: 24px;
   font-weight: 900;
@@ -204,17 +216,17 @@ overflow-y: scroll;
 
 .Rank {
 
-  align-self: stretch;
-  flex-grow: .25;
+  flex-grow: .05;
   font-family: 'museo-sans';
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 500;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
   letter-spacing: 0.48px;
-  text-align: left;
+  text-align: center;
   color: #000;
+  padding: 0px 20px;
 }
 
 .Start-Now {
@@ -235,5 +247,29 @@ overflow-y: scroll;
 .issue-box {
   align-self: center;
 }
+
+#vote-now-link {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 16px;
+        gap: 8px;
+        width: 102px;
+        height: 40px;
+        background: #467BF5;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+    #vote-now-link-text {
+        width: 31px;
+        height: 17px;
+        font-family: 'museo-sans';
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        color: #FFFFFF;
+        margin: 0px;
+    }
 
 </style>

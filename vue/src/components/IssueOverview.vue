@@ -75,7 +75,7 @@ export default {
         height: 41px;
         border-top-right-radius: 12px;
         border-top-left-radius: 12px;
-        background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #467BF5;
+        background: #fff
         
     }
     #bottom-box {
@@ -85,6 +85,7 @@ export default {
         align-items: center;
         width: 343px;
         height: 58px;
+        border-top: solid 1.5px #E8E9F1;
         
         border-bottom-right-radius: 16px;
         border-bottom-left-radius: 16px;

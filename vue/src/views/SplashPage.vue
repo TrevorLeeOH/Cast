@@ -1,9 +1,10 @@
 <template>
   <div class="splash">
     <div class="Frame-53">
-      <div class="Image">
-          <img id="logo" src="..\assets\CAST_logo-02.png" alt="logo">
-      </div>
+      <!-- <div class="Image"> -->
+        <img id="cast-gif" src="..\assets\Cast_your_vote.gif" alt="Logo">
+          <!-- <img id="logo" src="..\assets\CAST_logo-02.png" alt="logo"> -->
+      <!-- </div> -->
       <div class="Content">        
           <!-- <div class="Pagination-Dots">
             <div class=".Dot"></div>
@@ -11,12 +12,12 @@
             <div class=".Dot"></div>
           </div> -->
         <span class="Make-your-voice-heard"> Make your voice heard!</span>
-        <span class="Rank">Rank the most important current topics that will be at the top of the ballots!</span>
+        <span class="rank">Rank the most important current topics that will be at the top of the ballots!</span>
       <router-link class="sign-up-button" :to="{name: 'register'}"> Sign Up
        </router-link>
       <div class="login">
         <span class="Already-Registered-Login-now">Already Registered? 
-            <span class="text-style-1">Login now</span>
+            <router-link class="text-style-1" :to="{name: 'login'}">Login now</router-link>
         </span>
       </div>
       </div>
@@ -61,6 +62,7 @@ export default {
   background-color: #edf2fe;
   height: 300px;
   
+  
 }
 .Content {
   height: 326.6px;
@@ -71,7 +73,7 @@ export default {
   justify-content: flex-start;
   align-items: center;
   gap: 24px;
-  padding: 20px 24px;
+  padding: 75px 24px 20px;
 }
 
 
@@ -90,7 +92,7 @@ export default {
   color: #000;
 }
 
-.Rank {
+.rank {
   height: 40px;
   align-self: stretch;
   flex-grow: 0;
@@ -163,6 +165,7 @@ button {
   line-height: normal;
   letter-spacing: normal;
   color: #467bf5;
+  text-decoration: none;
 }
 
 .Pagination-Dots {
@@ -194,6 +197,11 @@ button {
 #logo {
   width: 100%;
   height: auto;
+}
+
+#cast-gif {
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
 }
 
 
