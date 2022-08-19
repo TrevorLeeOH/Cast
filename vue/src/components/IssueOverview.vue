@@ -11,8 +11,8 @@
                 </div>
             </span>
             <router-link id="detail-link" :to="{name: 'issue', params: {id: issue.issueId}}" tag="button">
-                <p id="detail-link-text">{{issue.userVoted ? 'Results' : 'Vote'}}</p>
-                <img v-if="!issue.userVoted" id="detail-link-icon" src="@/assets/VoteButtonIcon.png" alt="">
+                <p id="detail-link-text">{{issue.userVoted || !active ? 'Results' : 'Vote'}}</p>
+                <img v-if="!issue.userVoted && active" id="detail-link-icon" src="@/assets/VoteButtonIcon.png" alt="">
                 
             </router-link>
             <!-- <p id="exp" v-if="active && issue.expiration != null">{{'Closes on ' + formatDate(new Date(issue.expiration))}}</p> -->
